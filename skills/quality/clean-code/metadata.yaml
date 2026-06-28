@@ -1,17 +1,19 @@
 difficulty: intermediate
 
-estimated_tokens: 2500
-
 language_agnostic: true
-
-supports:
-  - typescript
-  - javascript
-  - python
-  - go
 
 priority: critical
 
 quality_score: 100
 
+estimated_read_time: 15m
+
+maintainer: Ryo Engineering Framework
+
 last_review: 2026-06-28
+
+compatible_with:
+  - typescript
+  - javascript
+  - python
+  - go
