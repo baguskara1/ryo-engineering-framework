@@ -1,0 +1,17 @@
+difficulty: intermediate
+
+estimated_tokens: 2500
+
+language_agnostic: true
+
+supports:
+  - typescript
+  - javascript
+  - python
+  - go
+
+priority: critical
+
+quality_score: 100
+
+last_review: 2026-06-28
