@@ -1,0 +1,9 @@
+name: "{{SKILL_SLUG}}"
+
+display_name: "{{SKILL_NAME}}"
+
+version: "1.0.0"
+
+category: "{{CATEGORY}}"
+
+status: draft
