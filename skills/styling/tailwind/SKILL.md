@@ -1,458 +1,136 @@
----
-name: tailwind
-description: Senior Tailwind CSS Engineer. Build scalable, maintainable, responsive and beautiful UI using Tailwind CSS v4 best practices.
----
+# Tailwind CSS Engineering Skill
 
-# Identity
+## Identity
 
-You are a Senior Frontend Engineer specializing in Tailwind CSS.
+Tailwind CSS is a utility-first CSS framework for rapidly building consistent, maintainable, and responsive user interfaces.
 
-Your goal is to create interfaces that are:
-
-- Beautiful
-- Consistent
-- Responsive
-- Accessible
-- Maintainable
-
-Avoid utility class chaos.
+The goal is not to write fewer classes, but to build scalable design systems.
 
 ---
 
-# Philosophy
+# Engineering Philosophy
 
-Prefer consistency over creativity.
-
-Every spacing, radius, shadow, typography and color should feel like part of one design system.
-
----
-
-# Layout
-
-Prefer Flexbox first.
-
-Use Grid only when the layout actually requires two-dimensional positioning.
-
-Examples
-
-Good
-
-flex
-items-center
-justify-between
-
-Good
-
-grid
-grid-cols-2
-gap-6
-
-Avoid unnecessary nested grids.
+- Utility first
+- Consistency over creativity
+- Reuse through components
+- Mobile first
+- Accessibility by default
 
 ---
 
-# Spacing
+# Core Principles
 
-Use consistent spacing scale.
+## Mobile First
 
-Prefer
+Start with the smallest screen.
 
-1
-
-2
-
-3
-
-4
-
-6
-
-8
-
-10
-
-12
-
-16
-
-20
-
-24
-
-Avoid random values.
-
-Avoid
-
-mt-[13px]
-
-unless absolutely necessary.
+Add larger breakpoints only when needed.
 
 ---
 
-# Width
+## Consistent Spacing
 
-Prefer
+Use Tailwind spacing scale.
 
-max-w-screen-xl
-
-max-w-7xl
-
-container
-
-mx-auto
-
-Avoid fixed widths whenever possible.
+Avoid arbitrary values unless justified.
 
 ---
 
-# Padding
+## Reusable Components
 
-Prefer internal spacing instead of margins between child elements.
-
-Good
-
-flex
-gap-4
-
-Avoid
-
-mb-4
-mb-4
-mb-4
-mb-4
+If a utility pattern appears three or more times, consider extracting it into a reusable component.
 
 ---
 
-# Gap
+## Semantic HTML
 
-Always prefer
+Tailwind styles elements.
 
-gap
-
-instead of margin spacing.
-
-Good
-
-flex gap-4
-
-Grid gap-6
+HTML should still be semantic.
 
 ---
 
-# Typography
+## Design System
 
-Use clear hierarchy.
-
-Example
-
-text-4xl
-
-text-2xl
-
-text-lg
-
-text-base
-
-text-sm
-
-Avoid multiple font sizes that look almost identical.
+Use theme tokens instead of hardcoded colors and spacing.
 
 ---
 
-# Colors
+# Best Practices
 
-Prefer semantic colors.
-
-Example
-
-bg-primary
-
-text-muted
-
-text-destructive
-
-Avoid hardcoded colors everywhere.
-
-Avoid
-
-text-red-500
-
-for every error.
-
----
-
-# Border Radius
-
-Use consistent radius.
-
-Prefer
-
-rounded-md
-
-rounded-lg
-
-rounded-xl
-
-Avoid
-
-rounded-[17px]
-
----
-
-# Shadows
-
-Prefer subtle shadows.
-
-Good
-
-shadow-sm
-
-shadow
-
-shadow-md
-
-Avoid excessive shadow stacking.
-
----
-
-# Buttons
-
-Buttons should have
-
-- hover state
-- active state
-- disabled state
-- loading state
-- focus state
-
-Never style only the default state.
-
----
-
-# Cards
-
-Cards should include
-
-padding
-
-rounded corners
-
-subtle border
-
-consistent shadow
-
-Example
-
-rounded-xl
-
-border
-
-p-6
-
-shadow-sm
+- Prefer flex/grid utilities.
+- Keep utility order consistent.
+- Use `gap` instead of margins where possible.
+- Use `max-w-*` for readable layouts.
+- Prefer `container` for page wrappers.
+- Use CSS variables with Tailwind theme when appropriate.
 
 ---
 
 # Responsive Design
 
-Always design mobile first.
+Use responsive variants.
 
 Example
 
-grid-cols-1
-
-md:grid-cols-2
-
-lg:grid-cols-3
-
-Avoid desktop-first layouts.
+```html
+<div class="p-4 md:p-8 lg:p-12">
+```
 
 ---
 
 # Dark Mode
 
-Support dark mode whenever practical.
+Support dark mode from the beginning.
 
-Prefer
-
-dark:
-
-instead of separate styling.
-
----
-
-# Animations
-
-Animations should be subtle.
-
-Prefer
-
-transition
-
-duration-200
-
-ease-in-out
-
-Avoid animations longer than necessary.
+Prefer theme-based colors.
 
 ---
 
 # Accessibility
 
-Maintain sufficient color contrast.
-
-Never rely on color alone.
-
-Always provide visible focus states.
-
-Buttons should remain keyboard accessible.
-
----
-
-# Forms
-
-Inputs should have
-
-label
-
-helper text
-
-error message
-
-focus state
-
-disabled state
-
-Avoid placeholder-only labels.
-
----
-
-# Icons
-
-Icons should align visually with text.
-
-Use consistent sizing.
-
-Typical sizes
-
-w-4 h-4
-
-w-5 h-5
-
-w-6 h-6
-
----
-
-# Component Style
-
-Every component should have
-
-spacing
-
-responsive behavior
-
-hover
-
-focus
-
-disabled
-
-loading
-
-error
-
-empty state
-
----
-
-# Performance
-
-Avoid unnecessary dynamic classes.
-
-Prefer static utilities.
-
-Avoid deeply nested utility strings.
-
-Extract reusable components when needed.
-
----
-
-# Class Organization
-
-Order classes logically.
-
-Example
-
-Layout
-
-Spacing
-
-Typography
-
-Background
-
-Border
-
-Effects
-
-Interaction
-
-Example
-
-flex
-items-center
-gap-2
-rounded-lg
-border
-bg-white
-px-4
-py-2
-text-sm
-font-medium
-hover:bg-gray-100
+- Maintain sufficient color contrast.
+- Never remove focus styles without replacement.
+- Ensure interactive elements remain keyboard accessible.
 
 ---
 
 # Anti Patterns
 
-Avoid
+Avoid:
 
-❌ Random spacing
-
-❌ Random colors
-
-❌ Inline styles
-
-❌ Huge class strings
-
-❌ Arbitrary values everywhere
-
-❌ Inconsistent radius
-
-❌ Inconsistent shadows
-
-❌ Desktop-first layouts
+- Arbitrary values everywhere
+- 50+ utility classes on one element
+- Inline styles mixed with Tailwind
+- Repeated utility groups
+- Ignoring responsive design
 
 ---
 
-# Checklist
+# Project Structure
 
-Before completing UI
+```
+components/
+styles/
+lib/
+```
 
-✓ Responsive
+Keep styling logic close to components.
 
-✓ Mobile first
+---
 
-✓ Consistent spacing
+# AI Self Review
 
-✓ Accessible
+- [ ] Mobile-first
+- [ ] Responsive
+- [ ] Accessible
+- [ ] Consistent spacing
+- [ ] Theme-aware
+- [ ] No duplicated utility groups
+- [ ] Production Ready
 
-✓ Proper hover states
+---
 
-✓ Proper focus states
+# Summary
 
-✓ Semantic colors
-
-✓ Clean utility classes
-
-✓ Reusable components
+Tailwind CSS should help build consistent, maintainable interfaces through reusable patterns and a shared design system—not simply reduce the amount of CSS written.
