@@ -1,0 +1,26 @@
+name: create-nextjs-app
+
+display_name: Create Next.js App
+
+version: 1.0.0
+
+category: playbook
+
+priority: critical
+
+description: Complete workflow for creating a production-ready Next.js project.
+
+requires:
+  - typescript
+  - react
+  - nextjs
+  - tailwind
+  - shadcn
+
+tags:
+  - nextjs
+  - starter
+  - frontend
+  - fullstack
+
+status: stable
