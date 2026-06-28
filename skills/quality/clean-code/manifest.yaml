@@ -1,0 +1,28 @@
+name: clean-code
+
+display_name: Clean Code
+
+version: 3.0.0
+
+category: quality
+
+priority: critical
+
+description: Universal engineering principles for writing clean, maintainable, and scalable code.
+
+entry: SKILL.md
+
+requires: []
+
+recommended:
+  - testing
+  - security
+  - code-review
+
+tags:
+  - clean-code
+  - architecture
+  - maintainability
+  - readability
+
+status: stable
