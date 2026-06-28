@@ -72,6 +72,63 @@ create)
 
     fi
 
+    ;;
+
+validate)
+
+    echo ""
+    echo "🔍 Validating Skills..."
+    echo ""
+
+    VALID=0
+    INVALID=0
+
+    for skill in skills/*/*; do
+
+        if [ -d "$skill" ]; then
+
+            REQUIRED=(
+                "manifest.yaml"
+                "metadata.yaml"
+                "README.md"
+                "SKILL.md"
+                "VERSION.md"
+            )
+
+            MISSING=0
+
+            for file in "${REQUIRED[@]}"; do
+                if [ ! -f "$skill/$file" ]; then
+                    MISSING=1
+                fi
+            done
+
+        if [ $MISSING -eq 0 ]; then
+            echo "✅ $skill"
+            VALID=$((VALID+1))
+        else
+            echo "❌ $skill"
+
+            for file in "${REQUIRED[@]}"; do
+                if [ ! -f "$skill/$file" ]; then
+                    echo "   └── Missing: $file"
+                fi
+    done
+
+    INVALID=$((INVALID+1))
+fi
+
+        fi
+
+    done
+
+    echo ""
+    echo "----------------------------"
+    echo "Valid   : $VALID"
+    echo "Invalid : $INVALID"
+    echo "----------------------------"
+    echo ""
+
     ;;    
 
 *)
@@ -83,6 +140,6 @@ create)
     echo "  bash cli/ryo.sh doctor"
     echo "  bash cli/ryo.sh list"
     echo "  bash cli/ryo.sh create skill <category> <name>"
-    echo ""
+    echo "  bash cli/ryo.sh validate"
     ;;
 esac
