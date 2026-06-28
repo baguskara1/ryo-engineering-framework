@@ -1,0 +1,29 @@
+name: crud
+
+display_name: CRUD Application
+
+version: 1.0.0
+
+category: playbook
+
+priority: high
+
+description: Standard workflow for building Create, Read, Update, Delete features.
+
+requires:
+  - nextjs
+  - react
+  - typescript
+
+recommended:
+  - authentication
+  - dashboard
+
+tags:
+  - crud
+  - forms
+  - tables
+  - validation
+  - api
+
+status: stable
