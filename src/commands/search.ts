@@ -1,41 +1,31 @@
-import { loadSkills } from "../skills/loadSkills";
+import { loadRegistry } from "../registry/loadRegistry";
 import { logger } from "../utils/logger";
 
 export function search(keyword?: string) {
 
     if (!keyword) {
-
         logger.error("Usage: ryo search <keyword>");
         return;
-
     }
 
-    const q = keyword.toLowerCase();
-
-    const results = loadSkills().filter(skill =>
-        skill.name.toLowerCase().includes(q) ||
-        skill.category.toLowerCase().includes(q)
+    const results = loadRegistry().filter(skill =>
+        skill.name.toLowerCase().includes(keyword.toLowerCase()) ||
+        skill.category.toLowerCase().includes(keyword.toLowerCase())
     );
 
-    console.log("");
-
-    logger.info("🔎 Search Results");
-
-    console.log("");
-
     if (results.length === 0) {
-
-        logger.warning("No skills found.");
-
-        console.log("");
-
+        logger.warning("No matching skills found.");
         return;
     }
 
+    console.log("");
+
+    console.log(`Found ${results.length} skill(s):`);
+
     for (const skill of results) {
-
-        console.log(`• ${skill.category}/${skill.name}`);
-
+        console.log(
+            `${skill.category}/${skill.name}`
+        );
     }
 
     console.log("");
