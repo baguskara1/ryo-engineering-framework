@@ -1,12 +1,7 @@
 import fs from "fs";
 import path from "path";
 
-const REQUIRED_FILES = [
-    "manifest.yaml",
-    "metadata.yaml",
-    "README.md",
-    "VERSION.md",
-];
+import { REQUIRED_FILES } from "../constants/requiredFiles";
 
 export function validate() {
 

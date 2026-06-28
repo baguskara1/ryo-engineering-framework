@@ -1,6 +1,8 @@
 import fs from "fs";
 import path from "path";
 import { copyDirectory } from "../utils/copyDirectory";
+import { processTemplates } from "../utils/processTemplates";
+import { isValidName } from "../utils/validators";
 
 export function create(category?: string, skill?: string) {
     if (!category || !skill) {
@@ -12,9 +14,7 @@ export function create(category?: string, skill?: string) {
         return;
     }
 
-    const validName = /^[a-z0-9-]+$/;
-
-    if (!validName.test(category) || !validName.test(skill)) {
+   if (!isValidName(category) || !isValidName(skill))
         console.log("");
         console.log("❌ Invalid name.");
         console.log("Use lowercase letters, numbers, and hyphens only.");
@@ -34,6 +34,11 @@ export function create(category?: string, skill?: string) {
     }
 
     copyDirectory("templates/skill", skillPath);
+
+    processTemplates(skillPath, {
+    CATEGORY: category,
+    SKILL: skill,
+});
 
     console.log("");
     console.log("✅ Skill created successfully!");
