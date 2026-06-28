@@ -1,0 +1,24 @@
+{
+  "skills": [
+    {
+      "name": "kubernetes",
+      "category": "workflow",
+      "version": "1.0.0"
+    },
+    {
+      "name": "react",
+      "category": "frameworks",
+      "version": "1.0.0"
+    },
+    {
+      "name": "nextjs",
+      "category": "frameworks",
+      "version": "1.0.0"
+    },
+    {
+      "name": "express",
+      "category": "frameworks",
+      "version": "1.0.0"
+    }
+  ]
+}

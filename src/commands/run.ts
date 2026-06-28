@@ -1,6 +1,3 @@
-import fs from "fs";
-import path from "path";
-
 import { logger } from "../utils/logger";
 import { loadSkills } from "../skills/loadSkills";
 import { readSkill } from "../utils/readSkill";

@@ -1,23 +1,80 @@
 # 🚀 Ryo Engineering Framework
 
+![Version](https://img.shields.io/badge/version-1.0.0-green)
+![License](https://img.shields.io/badge/license-MIT-blue)
+![Node](https://img.shields.io/badge/node-%3E%3D20-brightgreen)
+
 > Build production-ready software with AI using real engineering principles.
 
-Ryo Engineering Framework (REF) is an open-source engineering knowledge base designed to improve the quality of AI-assisted software development.
+Ryo Engineering Framework (REF) is an open-source engineering framework that provides reusable skills, playbooks, templates, and standards for AI coding assistants.
 
-Instead of relying on prompts alone, REF provides structured skills, playbooks, templates, and engineering standards that can be reused across AI coding assistants.
+Rather than relying on prompts alone, REF enables consistent, maintainable, and production-ready software engineering workflows.
 
 ---
 
 # ✨ Features
 
-- 📚 Engineering Skills
-- 🏗 Software Engineering Standards
-- 📖 Playbooks
-- 📋 Checklists
-- 🧩 Templates
-- 🔒 Security Best Practices
-- 🧪 Testing Guidelines
-- 🚀 Production Ready Recommendations
+* 📚 Reusable Engineering Skills
+* 🧠 AI-ready Knowledge Base
+* 🏗 Engineering Standards
+* 📖 Playbooks
+* 📋 Checklists
+* 🧩 Templates
+* 🔒 Security Best Practices
+* 🧪 Testing Guidelines
+* ⚡ CLI for Skill Management
+
+---
+
+# 🚀 CLI Commands
+
+```bash
+ryo help
+
+ryo skills
+
+ryo search react
+
+ryo info docker
+
+ryo create workflow my-skill
+
+ryo validate
+
+ryo doctor
+
+ryo registry
+
+ryo install kubernetes
+
+ryo update kubernetes
+
+ryo uninstall kubernetes
+
+ryo publish kubernetes
+```
+
+---
+
+# 📦 Installation
+
+```bash
+git clone https://github.com/baguskara1/ryo-engineering-framework.git
+
+cd ryo-engineering-framework
+
+npm install
+
+npm run build
+
+npm link
+```
+
+Then verify the installation:
+
+```bash
+ryo help
+```
 
 ---
 
@@ -25,80 +82,39 @@ Instead of relying on prompts alone, REF provides structured skills, playbooks, 
 
 ```text
 docs/
-skills/
+official-skills/
 playbooks/
+registry/
+skills/
+specs/
+src/
 templates/
-checklists/
-examples/
-scripts/
+tests/
 ```
 
 ---
 
 # 🤖 Supported AI Coding Assistants
 
-- OpenCode
-- Claude Code
-- Cursor
-- Codex CLI
-- Cline
-- Roo Code
+* OpenCode
+* Claude Code
+* Cursor
+* Codex CLI
+* Cline
+* Roo Code
 
 ---
 
-# 📦 Installation
+# 🗺 Roadmap
 
-Clone the repository.
-
-```bash
-git clone https://github.com/baguskara1/ryo-engineering-framework.git
-```
-
-Create a symbolic link for OpenCode.
-
-```bash
-ln -s \
-~/Documents/GitHub/ryo-engineering-framework/skills \
-~/.config/opencode/skills
-```
-
----
-
-# 🚀 Roadmap
-
-## Phase 1
-
-- Foundation
-- Documentation
-- Skill Specification
-
-## Phase 2
-
-- Premium Skills
-
-## Phase 3
-
-- Playbooks
-
-## Phase 4
-
-- Templates
-
-## Phase 5
-
-- Backend
-
-## Phase 6
-
-- Database
-
-## Phase 7
-
-- DevOps
-
-## Phase 8
-
-- AI Engineering
+* ✅ CLI
+* ✅ Registry
+* ✅ Install / Update / Uninstall
+* ✅ Publish
+* 🚧 GitHub Actions
+* 🚧 Package Registry
+* 🚧 Plugin System
+* 🚧 Cloud Sync
 
 ---
 
@@ -106,20 +122,14 @@ ln -s \
 
 Contributions are welcome.
 
-Please read the contributing guide before submitting changes.
+Please read:
 
----
+* CONTRIBUTING.md
+* docs/writing-guidelines.md
+* docs/review-checklist.md
 
-# ✅ Quality Standards
+before opening a Pull Request.
 
-Every engineering skill in this repository must satisfy:
-
-- Skill Specification
-- Writing Guidelines
-- Definition of Done
-- Review Checklist
-
-These standards ensure every skill remains consistent, maintainable, and production-ready.
 ---
 
 # 📄 License

@@ -1,19 +1,45 @@
 import fs from "fs";
+import path from "path";
 
-export function list() {
-    console.log("");
-    console.log("📦 Available Skill Categories");
-    console.log("");
+import { logger } from "../utils/logger";
 
-const categories = fs
-    .readdirSync("skills", { withFileTypes: true })
-    .filter(item => item.isDirectory())
-    .map(item => item.name)
-    .sort();
+export function list(): void {
 
-    for (const category of categories) {
-        console.log(category);
+    const skillsDir = path.join("skills");
+
+    if (!fs.existsSync(skillsDir)) {
+        logger.warning("No skills installed.");
+        return;
     }
 
-    console.log("");
+    const categories = fs
+        .readdirSync(skillsDir)
+        .filter(category =>
+            fs.statSync(path.join(skillsDir, category)).isDirectory()
+        );
+
+    if (categories.length === 0) {
+        logger.warning("No skills installed.");
+        return;
+    }
+
+    logger.info("Installed skills:");
+
+    for (const category of categories) {
+
+        console.log(`${category}/`);
+
+        const skills = fs
+            .readdirSync(path.join(skillsDir, category))
+            .filter(skill =>
+                fs.statSync(
+                    path.join(skillsDir, category, skill)
+                ).isDirectory()
+            );
+
+        for (const skill of skills) {
+            console.log(`  - ${skill}`);
+        }
+    }
+
 }
