@@ -1,0 +1,28 @@
+name: authentication
+
+display_name: Authentication
+
+version: 1.0.0
+
+category: playbook
+
+priority: critical
+
+description: Complete workflow for implementing authentication in Next.js applications.
+
+requires:
+  - nextjs
+  - react
+  - typescript
+
+recommended:
+  - security
+
+tags:
+  - authentication
+  - login
+  - session
+  - oauth
+  - credentials
+
+status: stable

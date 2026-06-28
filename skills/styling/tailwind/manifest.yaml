@@ -1,0 +1,30 @@
+name: tailwind
+
+display_name: Tailwind CSS
+
+version: 3.0.0
+
+category: styling
+
+priority: high
+
+description: Engineering guidelines for building scalable UI using Tailwind CSS.
+
+entry: SKILL.md
+
+requires:
+  - react
+
+recommended:
+  - nextjs
+  - shadcn
+  - ui-design
+
+tags:
+  - tailwind
+  - css
+  - styling
+  - responsive
+  - design-system
+
+status: stable

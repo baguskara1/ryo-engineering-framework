@@ -1,10 +1,10 @@
-# Next.js Skill
+# Tailwind CSS Skill
 
-Production-grade engineering knowledge for building scalable Next.js applications.
+Production-grade engineering guidelines for building scalable and maintainable user interfaces with Tailwind CSS.
 
 ## Category
 
-Framework
+Styling
 
 ## Version
 
@@ -15,14 +15,12 @@ Framework
 Required
 
 - React
-- TypeScript
 
 Recommended
 
-- Tailwind CSS
+- Next.js
 - shadcn/ui
-- Testing
-- Security
+- UI Design
 
 ## Files
 

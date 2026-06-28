@@ -1,0 +1,30 @@
+name: dashboard
+
+display_name: Dashboard Architecture
+
+version: 1.0.0
+
+category: playbook
+
+priority: high
+
+description: Best practices for building scalable admin dashboards using Next.js.
+
+requires:
+  - nextjs
+  - react
+  - tailwind
+  - shadcn
+
+recommended:
+  - authentication
+  - typescript
+
+tags:
+  - dashboard
+  - admin
+  - layout
+  - navigation
+  - architecture
+
+status: stable

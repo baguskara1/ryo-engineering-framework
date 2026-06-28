@@ -1,153 +1,149 @@
-# TypeScript Engineering Skill
+# React Engineering Skill
 
 ## Identity
 
-TypeScript is the default language for modern JavaScript applications.
+React is a declarative UI library focused on building reusable component-based user interfaces.
 
-The goal of this skill is not simply to make code compile, but to produce software that is maintainable, type-safe, readable, and scalable.
-
-Always prioritize long-term maintainability over short-term convenience.
+This skill promotes maintainable, composable, and performant React applications.
 
 ---
 
 # Engineering Philosophy
 
-- Types are documentation.
-- Eliminate bugs through the type system.
-- Prefer explicit intent over clever code.
-- Optimize for maintainability.
-- Avoid unnecessary complexity.
+- Components should do one thing well.
+- Composition is preferred over inheritance.
+- State should be minimal.
+- UI should derive from state.
+- Prefer readability over clever abstractions.
 
 ---
 
 # Core Principles
 
-## Type Safety First
+## Single Responsibility
 
-Use the type system to prevent runtime errors whenever possible.
-
----
-
-## Readability
-
-Types should improve code readability rather than making it harder to understand.
+Each component should solve one problem.
 
 ---
 
-## Maintainability
+## Composition First
 
-Write code that future developers can understand quickly.
+Build larger interfaces from smaller reusable components.
 
 ---
 
-## Simplicity
+## Keep State Minimal
 
-Choose the simplest type that accurately models the problem.
+Only store information that cannot be derived.
+
+---
+
+## Unidirectional Data Flow
+
+Props flow downward.
+
+State changes flow upward through callbacks.
+
+---
+
+## Predictability
+
+Components should behave consistently.
 
 ---
 
 # Best Practices
 
-## Use Strict Mode
+## Small Components
 
-Always enable strict mode.
+Prefer components under 150 lines.
 
-```json
-{
-  "compilerOptions": {
-    "strict": true
-  }
+Split large components.
+
+---
+
+## Typed Props
+
+```tsx
+interface ButtonProps {
+  label: string
+  onClick: () => void
 }
 ```
 
 ---
 
-## Prefer Interfaces for Object Contracts
-
-```ts
-interface User {
-  id: string
-  name: string
-}
-```
-
----
-
-## Use Type Aliases for Unions
-
-```ts
-type Status =
-  | "pending"
-  | "success"
-  | "failed"
-```
-
----
-
-## Avoid any
-
-Bad
-
-```ts
-const user: any = {}
-```
+## Prefer Functional Components
 
 Good
 
-```ts
-const user: User = {}
+```tsx
+function Button() {}
 ```
+
+Avoid class components unless maintaining legacy code.
 
 ---
 
-## Prefer Unknown over Any
+## Custom Hooks
 
-```ts
-function parse(data: unknown) {}
-```
-
----
-
-## Use Enums Sparingly
-
-Prefer literal unions.
+Extract reusable logic.
 
 Good
 
-```ts
-type Role =
-  | "admin"
-  | "user"
+```tsx
+useAuth()
+
+useTheme()
+
+usePagination()
 ```
 
-Avoid
+---
 
-```ts
-enum Role {
-  Admin,
-  User
-}
+## Keep Hooks at the Top
+
+Never call hooks inside
+
+- loops
+- conditions
+- nested functions
+
+---
+
+## Lift State Only When Necessary
+
+Keep state close to where it is used.
+
+---
+
+## Memoization
+
+Use
+
+- React.memo
+- useMemo
+- useCallback
+
+only after identifying performance issues.
+
+Avoid premature optimization.
+
+---
+
+## File Organization
+
 ```
+components/
 
-unless interoperability requires enums.
+hooks/
 
----
+contexts/
 
-## Prefer Composition
+utils/
 
-Small reusable types are better than huge interfaces.
-
----
-
-## Keep Types Close
-
-Define types close to where they are used unless shared.
-
----
-
-## Avoid Duplicate Types
-
-Create one source of truth.
+types/
+```
 
 ---
 
@@ -155,95 +151,94 @@ Create one source of truth.
 
 Avoid
 
-- any
-- Large interfaces
-- Deep inheritance
-- Magic strings
-- Duplicate types
-- Overusing enums
-- Overusing assertions
-- Ignoring compiler errors
+- Prop drilling everywhere
+- Massive components
+- Duplicate state
+- Anonymous functions in deep trees
+- Business logic inside JSX
+- useEffect for derived state
+- Overusing Context
 
 ---
 
 # Decision Guide
 
-Need an object contract?
+Need reusable UI?
 
 ↓
 
-Use Interface
+Component
 
 ---
 
-Need union?
+Need reusable logic?
 
 ↓
 
-Use Type Alias
+Custom Hook
 
 ---
 
-Need unknown input?
+Need global state?
 
 ↓
 
-Use Unknown
+Context
+
+↓
+
+Large application?
+
+↓
+
+State Library
 
 ---
 
-Need casting?
+Need derived value?
 
 ↓
 
-Validate first
-
-↓
-
-Cast later
+useMemo
 
 ---
 
-Need reusable model?
+Need callback optimization?
 
 ↓
 
-Extract shared type
+useCallback
+
+Only if necessary.
 
 ---
 
 # Naming Conventions
 
-Interfaces
+Components
 
-```ts
-interface User
+```tsx
+UserCard
 ```
 
-Types
+Hooks
 
-```ts
-type ApiResponse
+```tsx
+useAuth
+
+useTheme
 ```
 
-Generic
+Props
 
-```ts
-T
-
-TData
-
-TError
+```tsx
+ButtonProps
 ```
 
-Booleans
+Contexts
 
-```ts
-isLoading
-
-hasPermission
-
-canEdit
+```tsx
+AuthContext
 ```
 
 ---
@@ -251,40 +246,41 @@ canEdit
 # Project Structure
 
 ```
-types/
-    api.ts
-    auth.ts
-    user.ts
-
-lib/
-
 components/
 
 hooks/
-```
 
-Keep shared types inside the `types/` directory.
+contexts/
+
+layouts/
+
+pages/
+
+utils/
+
+types/
+```
 
 ---
 
 # AI Self Review
 
-Before finishing, verify:
+Before completing work:
 
-- [ ] No unnecessary any
-- [ ] Strict typing enabled
-- [ ] Readable names
-- [ ] Types are reusable
-- [ ] No duplicate models
-- [ ] Unknown preferred over any
-- [ ] Production ready
+- [ ] Component has one responsibility
+- [ ] Props are typed
+- [ ] State is minimal
+- [ ] Hooks follow React rules
+- [ ] JSX is readable
+- [ ] Business logic extracted
+- [ ] Accessible
 - [ ] Maintainable
-- [ ] Easy to extend
+- [ ] Production Ready
 
 ---
 
 # Summary
 
-TypeScript should reduce bugs, improve readability, and increase confidence during development.
+React applications should prioritize simplicity, composability, and predictable state management.
 
-The goal is not simply to satisfy the compiler, but to create maintainable software that scales.
+Build small reusable components and optimize only when necessary.

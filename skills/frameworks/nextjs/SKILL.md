@@ -1,115 +1,80 @@
----
-name: nextjs
-description: Senior Next.js App Router Engineer. Expert in Next.js 15+, React Server Components, Server Actions, performance, SEO, and production architecture.
----
+# Next.js Engineering Skill
 
-# Identity
+## Identity
 
-You are a Senior Next.js Engineer.
+Next.js is a React framework for building production-ready full-stack web applications.
 
-Build applications that are:
-
-- Fast
-- Secure
-- SEO Friendly
-- Accessible
-- Scalable
-- Production Ready
-
-Always optimize for maintainability and user experience.
+This skill emphasizes scalability, performance, maintainability, and modern React architecture using the App Router.
 
 ---
 
-# Framework Philosophy
+# Engineering Philosophy
 
-Always prefer modern App Router.
-
-Do not use Pages Router unless explicitly requested.
-
-Prefer:
-
-app/
-
-Avoid:
-
-pages/
+- Prefer Server Components by default.
+- Minimize JavaScript sent to the browser.
+- Fetch data as close to the server as possible.
+- Build secure applications by default.
+- Optimize before adding complexity.
 
 ---
 
 # Core Principles
 
-- Server First
-- Client Only When Needed
-- Fetch data on the server
-- Keep JavaScript shipped to browser minimal
-- Prefer built-in Next.js features before third-party libraries
+## Server First
+
+Use Server Components unless client-side interactivity is required.
 
 ---
 
-# App Router
+## Minimal Client JavaScript
 
-Use App Router conventions.
+Every Client Component increases bundle size.
 
-app/
-
-layout.tsx
-
-page.tsx
-
-loading.tsx
-
-error.tsx
-
-not-found.tsx
-
-route.ts
-
-default.tsx
-
-Follow route grouping when appropriate.
-
-Example:
-
-app/
-
-(auth)/
-
-(dashboard)/
-
-(marketing)/
+Keep them small and isolated.
 
 ---
 
-# Server Components
+## Colocation
 
-Server Components are the default.
+Keep components, styles, and logic close to where they are used.
 
-Prefer Server Components whenever possible.
+---
 
-Use Client Components only when necessary.
+## Progressive Enhancement
 
-Good reasons:
+Pages should work without unnecessary client-side JavaScript.
+
+---
+
+## Performance by Default
+
+Leverage built-in optimizations before introducing third-party libraries.
+
+---
+
+# Rendering Strategy
+
+## Server Components
+
+Use for:
+
+- Static content
+- Data fetching
+- Layouts
+- SEO
+- Authentication checks
+
+---
+
+## Client Components
+
+Use only when:
 
 - useState
 - useEffect
-- browser API
-- event handlers
-
-Avoid making entire pages client components.
-
----
-
-# Client Components
-
-Only add:
-
-"use client"
-
-when required.
-
-Keep client components as small as possible.
-
-Move interactive logic into child components.
+- Browser APIs
+- Event handlers
+- Animations
 
 ---
 
@@ -117,176 +82,125 @@ Move interactive logic into child components.
 
 Prefer:
 
-async Server Components
-
-Example
-
-export default async function Page() {
-
+```ts
+async function Page() {
+  const data = await fetch(...)
 }
+```
 
-Avoid fetching inside useEffect unless absolutely necessary.
+Avoid fetching data inside useEffect unless the data truly depends on the client.
 
 ---
 
 # Server Actions
 
-Prefer Server Actions for:
+Use Server Actions for:
 
-- forms
-- mutations
-- CRUD
-- authenticated actions
+- Form submissions
+- CRUD operations
+- Mutations
 
-Validate every input.
-
-Never trust client data.
+Avoid unnecessary API routes for internal mutations.
 
 ---
 
 # Route Handlers
 
-Use Route Handlers only when APIs are required.
+Use Route Handlers when:
 
-Example:
-
-app/api/users/route.ts
-
-Prefer Server Actions when frontend and backend live together.
+- Building public APIs
+- Webhooks
+- Third-party integrations
 
 ---
 
 # Metadata
 
-Always use Metadata API.
+Always use the Metadata API.
+
+Good
+
+```ts
+export const metadata = {
+  title: "Dashboard",
+}
+```
+
+Avoid manipulating document.title manually.
+
+---
+
+# Image Optimization
+
+Always prefer:
+
+```tsx
+<Image />
+```
+
+instead of
+
+```html
+<img>
+```
+
+---
+
+# Font Optimization
+
+Use:
+
+```ts
+next/font
+```
+
+instead of external font CDNs.
+
+---
+
+# Navigation
 
 Prefer:
 
-export const metadata
+```tsx
+<Link />
+```
 
-or
+instead of
 
-generateMetadata()
+```tsx
+<a>
+```
 
-Include:
-
-- title
-- description
-- open graph
-- twitter
-- robots
-
-Every page should have meaningful metadata.
+for internal navigation.
 
 ---
 
-# Images
+# Folder Structure
 
-Always use
-
-next/image
-
-Never use img unless necessary.
-
-Provide:
-
-- width
-- height
-- alt
-
-Use priority only for above-the-fold images.
+```
+app/
+components/
+lib/
+hooks/
+types/
+styles/
+```
 
 ---
 
-# Fonts
+# Performance
 
-Use:
+Optimize using:
 
-next/font
+- Server Components
+- Streaming
+- Suspense
+- Image Optimization
+- Font Optimization
+- Dynamic Imports
 
-Avoid importing Google Fonts manually.
-
----
-
-# Links
-
-Always use:
-
-next/link
-
-Avoid plain anchor tags for internal navigation.
-
----
-
-# Layout
-
-Use nested layouts.
-
-Keep layouts reusable.
-
-Avoid duplicated navigation.
-
----
-
-# Loading UI
-
-Create:
-
-loading.tsx
-
-for every major route.
-
-Use skeleton loaders instead of spinners when possible.
-
----
-
-# Error Handling
-
-Provide:
-
-error.tsx
-
-Handle:
-
-- expected errors
-- unexpected errors
-- empty states
-
----
-
-# Not Found
-
-Use:
-
-not-found.tsx
-
-instead of manual 404 pages.
-
----
-
-# Authentication
-
-Prefer server-side authentication.
-
-Never expose secrets to client.
-
-Read session on server.
-
-Protect routes using middleware when appropriate.
-
----
-
-# Environment Variables
-
-Public variables
-
-NEXT_PUBLIC_
-
-Private variables
-
-process.env
-
-Never expose secrets.
+Avoid premature optimization.
 
 ---
 
@@ -294,177 +208,56 @@ Never expose secrets.
 
 Understand:
 
-- force-cache
-- no-store
-- revalidate
+- Static Rendering
+- Dynamic Rendering
+- Revalidation
+- Cache Tags
 
-Use caching intentionally.
-
-Avoid unnecessary refetching.
-
----
-
-# Performance
-
-Minimize client JavaScript.
-
-Lazy load heavy components.
-
-Dynamic import when appropriate.
-
-Optimize bundle size.
-
-Prefer streaming.
+Choose the simplest strategy that satisfies requirements.
 
 ---
 
-# SEO
+# Error Handling
 
-Every route should include:
+Provide:
 
-- title
-- description
-- canonical
-- OpenGraph
-- Twitter Card
+- error.tsx
+- loading.tsx
+- not-found.tsx
 
-Semantic HTML is mandatory.
-
----
-
-# Accessibility
-
-Use semantic HTML.
-
-Provide alt text.
-
-Maintain heading hierarchy.
-
-Ensure keyboard navigation.
-
----
-
-# Folder Structure
-
-Prefer feature-first architecture.
-
-Example
-
-app/
-
-components/
-
-features/
-
-lib/
-
-services/
-
-hooks/
-
-types/
-
-utils/
-
-styles/
-
----
-
-# Styling
-
-Tailwind CSS preferred.
-
-Avoid inline styles.
-
-Keep styling consistent.
-
----
-
-# State Management
-
-Prefer:
-
-Server State
-
-↓
-
-Local State
-
-↓
-
-Global State
-
-Only introduce global state when necessary.
-
----
-
-# API Design
-
-Prefer:
-
-Server Actions
-
-↓
-
-Route Handlers
-
-↓
-
-External APIs
-
-Avoid unnecessary REST endpoints.
+for a better user experience.
 
 ---
 
 # Security
 
-Validate every input.
-
-Escape user content.
-
-Sanitize HTML.
-
-Protect against CSRF.
-
-Never expose secrets.
-
-Always use HTTPS.
+- Never expose secrets to the client.
+- Validate all inputs.
+- Sanitize user-generated content.
+- Use HTTPS in production.
+- Store secrets in environment variables.
 
 ---
 
-# Logging
+# Accessibility
 
-Never leave console.log in production.
+Always:
 
-Use structured logging.
-
----
-
-# Testing
-
-Encourage:
-
-Unit Tests
-
-Integration Tests
-
-E2E Tests
-
-Test critical user flows.
+- Use semantic HTML.
+- Provide alt text.
+- Ensure keyboard navigation.
+- Label form fields correctly.
 
 ---
 
-# Deployment
+# SEO
 
-Optimize for production.
+Use:
 
-Check:
-
-- bundle size
-- lighthouse
-- SEO
-- accessibility
-- environment variables
+- Metadata API
+- Open Graph
+- Canonical URLs
+- Structured Data when appropriate
 
 ---
 
@@ -472,50 +265,131 @@ Check:
 
 Avoid:
 
-❌ Large Client Components
-
-❌ Fetching inside useEffect
-
-❌ Exposing secrets
-
-❌ Using img instead of next/image
-
-❌ Using a for internal navigation
-
-❌ Duplicated layouts
-
-❌ Business logic inside UI
-
-❌ Massive page.tsx files
-
-❌ Overusing Context
-
-❌ Unnecessary global state
+- Large Client Components
+- Fetching everything on the client
+- Unnecessary API Routes
+- Deep prop drilling
+- Browser APIs in Server Components
+- Blocking rendering with slow requests
+- Hardcoded secrets
 
 ---
 
-# Checklist
+# Decision Guide
+
+Need browser interaction?
+
+↓
+
+YES
+
+↓
+
+Client Component
+
+↓
+
+NO
+
+↓
+
+Server Component
+
+---
+
+Need mutation?
+
+↓
+
+Server Action
+
+---
+
+Need public API?
+
+↓
+
+Route Handler
+
+---
+
+Need authentication?
+
+↓
+
+Middleware + Server Components
+
+---
+
+Need loading state?
+
+↓
+
+loading.tsx
+
+---
+
+Need error UI?
+
+↓
+
+error.tsx
+
+---
+
+# Naming Conventions
+
+Pages
+
+```
+page.tsx
+```
+
+Layouts
+
+```
+layout.tsx
+```
+
+Loading
+
+```
+loading.tsx
+```
+
+Error
+
+```
+error.tsx
+```
+
+Not Found
+
+```
+not-found.tsx
+```
+
+---
+
+# AI Self Review
 
 Before completing work:
 
-✓ App Router
+- [ ] Server Components used by default
+- [ ] Client Components minimized
+- [ ] Metadata configured
+- [ ] Images optimized
+- [ ] Fonts optimized
+- [ ] Accessible
+- [ ] Secure
+- [ ] Type safe
+- [ ] Production Ready
+- [ ] Maintainable
 
-✓ Server Components first
+---
 
-✓ Client Components only when needed
+# Summary
 
-✓ Metadata configured
+Build server-first applications.
 
-✓ next/image used
-
-✓ next/link used
-
-✓ Type-safe
-
-✓ Accessible
-
-✓ SEO optimized
-
-✓ Responsive
-
-✓ Production ready
+Prefer simplicity, leverage the framework's built-in features, and only move logic to the client when truly necessary.

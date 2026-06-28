@@ -1,10 +1,10 @@
-# Next.js Skill
+# shadcn/ui Skill
 
-Production-grade engineering knowledge for building scalable Next.js applications.
+Production-grade engineering guidelines for building accessible, composable, and maintainable UI components using shadcn/ui.
 
 ## Category
 
-Framework
+Styling
 
 ## Version
 
@@ -15,14 +15,12 @@ Framework
 Required
 
 - React
-- TypeScript
+- Tailwind CSS
 
 Recommended
 
-- Tailwind CSS
-- shadcn/ui
-- Testing
-- Security
+- Next.js
+- TypeScript
 
 ## Files
 
