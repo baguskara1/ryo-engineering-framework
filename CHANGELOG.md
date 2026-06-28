@@ -1,11 +1,8 @@
-# Changelog
-
-All notable changes to this project will be documented in this file.
-
-## [1.0.0-alpha.1]
+## [1.0.0-alpha.2]
 
 ### Added
 
-- Initial repository structure
-- Core documentation
-- Engineering skill architecture
+- Engineering writing guidelines
+- Skill template
+- TypeScript v2
+- Professional README

@@ -1,39 +1,41 @@
 # 🚀 Ryo Engineering Framework
 
-> An engineering framework for AI Coding Assistants.
+> Build production-ready software with AI using real engineering principles.
 
-Ryo Engineering Framework (REF) is a modular collection of engineering skills, playbooks, templates, and best practices designed to improve the quality of AI-generated software.
+Ryo Engineering Framework (REF) is an open-source engineering knowledge base designed to improve the quality of AI-assisted software development.
 
-## Vision
+Instead of relying on prompts alone, REF provides structured skills, playbooks, templates, and engineering standards that can be reused across AI coding assistants.
 
-Build production-ready software with AI by applying real software engineering principles.
+---
 
-Instead of relying on prompts alone, REF provides structured engineering knowledge that can be reused across AI coding assistants.
-
-## Features
+# ✨ Features
 
 - 📚 Engineering Skills
+- 🏗 Software Engineering Standards
 - 📖 Playbooks
-- ✅ Checklists
+- 📋 Checklists
 - 🧩 Templates
-- 🏗 Engineering Standards
-- 🔒 Security First
+- 🔒 Security Best Practices
 - 🧪 Testing Guidelines
-- 🚀 Production Ready Practices
+- 🚀 Production Ready Recommendations
 
-## Project Structure
+---
+
+# 📂 Repository Structure
 
 ```text
+docs/
 skills/
 playbooks/
 templates/
 checklists/
 examples/
-docs/
 scripts/
 ```
 
-## Supported AI
+---
+
+# 🤖 Supported AI Coding Assistants
 
 - OpenCode
 - Claude Code
@@ -42,15 +44,72 @@ scripts/
 - Cline
 - Roo Code
 
-## Roadmap
+---
 
-- ✅ Core Engineering Skills
-- 🚧 Backend Skills
-- ⏳ Database
-- ⏳ DevOps
-- ⏳ AI Engineering
-- ⏳ Architecture
+# 📦 Installation
 
-## License
+Clone the repository.
 
-MIT
+```bash
+git clone https://github.com/baguskara1/ryo-engineering-framework.git
+```
+
+Create a symbolic link for OpenCode.
+
+```bash
+ln -s \
+~/Documents/GitHub/ryo-engineering-framework/skills \
+~/.config/opencode/skills
+```
+
+---
+
+# 🚀 Roadmap
+
+## Phase 1
+
+- Foundation
+- Documentation
+- Skill Specification
+
+## Phase 2
+
+- Premium Skills
+
+## Phase 3
+
+- Playbooks
+
+## Phase 4
+
+- Templates
+
+## Phase 5
+
+- Backend
+
+## Phase 6
+
+- Database
+
+## Phase 7
+
+- DevOps
+
+## Phase 8
+
+- AI Engineering
+
+---
+
+# 🤝 Contributing
+
+Contributions are welcome.
+
+Please read the contributing guide before submitting changes.
+
+---
+
+# 📄 License
+
+MIT License.
