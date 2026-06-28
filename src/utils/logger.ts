@@ -1,11 +1,23 @@
-export function info(message: string) {
-    console.log(message);
-}
+import pc from "picocolors";
 
-export function success(message: string) {
-    console.log(`✅ ${message}`);
-}
+export const logger = {
+    info(message: string) {
+        console.log(pc.cyan(message));
+    },
 
-export function error(message: string) {
-    console.log(`❌ ${message}`);
-}
+    success(message: string) {
+        console.log(pc.green(message));
+    },
+
+    warn(message: string) {
+        console.log(pc.yellow(message));
+    },
+
+    warning(message: string) {
+        console.log(pc.yellow(message));
+    },
+
+    error(message: string) {
+        console.log(pc.red(message));
+    },
+};

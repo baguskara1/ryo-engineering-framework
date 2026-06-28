@@ -7,10 +7,7 @@ export function replacePlaceholders(
     let content = fs.readFileSync(filePath, "utf8");
 
     for (const key in replacements) {
-        content = content.replaceAll(
-            `{{${key}}}`,
-            replacements[key]
-        );
+    content = content.split(`{{${key}}}`).join(replacements[key]);
     }
 
     fs.writeFileSync(filePath, content);

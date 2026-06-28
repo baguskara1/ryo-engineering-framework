@@ -3,20 +3,24 @@ import path from "path";
 import { copyDirectory } from "../utils/copyDirectory";
 import { processTemplates } from "../utils/processTemplates";
 import { isValidName } from "../utils/validators";
+import { logger } from "../utils/logger";
 
 export function create(category?: string, skill?: string) {
+
     if (!category || !skill) {
+
         console.log("");
-        console.log("Usage:");
+        logger.warning("Usage:");
         console.log("create <category> <skill>");
         console.log("");
 
         return;
     }
 
-   if (!isValidName(category) || !isValidName(skill))
+    if (!isValidName(category) || !isValidName(skill)) {
+
         console.log("");
-        console.log("❌ Invalid name.");
+        logger.error("❌ Invalid name.");
         console.log("Use lowercase letters, numbers, and hyphens only.");
         console.log("");
 
@@ -26,8 +30,9 @@ export function create(category?: string, skill?: string) {
     const skillPath = path.join("skills", category, skill);
 
     if (fs.existsSync(skillPath)) {
+
         console.log("");
-        console.log("❌ Skill already exists.");
+        logger.error("❌ Skill already exists.");
         console.log("");
 
         return;
@@ -36,13 +41,12 @@ export function create(category?: string, skill?: string) {
     copyDirectory("templates/skill", skillPath);
 
     processTemplates(skillPath, {
-    CATEGORY: category,
-    SKILL: skill,
-});
+        CATEGORY: category,
+        SKILL: skill,
+    });
 
     console.log("");
-    console.log("✅ Skill created successfully!");
-    console.log("");
+    logger.success("✅ Skill created successfully!");
     console.log(skillPath);
     console.log("");
 }
