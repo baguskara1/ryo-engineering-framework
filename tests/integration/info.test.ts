@@ -68,30 +68,14 @@ describe("info command", () => {
 
     });
 
-    it("shows info when skill is not installed", () => {
+    it("shows error when skill is not installed", () => {
 
-        const consoleSpy = vi.spyOn(console, "log");
+        const spy = vi.spyOn(logger, "error");
 
         info("kubernetes");
 
-        expect(consoleSpy).toHaveBeenCalledWith(
-            "📦 kubernetes"
-        );
-
-        expect(consoleSpy).toHaveBeenCalledWith(
-            "Category : workflow"
-        );
-
-        expect(consoleSpy).toHaveBeenCalledWith(
-            "Path     : skills\\workflow\\kubernetes"
-        );
-
-        expect(consoleSpy).toHaveBeenCalledWith(
-            "Version    : 1.0.0"
-        );
-
-        expect(consoleSpy).toHaveBeenCalledWith(
-            "Installed : No"
+        expect(spy).toHaveBeenCalledWith(
+            "Skill not found."
         );
 
     });
@@ -107,11 +91,15 @@ describe("info command", () => {
         info("kubernetes");
 
         expect(consoleSpy).toHaveBeenCalledWith(
-            "Installed : Yes"
+            "📦 kubernetes"
         );
 
         expect(consoleSpy).toHaveBeenCalledWith(
-            `Location  : ${installPath}`
+            "Category : workflow"
+        );
+
+        expect(consoleSpy).toHaveBeenCalledWith(
+            `Path     : ${installPath}`
         );
 
     });
