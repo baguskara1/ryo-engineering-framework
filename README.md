@@ -110,6 +110,18 @@ Please read the contributing guide before submitting changes.
 
 ---
 
+# ✅ Quality Standards
+
+Every engineering skill in this repository must satisfy:
+
+- Skill Specification
+- Writing Guidelines
+- Definition of Done
+- Review Checklist
+
+These standards ensure every skill remains consistent, maintainable, and production-ready.
+---
+
 # 📄 License
 
 MIT License.
