@@ -1,165 +1,290 @@
+# TypeScript Engineering Skill
+
+## Identity
+
+TypeScript is the default language for modern JavaScript applications.
+
+The goal of this skill is not simply to make code compile, but to produce software that is maintainable, type-safe, readable, and scalable.
+
+Always prioritize long-term maintainability over short-term convenience.
+
 ---
-name: typescript
-description: Best practices for modern TypeScript development.
----
 
-# Identity
+# Engineering Philosophy
 
-You are a Senior TypeScript Engineer.
-
-Write code that is:
-
-- Type-safe
-- Readable
-- Maintainable
-- Strict
-- Predictable
-
-Always optimize for long-term maintainability instead of short-term convenience.
+- Types are documentation.
+- Eliminate bugs through the type system.
+- Prefer explicit intent over clever code.
+- Optimize for maintainability.
+- Avoid unnecessary complexity.
 
 ---
 
 # Core Principles
 
-- Enable strict mode.
-- Prefer inference over explicit annotations.
-- Avoid `any`.
-- Prefer `unknown`.
-- Prefer interfaces for public APIs.
-- Prefer type aliases for unions.
-- Use readonly whenever possible.
-- Keep functions pure.
+## Type Safety First
+
+Use the type system to prevent runtime errors whenever possible.
 
 ---
 
-# Coding Standards
+## Readability
 
-## Variables
-
-- Use const by default.
-- Avoid let unless mutation is required.
-- Never use var.
-
-## Naming
-
-camelCase
-
-PascalCase
-
-UPPER_CASE
-
-Boolean variables should start with:
-
-is
-
-has
-
-can
-
-should
-
-Example:
-
-isLoading
-
-hasPermission
-
-canEdit
+Types should improve code readability rather than making it harder to understand.
 
 ---
 
-# Functions
+## Maintainability
 
-Functions should do one thing only.
-
-Maximum recommended length:
-
-30 lines
-
-Maximum parameters:
-
-3
-
-Prefer object parameters.
-
-Good:
-
-createUser({
-name,
-email,
-role
-})
-
-Avoid:
-
-createUser(name,email,role)
+Write code that future developers can understand quickly.
 
 ---
 
-# Types
+## Simplicity
 
-Prefer
-
-interface
-
-for objects.
-
-Prefer
-
-type
-
-for:
-
-Union
-
-Intersection
-
-Mapped Types
-
-Template Literal Types
+Choose the simplest type that accurately models the problem.
 
 ---
 
-# Error Handling
+# Best Practices
 
-Never ignore exceptions.
+## Use Strict Mode
 
-Return Result pattern when appropriate.
+Always enable strict mode.
 
-Always include meaningful messages.
+```json
+{
+  "compilerOptions": {
+    "strict": true
+  }
+}
+```
 
 ---
 
-# Performance
+## Prefer Interfaces for Object Contracts
 
-Avoid unnecessary object cloning.
+```ts
+interface User {
+  id: string
+  name: string
+}
+```
 
-Avoid deep nesting.
+---
 
-Prefer early return.
+## Use Type Aliases for Unions
+
+```ts
+type Status =
+  | "pending"
+  | "success"
+  | "failed"
+```
+
+---
+
+## Avoid any
+
+Bad
+
+```ts
+const user: any = {}
+```
+
+Good
+
+```ts
+const user: User = {}
+```
+
+---
+
+## Prefer Unknown over Any
+
+```ts
+function parse(data: unknown) {}
+```
+
+---
+
+## Use Enums Sparingly
+
+Prefer literal unions.
+
+Good
+
+```ts
+type Role =
+  | "admin"
+  | "user"
+```
+
+Avoid
+
+```ts
+enum Role {
+  Admin,
+  User
+}
+```
+
+unless interoperability requires enums.
+
+---
+
+## Prefer Composition
+
+Small reusable types are better than huge interfaces.
+
+---
+
+## Keep Types Close
+
+Define types close to where they are used unless shared.
+
+---
+
+## Avoid Duplicate Types
+
+Create one source of truth.
 
 ---
 
 # Anti Patterns
 
-❌ any
+Avoid
 
-❌ ts-ignore
-
-❌ giant interfaces
-
-❌ nested ternary
-
-❌ duplicated types
+- any
+- Large interfaces
+- Deep inheritance
+- Magic strings
+- Duplicate types
+- Overusing enums
+- Overusing assertions
+- Ignoring compiler errors
 
 ---
 
-# Checklist
+# Decision Guide
 
-Before finishing code:
+Need an object contract?
 
-- strict type safe
-- no any
-- readable
-- reusable
-- documented
+↓
+
+Use Interface
+
+---
+
+Need union?
+
+↓
+
+Use Type Alias
+
+---
+
+Need unknown input?
+
+↓
+
+Use Unknown
+
+---
+
+Need casting?
+
+↓
+
+Validate first
+
+↓
+
+Cast later
+
+---
+
+Need reusable model?
+
+↓
+
+Extract shared type
+
+---
+
+# Naming Conventions
+
+Interfaces
+
+```ts
+interface User
+```
+
+Types
+
+```ts
+type ApiResponse
+```
+
+Generic
+
+```ts
+T
+
+TData
+
+TError
+```
+
+Booleans
+
+```ts
+isLoading
+
+hasPermission
+
+canEdit
+```
+
+---
+
+# Project Structure
+
+```
+types/
+    api.ts
+    auth.ts
+    user.ts
+
+lib/
+
+components/
+
+hooks/
+```
+
+Keep shared types inside the `types/` directory.
+
+---
+
+# AI Self Review
+
+Before finishing, verify:
+
+- [ ] No unnecessary any
+- [ ] Strict typing enabled
+- [ ] Readable names
+- [ ] Types are reusable
+- [ ] No duplicate models
+- [ ] Unknown preferred over any
+- [ ] Production ready
+- [ ] Maintainable
+- [ ] Easy to extend
+
+---
+
+# Summary
+
+TypeScript should reduce bugs, improve readability, and increase confidence during development.
+
+The goal is not simply to satisfy the compiler, but to create maintainable software that scales.

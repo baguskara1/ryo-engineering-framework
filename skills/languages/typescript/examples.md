@@ -48,3 +48,36 @@ const status: string = "pending";
 Reason
 
 Generic string types allow invalid values.
+
+---
+
+# Good Example
+
+```ts
+interface Product {
+  id: string
+  name: string
+}
+
+function getProduct(id: string): Product {
+  ...
+}
+```
+
+Reason
+
+Clear contract and explicit return type.
+
+---
+
+# Bad Example
+
+```ts
+function getProduct(id: any): any {
+  ...
+}
+```
+
+Reason
+
+Removes all type safety.

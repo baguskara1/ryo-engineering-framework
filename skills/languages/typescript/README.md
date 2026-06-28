@@ -1,33 +1,32 @@
 # TypeScript Skill
 
-## Purpose
-
-Provide engineering guidelines for writing scalable, maintainable, and type-safe TypeScript applications.
-
----
+Production-grade engineering guidelines for scalable TypeScript development.
 
 ## Category
 
 Language
 
----
+## Version
+
+2.0.0
+
+## Priority
+
+Critical
 
 ## Dependencies
 
-Required
-
 None
 
-Recommended
+## Recommended Skills
 
 - Clean Code
 - Testing
 - Code Review
 
----
+## Files
 
-## Contents
-
+- manifest.yaml
 - SKILL.md
 - examples.md
 - checklist.md
