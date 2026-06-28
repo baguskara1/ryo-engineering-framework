@@ -7,9 +7,6 @@ import { copyDirectory } from "../utils/copyDirectory";
 
 export function install(skill?: string) {
 
-    // <-- TARUH DI SINI
-    console.log("CWD:", process.cwd());
-
     if (!skill) {
         logger.error("Usage: ryo install <skill>");
         return;
@@ -18,9 +15,6 @@ export function install(skill?: string) {
     const found = loadRegistry().find(
         s => s.name === skill
     );
-
-    // <-- TAMBAHKAN DI SINI
-    console.log("FOUND:", found);
 
     if (!found) {
         logger.error("Skill not found in registry.");
@@ -32,10 +26,6 @@ export function install(skill?: string) {
         found.category,
         found.name
     );
-
-    // <-- TAMBAHKAN DI SINI
-    console.log("SOURCE:", source);
-    console.log("EXISTS:", fs.existsSync(source));
 
     const target = path.join(
         "skills",

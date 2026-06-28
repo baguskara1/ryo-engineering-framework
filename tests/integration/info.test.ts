@@ -80,28 +80,29 @@ describe("info command", () => {
 
     });
 
-    it("shows info when skill is installed", () => {
+it("shows info when skill is installed", () => {
 
-        fs.mkdirSync(installPath, {
-            recursive: true
-        });
-
-        const consoleSpy = vi.spyOn(console, "log");
-
-        info("kubernetes");
-
-        expect(consoleSpy).toHaveBeenCalledWith(
-            "📦 kubernetes"
-        );
-
-        expect(consoleSpy).toHaveBeenCalledWith(
-            "Category : workflow"
-        );
-
-        expect(consoleSpy).toHaveBeenCalledWith(
-            `Path     : ${installPath}`
-        );
-
+    fs.mkdirSync(installPath, {
+        recursive: true
     });
+
+    const infoSpy = vi.spyOn(logger, "info");
+    const consoleSpy = vi.spyOn(console, "log");
+
+    info("kubernetes");
+
+    expect(infoSpy).toHaveBeenCalledWith(
+        "📦 kubernetes"
+    );
+
+    expect(consoleSpy).toHaveBeenCalledWith(
+        "Category : workflow"
+    );
+
+    expect(consoleSpy).toHaveBeenCalledWith(
+        `Path     : ${installPath}`
+    );
+
+});
 
 });
