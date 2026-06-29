@@ -5,6 +5,7 @@ import path from "path";
 import os from "os";
 import { Command } from "commander";
 import { logger, setVerbose } from "./utils/logger";
+import { showBanner } from "./utils/banner";
 import { commands } from "./commands";
 import { loadConfig } from "./utils/config";
 import { optIn, optOut } from "./utils/telemetry";
@@ -25,12 +26,15 @@ program
 program
     .command("help")
     .description("Show available commands")
-    .action(() => commands.help());
+    .action(() => {
+        showBanner();
+        commands.help();
+    });
 
 program
     .command("version")
     .description("Show version information")
-    .action(() => commands.version());
+    .action(() => commands.version(showBanner));
 
 program
     .command("doctor")
