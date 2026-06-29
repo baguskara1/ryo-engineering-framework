@@ -1,10 +1,10 @@
-# 🚀 Ryo Engineering Framework
+# Ryo Engineering Framework
 
 ![Version](https://img.shields.io/badge/version-1.0.0-green)
 ![License](https://img.shields.io/badge/license-MIT-blue)
 ![Node](https://img.shields.io/badge/node-%3E%3D20-brightgreen)
 
-> Build production-ready software with AI using real engineering principles.
+Build production-ready software with AI using real engineering principles.
 
 Ryo Engineering Framework (REF) is an open-source engineering framework that provides reusable skills, playbooks, templates, and standards for AI coding assistants.
 
@@ -12,21 +12,21 @@ Rather than relying on prompts alone, REF enables consistent, maintainable, and 
 
 ---
 
-# ✨ Features
+## Features
 
-* 📚 Reusable Engineering Skills
-* 🧠 AI-ready Knowledge Base
-* 🏗 Engineering Standards
-* 📖 Playbooks
-* 📋 Checklists
-* 🧩 Templates
-* 🔒 Security Best Practices
-* 🧪 Testing Guidelines
-* ⚡ CLI for Skill Management
+- Reusable Engineering Skills
+- AI-ready Knowledge Base
+- Engineering Standards
+- Playbooks
+- Checklists
+- Templates
+- Security Best Practices
+- Testing Guidelines
+- CLI for Skill Management
 
 ---
 
-# 🚀 CLI Commands
+## CLI Commands
 
 | Command       | Description                              |
 |---------------|------------------------------------------|
@@ -47,6 +47,8 @@ Rather than relying on prompts alone, REF enables consistent, maintainable, and 
 | `ryo publish` | Package a skill for distribution         |
 | `ryo export`  | Export a skill as markdown               |
 | `ryo run`     | Show skill content in terminal           |
+| `ryo completion`| Generate shell completion script       |
+| `ryo telemetry`| Manage anonymous usage telemetry        |
 
 ## Usage Examples
 
@@ -78,21 +80,17 @@ ryo export kubernetes
 
 ---
 
-# 📦 Installation
+## Installation
 
 ```bash
 git clone https://github.com/baguskara1/ryo-engineering-framework.git
-
 cd ryo-engineering-framework
-
 npm install
-
 npm run build
-
 npm link
 ```
 
-Then verify the installation:
+Then verify:
 
 ```bash
 ryo help
@@ -100,7 +98,7 @@ ryo help
 
 ---
 
-# 📂 Repository Structure
+## Repository Structure
 
 ```text
 src/              # Source code
@@ -111,7 +109,7 @@ src/              # Source code
 tests/            # Test files
   integration/    # CLI integration tests
 docs/             # Documentation
-official-skills/  # Official skill packages
+official-skills/  # Official skill packages (31+ skills)
 playbooks/        # Engineering playbooks
 registry/         # Skill registry index
 skills/           # Installed skills
@@ -120,44 +118,29 @@ templates/        # Skill templates
 
 ---
 
-# 🤖 Supported AI Coding Assistants
+## Supported AI Coding Assistants
 
-* OpenCode
-* Claude Code
-* Cursor
-* Codex CLI
-* Cline
-* Roo Code
-
----
-
-# 🗺 Roadmap
-
-* ✅ CLI
-* ✅ Registry
-* ✅ Install / Update / Uninstall
-* ✅ Publish
-* 🚧 GitHub Actions
-* 🚧 Package Registry
-* 🚧 Plugin System
-* 🚧 Cloud Sync
+- OpenCode
+- Claude Code
+- Cursor
+- Codex CLI
+- Cline
+- Roo Code
 
 ---
 
-# 🤝 Contributing
+## Contributing
 
-Contributions are welcome.
+Contributions are welcome. Please read:
 
-Please read:
-
-* CONTRIBUTING.md
-* docs/writing-guidelines.md
-* docs/review-checklist.md
+- CONTRIBUTING.md
+- docs/writing-guidelines.md
+- docs/review-checklist.md
 
 before opening a Pull Request.
 
 ---
 
-# 📄 License
+## License
 
 MIT License.
