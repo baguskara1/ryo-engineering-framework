@@ -7,13 +7,13 @@
   "bin": {
     "ryo": "dist/index.js"
   },
-"scripts": {
-  "build": "tsc",
-  "test": "vitest",
-  "coverage": "vitest run --coverage",
-  "lint": "eslint .",
-  "format": "prettier --write ."
-},
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest --run --maxWorkers=1",
+    "coverage": "vitest run --coverage",
+    "lint": "eslint .",
+    "format": "prettier --write ."
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/baguskara1/ryo-engineering-framework.git"
