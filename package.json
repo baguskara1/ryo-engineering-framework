@@ -27,8 +27,16 @@
     "type": "git",
     "url": "git+https://github.com/baguskara1/ryo-engineering-framework.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "ryo",
+    "engineering",
+    "framework",
+    "ai",
+    "cli",
+    "skills",
+    "templates"
+  ],
+  "author": "Ryo Engineering Framework",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/baguskara1/ryo-engineering-framework/issues"
@@ -52,5 +60,16 @@
     "ora": "^9.4.1",
     "picocolors": "^1.1.1",
     "yaml": "^2.9.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
   }
 }

@@ -1,0 +1,6 @@
+name: prompt-engineering
+category: ai
+version: 1.0.0
+description: Crafting effective prompts for AI models, including chain-of-thought and few-shot.
+tags:
+  - ai

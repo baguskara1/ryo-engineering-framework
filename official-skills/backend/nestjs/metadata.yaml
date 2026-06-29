@@ -1,0 +1,6 @@
+name: nestjs
+category: backend
+version: 1.0.0
+description: Building server-side applications with NestJS, including modules, controllers, providers, and dependency injection.
+tags:
+  - backend

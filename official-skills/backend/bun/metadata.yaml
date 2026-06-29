@@ -1,0 +1,6 @@
+name: bun
+category: backend
+version: 1.0.0
+description: Building JavaScript applications with Bun runtime, including file I/O, SQLite, and HTTP servers.
+tags:
+  - backend

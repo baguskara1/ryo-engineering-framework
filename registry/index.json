@@ -1,35 +1,274 @@
 {
   "skills": [
-    { "name": "kubernetes", "category": "workflow", "version": "1.0.0" },
-    { "name": "docker", "category": "workflow", "version": "1.0.0" },
-    { "name": "git", "category": "workflow", "version": "1.0.0" },
-    { "name": "ci-cd", "category": "workflow", "version": "1.0.0" },
-    { "name": "devops", "category": "workflow", "version": "1.0.0" },
-    { "name": "microservices", "category": "workflow", "version": "1.0.0" },
-    { "name": "react", "category": "frameworks", "version": "1.0.0" },
-    { "name": "nextjs", "category": "frameworks", "version": "1.0.0" },
-    { "name": "express", "category": "frameworks", "version": "1.0.0" },
-    { "name": "nodejs", "category": "frameworks", "version": "1.0.0" },
-    { "name": "typescript", "category": "frameworks", "version": "1.0.0" },
-    { "name": "laravel", "category": "frameworks", "version": "1.0.0" },
-    { "name": "fastapi", "category": "frameworks", "version": "1.0.0" },
-    { "name": "java-spring-boot", "category": "frameworks", "version": "1.0.0" },
-    { "name": "dotnet", "category": "frameworks", "version": "1.0.0" },
-    { "name": "flutter", "category": "frameworks", "version": "1.0.0" },
-    { "name": "react-native", "category": "frameworks", "version": "1.0.0" },
-    { "name": "go", "category": "frameworks", "version": "1.0.0" },
-    { "name": "python", "category": "frameworks", "version": "1.0.0" },
-    { "name": "postgresql", "category": "database", "version": "1.0.0" },
-    { "name": "mysql", "category": "database", "version": "1.0.0" },
-    { "name": "redis", "category": "database", "version": "1.0.0" },
-    { "name": "linux", "category": "platform", "version": "1.0.0" },
-    { "name": "machine-learning", "category": "ml-data", "version": "1.0.0" },
-    { "name": "data-science", "category": "ml-data", "version": "1.0.0" },
-    { "name": "clean-architecture", "category": "architecture", "version": "1.0.0" },
-    { "name": "system-design", "category": "architecture", "version": "1.0.0" },
-    { "name": "testing", "category": "testing", "version": "1.0.0" },
-    { "name": "rest-api", "category": "api", "version": "1.0.0" },
-    { "name": "graphql", "category": "api", "version": "1.0.0" },
-    { "name": "competitive-programming", "category": "other", "version": "1.0.0" }
+    {
+      "name": "kubernetes",
+      "category": "workflow",
+      "version": "1.0.0"
+    },
+    {
+      "name": "docker",
+      "category": "workflow",
+      "version": "1.0.0"
+    },
+    {
+      "name": "git",
+      "category": "workflow",
+      "version": "1.0.0"
+    },
+    {
+      "name": "ci-cd",
+      "category": "workflow",
+      "version": "1.0.0"
+    },
+    {
+      "name": "devops",
+      "category": "workflow",
+      "version": "1.0.0"
+    },
+    {
+      "name": "microservices",
+      "category": "workflow",
+      "version": "1.0.0"
+    },
+    {
+      "name": "react",
+      "category": "frameworks",
+      "version": "1.0.0"
+    },
+    {
+      "name": "nextjs",
+      "category": "frameworks",
+      "version": "1.0.0"
+    },
+    {
+      "name": "express",
+      "category": "frameworks",
+      "version": "1.0.0"
+    },
+    {
+      "name": "nodejs",
+      "category": "frameworks",
+      "version": "1.0.0"
+    },
+    {
+      "name": "typescript",
+      "category": "frameworks",
+      "version": "1.0.0"
+    },
+    {
+      "name": "laravel",
+      "category": "frameworks",
+      "version": "1.0.0"
+    },
+    {
+      "name": "fastapi",
+      "category": "frameworks",
+      "version": "1.0.0"
+    },
+    {
+      "name": "java-spring-boot",
+      "category": "frameworks",
+      "version": "1.0.0"
+    },
+    {
+      "name": "dotnet",
+      "category": "frameworks",
+      "version": "1.0.0"
+    },
+    {
+      "name": "flutter",
+      "category": "frameworks",
+      "version": "1.0.0"
+    },
+    {
+      "name": "react-native",
+      "category": "frameworks",
+      "version": "1.0.0"
+    },
+    {
+      "name": "go",
+      "category": "frameworks",
+      "version": "1.0.0"
+    },
+    {
+      "name": "python",
+      "category": "frameworks",
+      "version": "1.0.0"
+    },
+    {
+      "name": "postgresql",
+      "category": "database",
+      "version": "1.0.0"
+    },
+    {
+      "name": "mysql",
+      "category": "database",
+      "version": "1.0.0"
+    },
+    {
+      "name": "redis",
+      "category": "database",
+      "version": "1.0.0"
+    },
+    {
+      "name": "linux",
+      "category": "platform",
+      "version": "1.0.0"
+    },
+    {
+      "name": "machine-learning",
+      "category": "ml-data",
+      "version": "1.0.0"
+    },
+    {
+      "name": "data-science",
+      "category": "ml-data",
+      "version": "1.0.0"
+    },
+    {
+      "name": "clean-architecture",
+      "category": "architecture",
+      "version": "1.0.0"
+    },
+    {
+      "name": "system-design",
+      "category": "architecture",
+      "version": "1.0.0"
+    },
+    {
+      "name": "testing",
+      "category": "testing",
+      "version": "1.0.0"
+    },
+    {
+      "name": "rest-api",
+      "category": "api",
+      "version": "1.0.0"
+    },
+    {
+      "name": "graphql",
+      "category": "api",
+      "version": "1.0.0"
+    },
+    {
+      "name": "competitive-programming",
+      "category": "other",
+      "version": "1.0.0"
+    },
+    {
+      "name": "nestjs",
+      "category": "backend",
+      "version": "1.0.0"
+    },
+    {
+      "name": "fastify",
+      "category": "backend",
+      "version": "1.0.0"
+    },
+    {
+      "name": "bun",
+      "category": "backend",
+      "version": "1.0.0"
+    },
+    {
+      "name": "vue",
+      "category": "frontend",
+      "version": "1.0.0"
+    },
+    {
+      "name": "nuxt",
+      "category": "frontend",
+      "version": "1.0.0"
+    },
+    {
+      "name": "tailwind-css",
+      "category": "frontend",
+      "version": "1.0.0"
+    },
+    {
+      "name": "shadcn-ui",
+      "category": "frontend",
+      "version": "1.0.0"
+    },
+    {
+      "name": "mongodb",
+      "category": "database",
+      "version": "1.0.0"
+    },
+    {
+      "name": "prisma",
+      "category": "database",
+      "version": "1.0.0"
+    },
+    {
+      "name": "drizzle-orm",
+      "category": "database",
+      "version": "1.0.0"
+    },
+    {
+      "name": "github-actions",
+      "category": "devops",
+      "version": "1.0.0"
+    },
+    {
+      "name": "nginx",
+      "category": "devops",
+      "version": "1.0.0"
+    },
+    {
+      "name": "vitest",
+      "category": "testing",
+      "version": "1.0.0"
+    },
+    {
+      "name": "jest",
+      "category": "testing",
+      "version": "1.0.0"
+    },
+    {
+      "name": "playwright",
+      "category": "testing",
+      "version": "1.0.0"
+    },
+    {
+      "name": "cypress",
+      "category": "testing",
+      "version": "1.0.0"
+    },
+    {
+      "name": "solid",
+      "category": "architecture",
+      "version": "1.0.0"
+    },
+    {
+      "name": "domain-driven-design",
+      "category": "architecture",
+      "version": "1.0.0"
+    },
+    {
+      "name": "monolith",
+      "category": "architecture",
+      "version": "1.0.0"
+    },
+    {
+      "name": "openai-sdk",
+      "category": "ai",
+      "version": "1.0.0"
+    },
+    {
+      "name": "mcp",
+      "category": "ai",
+      "version": "1.0.0"
+    },
+    {
+      "name": "prompt-engineering",
+      "category": "ai",
+      "version": "1.0.0"
+    },
+    {
+      "name": "ai-workflow",
+      "category": "ai",
+      "version": "1.0.0"
+    }
   ]
 }

@@ -1,0 +1,6 @@
+name: drizzle-orm
+category: database
+version: 1.0.0
+description: Building type-safe SQL with Drizzle ORM, including schema definition and migrations.
+tags:
+  - database

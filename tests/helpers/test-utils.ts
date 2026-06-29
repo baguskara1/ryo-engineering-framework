@@ -18,22 +18,9 @@ export function cleanupTempDir(dir: string): void {
     }
 }
 
-export function createMockSkill(dir: string, category: string, name: string): string {
-    const skillPath = path.join(dir, "skills", category, name);
-    fs.ensureDirSync(skillPath);
-    return skillPath;
-}
-
 export function createMockFile(dir: string, filePath: string, content: string): string {
     const fullPath = path.join(dir, filePath);
     fs.ensureDirSync(path.dirname(fullPath));
     fs.writeFileSync(fullPath, content, "utf8");
     return fullPath;
-}
-
-export function createMockRegistry(dir: string, skills: Array<{ name: string; category: string; version: string }>): string {
-    const registryPath = path.join(dir, "registry", "index.json");
-    fs.ensureDirSync(path.dirname(registryPath));
-    fs.writeJsonSync(registryPath, { skills });
-    return registryPath;
 }

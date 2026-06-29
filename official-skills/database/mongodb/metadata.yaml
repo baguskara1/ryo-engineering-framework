@@ -1,0 +1,6 @@
+name: mongodb
+category: database
+version: 1.0.0
+description: Building applications with MongoDB, including document modeling, aggregation pipelines, and indexing.
+tags:
+  - database

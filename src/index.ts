@@ -117,7 +117,7 @@ program
     .command("completion")
     .description("Generate shell completion script")
     .action(() => {
-        console.log(`# ryo shell completion
+        logger.plain(`# ryo shell completion
 # Source this file in your shell:
 #   source <(ryo completion)
 

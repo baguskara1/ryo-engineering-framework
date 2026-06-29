@@ -1,0 +1,6 @@
+name: monolith
+category: architecture
+version: 1.0.0
+description: Building and maintaining monolithic applications with modular design.
+tags:
+  - architecture

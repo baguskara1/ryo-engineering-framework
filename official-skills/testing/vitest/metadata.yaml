@@ -1,0 +1,6 @@
+name: vitest
+category: testing
+version: 1.0.0
+description: Writing and running tests with Vitest, including unit, integration, and snapshot testing.
+tags:
+  - testing

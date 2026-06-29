@@ -1,0 +1,6 @@
+name: github-actions
+category: devops
+version: 1.0.0
+description: Building CI/CD workflows with GitHub Actions, including matrix builds, caching, and deployment.
+tags:
+  - devops

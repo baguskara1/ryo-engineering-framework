@@ -1,0 +1,6 @@
+name: mcp
+category: ai
+version: 1.0.0
+description: Building tools using the Model Context Protocol, including server and client patterns.
+tags:
+  - ai

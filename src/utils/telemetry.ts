@@ -2,7 +2,9 @@ import fs from "fs";
 import path from "path";
 import os from "os";
 
-const TELEMETRY_FILE = path.join(os.homedir(), ".ryo", "telemetry.json");
+const TELEMETRY_DIR = path.join(os.homedir(), ".ryo");
+const TELEMETRY_CONFIG = path.join(TELEMETRY_DIR, "telemetry.json");
+const TELEMETRY_EVENTS = path.join(TELEMETRY_DIR, "telemetry-events.json");
 
 interface TelemetryEvent {
     event: string;
@@ -10,10 +12,16 @@ interface TelemetryEvent {
     properties?: Record<string, string>;
 }
 
+function ensureDir(): void {
+    if (!fs.existsSync(TELEMETRY_DIR)) {
+        fs.mkdirSync(TELEMETRY_DIR, { recursive: true });
+    }
+}
+
 function isTelemetryEnabled(): boolean {
     try {
-        if (!fs.existsSync(TELEMETRY_FILE)) return false;
-        const config = JSON.parse(fs.readFileSync(TELEMETRY_FILE, "utf8"));
+        if (!fs.existsSync(TELEMETRY_CONFIG)) return false;
+        const config = JSON.parse(fs.readFileSync(TELEMETRY_CONFIG, "utf8"));
         return config.enabled === true;
     } catch {
         return false;
@@ -24,10 +32,7 @@ export function track(event: string, properties?: Record<string, string>): void 
     if (!isTelemetryEnabled()) return;
 
     try {
-        const dir = path.dirname(TELEMETRY_FILE);
-        if (!fs.existsSync(dir)) {
-            fs.mkdirSync(dir, { recursive: true });
-        }
+        ensureDir();
 
         const data: TelemetryEvent = {
             event,
@@ -36,33 +41,29 @@ export function track(event: string, properties?: Record<string, string>): void 
         };
 
         const existing: TelemetryEvent[] = [];
-        if (fs.existsSync(TELEMETRY_FILE)) {
-            const content = fs.readFileSync(TELEMETRY_FILE, "utf8");
-            existing.push(...JSON.parse(content));
+        if (fs.existsSync(TELEMETRY_EVENTS)) {
+            const content = fs.readFileSync(TELEMETRY_EVENTS, "utf8");
+            const parsed = JSON.parse(content);
+            if (Array.isArray(parsed)) {
+                existing.push(...parsed);
+            }
         }
 
         existing.push(data);
 
-        // Keep only last 100 events
         const trimmed = existing.slice(-100);
-        fs.writeFileSync(TELEMETRY_FILE, JSON.stringify(trimmed, null, 2));
+        fs.writeFileSync(TELEMETRY_EVENTS, JSON.stringify(trimmed, null, 2));
     } catch {
         // Silently fail - telemetry should never break the CLI
     }
 }
 
 export function optIn(): void {
-    const dir = path.dirname(TELEMETRY_FILE);
-    if (!fs.existsSync(dir)) {
-        fs.mkdirSync(dir, { recursive: true });
-    }
-    fs.writeFileSync(TELEMETRY_FILE, JSON.stringify({ enabled: true }, null, 2));
+    ensureDir();
+    fs.writeFileSync(TELEMETRY_CONFIG, JSON.stringify({ enabled: true }, null, 2));
 }
 
 export function optOut(): void {
-    const dir = path.dirname(TELEMETRY_FILE);
-    if (!fs.existsSync(dir)) {
-        fs.mkdirSync(dir, { recursive: true });
-    }
-    fs.writeFileSync(TELEMETRY_FILE, JSON.stringify({ enabled: false }, null, 2));
+    ensureDir();
+    fs.writeFileSync(TELEMETRY_CONFIG, JSON.stringify({ enabled: false }, null, 2));
 }

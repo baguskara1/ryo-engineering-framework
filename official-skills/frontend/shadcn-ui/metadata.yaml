@@ -1,0 +1,6 @@
+name: shadcn-ui
+category: frontend
+version: 1.0.0
+description: Building accessible UI components with shadcn/ui, including customization and theming.
+tags:
+  - frontend

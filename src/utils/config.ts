@@ -51,10 +51,6 @@ export function getConfig(): RyoConfig {
     return cachedConfig || loadConfig();
 }
 
-export function isVerbose(): boolean {
-    return getConfig().verbose === true;
-}
-
 export function clearConfigCache(): void {
     cachedConfig = null;
 }

@@ -1,0 +1,6 @@
+name: ai-workflow
+category: ai
+version: 1.0.0
+description: Designing AI-powered workflows, including agent architectures and tool orchestration.
+tags:
+  - ai

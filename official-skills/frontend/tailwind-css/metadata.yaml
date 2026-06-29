@@ -1,0 +1,6 @@
+name: tailwind-css
+category: frontend
+version: 1.0.0
+description: Building utility-first CSS designs with Tailwind CSS, including responsive design and custom themes.
+tags:
+  - frontend

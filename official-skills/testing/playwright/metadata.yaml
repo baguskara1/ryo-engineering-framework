@@ -1,0 +1,6 @@
+name: playwright
+category: testing
+version: 1.0.0
+description: Writing end-to-end browser tests with Playwright, including cross-browser and component testing.
+tags:
+  - testing

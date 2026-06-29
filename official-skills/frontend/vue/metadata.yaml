@@ -1,0 +1,6 @@
+name: vue
+category: frontend
+version: 1.0.0
+description: Building user interfaces with Vue.js, including Composition API, Vue Router, and Pinia.
+tags:
+  - frontend

@@ -6,7 +6,7 @@ import { loadSkills } from "../skills/loadSkills";
 import { readSkill } from "../utils/readSkill";
 import { stringify } from "yaml";
 
-export type ExportFormat = "md" | "json" | "yaml";
+type ExportFormat = "md" | "json" | "yaml";
 
 function buildJsonOutput(skillPath: string): string {
     const files = [
