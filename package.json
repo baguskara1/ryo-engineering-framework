@@ -1,6 +1,6 @@
 {
   "name": "ryo-engineering-framework",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Build production-ready software with AI using real engineering principles.",
   "type": "commonjs",
   "main": "dist/index.js",
@@ -10,8 +10,12 @@
   },
   "files": [
     "dist/",
+    "official-skills/",
+    "registry/",
+    "templates/",
     "README.md",
-    "LICENSE"
+    "LICENSE",
+    "package.json"
   ],
   "engines": {
     "node": ">=20"

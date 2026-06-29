@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import { resolveAsset } from "../utils/packagePath";
 
 export interface RegistrySkill {
     name: string;
@@ -14,7 +15,7 @@ interface RegistryFile {
 let cache: RegistrySkill[] | null = null;
 
 export function getRegistryPath(): string {
-    return path.join("registry", "index.json");
+    return resolveAsset("registry", "index.json");
 }
 
 export function loadRegistry(): RegistrySkill[] {

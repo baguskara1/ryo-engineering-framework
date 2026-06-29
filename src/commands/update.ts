@@ -3,6 +3,7 @@ import path from "path";
 import { logger } from "../utils/logger";
 import { findInRegistry } from "../registry/loadRegistry";
 import { copyDirectorySync, safeExistsSync, removeDirectorySync } from "../utils/fs";
+import { resolveAsset } from "../utils/packagePath";
 
 export function update(skill?: string) {
 
@@ -18,7 +19,7 @@ export function update(skill?: string) {
         return;
     }
 
-    const source = path.join(
+    const source = resolveAsset(
         "official-skills",
         found.category,
         found.name

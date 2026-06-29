@@ -4,10 +4,13 @@ import { processTemplates } from "../utils/processTemplates";
 import { isValidName } from "../utils/validators";
 import { logger } from "../utils/logger";
 import { safeReadDirSync } from "../utils/fs";
+import { resolveAsset } from "../utils/packagePath";
+
+const TEMPLATES_DIR = resolveAsset("templates");
 
 export function getAvailableTemplates(): string[] {
-    return safeReadDirSync("templates").filter((t) =>
-        fs.statSync(path.join("templates", t)).isDirectory()
+    return safeReadDirSync(TEMPLATES_DIR).filter((t) =>
+        fs.statSync(path.join(TEMPLATES_DIR, t)).isDirectory()
     );
 }
 
@@ -44,7 +47,7 @@ export function create(category?: string, skill?: string, template?: string) {
     }
 
     const templateName = template || "skill";
-    const templatePath = path.join("templates", templateName);
+    const templatePath = path.join(TEMPLATES_DIR, templateName);
 
     if (!fs.existsSync(templatePath)) {
         logger.blank();

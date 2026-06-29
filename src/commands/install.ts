@@ -4,6 +4,7 @@ import path from "path";
 import { logger } from "../utils/logger";
 import { findInRegistry } from "../registry/loadRegistry";
 import { withSpinner } from "../utils/spinner";
+import { resolveAsset } from "../utils/packagePath";
 
 export function install(skill?: string) {
 
@@ -19,7 +20,7 @@ export function install(skill?: string) {
         return;
     }
 
-    const source = path.join(
+    const source = resolveAsset(
         "official-skills",
         found.category,
         found.name

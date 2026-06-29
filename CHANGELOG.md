@@ -1,6 +1,14 @@
 # Changelog
 
-## [1.0.0] - 2026-06-29
+## [2.0.1] - 2026-06-29
+
+### Fixed
+
+- Package now includes all runtime assets (`official-skills/`, `registry/`, `templates/`) in npm publish
+- All asset paths now resolve from package install directory instead of CWD
+- Telemetry now uses separate files for config and events
+
+## [2.0.0] - 2026-06-29
 
 ### Added
 
