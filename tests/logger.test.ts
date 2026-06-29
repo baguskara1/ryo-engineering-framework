@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, afterEach } from "vitest";
 
-import { logger } from "../src/utils/logger";
+import { logger, setVerbose, isVerbose } from "../src/utils/logger";
 
 describe("logger", () => {
 
@@ -66,6 +66,32 @@ describe("logger", () => {
 
         expect(spy).toHaveBeenCalledOnce();
 
+    });
+
+    it("setVerbose and isVerbose return the set value", () => {
+        setVerbose(true);
+        expect(isVerbose()).toBe(true);
+
+        setVerbose(false);
+        expect(isVerbose()).toBe(false);
+    });
+
+    it("debug does not log when verbose is false", () => {
+        setVerbose(false);
+        const spy = vi.spyOn(console, "log").mockImplementation(() => {});
+
+        logger.debug("test");
+
+        expect(spy).not.toHaveBeenCalled();
+    });
+
+    it("debug logs when verbose is true", () => {
+        setVerbose(true);
+        const spy = vi.spyOn(console, "log").mockImplementation(() => {});
+
+        logger.debug("test");
+
+        expect(spy).toHaveBeenCalledOnce();
     });
 
 });

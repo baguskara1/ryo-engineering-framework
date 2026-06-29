@@ -16,7 +16,7 @@ describe("help command", () => {
         help();
 
         expect(spy).toHaveBeenCalledWith(
-            "🚀 Ryo Engineering Framework"
+            "Ryo Engineering Framework"
         );
 
     });

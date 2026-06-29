@@ -11,12 +11,12 @@ describe("version command", () => {
 
     it("shows version information", () => {
 
-        const spy = vi.spyOn(logger, "info");
+        const spy = vi.spyOn(logger, "plain");
 
         version();
 
         expect(spy).toHaveBeenCalledWith(
-            "🚀 Ryo Engineering Framework"
+            "Version: 1.0.0"
         );
 
     });

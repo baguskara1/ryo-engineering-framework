@@ -10,6 +10,7 @@ import {
 } from "vitest";
 
 import { info } from "../../src/commands/info";
+import { clearSkillsCache } from "../../src/skills/loadSkills";
 import { logger } from "../../src/utils/logger";
 
 const installPath = path.join(
@@ -41,6 +42,7 @@ describe("info command", () => {
         }
 
         vi.restoreAllMocks();
+        clearSkillsCache();
 
     });
 
@@ -92,7 +94,7 @@ it("shows info when skill is installed", () => {
     info("kubernetes");
 
     expect(infoSpy).toHaveBeenCalledWith(
-        "📦 kubernetes"
+        "kubernetes"
     );
 
     expect(consoleSpy).toHaveBeenCalledWith(

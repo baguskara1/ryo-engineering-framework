@@ -16,7 +16,7 @@ describe("doctor command", () => {
         doctor();
 
         expect(spy).toHaveBeenCalledWith(
-            "🔍 Running Ryo Doctor..."
+            "Running Ryo Doctor..."
         );
 
     });

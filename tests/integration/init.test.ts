@@ -16,7 +16,7 @@ describe("init command", () => {
         init();
 
         expect(spy).toHaveBeenCalledWith(
-            "🚀 Ryo Init"
+            "Ryo Init"
         );
 
     });

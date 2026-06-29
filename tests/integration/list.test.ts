@@ -45,6 +45,20 @@ describe("list command", () => {
 
     });
 
+    it("shows warning when skills directory is empty", () => {
+
+        fs.mkdirSync(skillsPath, { recursive: true });
+
+        const spy = vi.spyOn(logger, "warning");
+
+        list();
+
+        expect(spy).toHaveBeenCalledWith(
+            "No skills installed."
+        );
+
+    });
+
     it("lists installed skills", () => {
 
         fs.mkdirSync(

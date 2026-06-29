@@ -56,4 +56,13 @@ describe("loadRegistry", () => {
 
     });
 
+    it("returns empty array on invalid JSON", () => {
+
+        vi.spyOn(fs, "existsSync").mockReturnValue(true);
+        vi.spyOn(fs, "readFileSync").mockReturnValue("invalid json{{{");
+
+        expect(loadRegistry()).toEqual([]);
+
+    });
+
 });
