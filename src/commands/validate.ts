@@ -7,7 +7,7 @@ import { safeExistsSync, safeReadDirSync } from "../utils/fs";
 export function validate() {
 
     logger.blank();
-    logger.info("🔍 Validating Skills...");
+    logger.info("Validating Skills...");
     logger.blank();
 
     const categories = safeReadDirSync("skills");
@@ -37,11 +37,11 @@ export function validate() {
             }
 
             if (ok) {
-                logger.success(`✅ ${skillPath}`);
+                logger.success(skillPath);
                 valid++;
             } else {
 
-                logger.error(`❌ ${skillPath}`);
+                logger.error(skillPath);
 
                 for (const file of REQUIRED_FILES) {
 

@@ -23,7 +23,7 @@ export function info(skillName?: string) {
 
     logger.blank();
 
-    logger.info(`📦 ${skill.name}`);
+    logger.info(skill.name);
 
     logger.blank();
 

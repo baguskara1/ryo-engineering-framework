@@ -5,7 +5,7 @@ export function skills() {
 
     logger.blank();
 
-    logger.info("📦 Installed Skills");
+    logger.info("Installed Skills");
 
     logger.blank();
 

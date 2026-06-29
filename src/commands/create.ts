@@ -36,7 +36,7 @@ export function create(category?: string, skill?: string, template?: string) {
 
     if (!isValidName(category) || !isValidName(skill)) {
         logger.blank();
-        logger.error("❌ Invalid name.");
+        logger.error("Invalid name.");
         logger.plain("Use lowercase letters, numbers, and hyphens only.");
         logger.blank();
 
@@ -48,7 +48,7 @@ export function create(category?: string, skill?: string, template?: string) {
 
     if (!fs.existsSync(templatePath)) {
         logger.blank();
-        logger.error(`❌ Template "${templateName}" not found.`);
+        logger.error(`Template "${templateName}" not found.`);
         logger.plain(`Available templates: ${getAvailableTemplates().join(", ")}`);
         logger.blank();
 
@@ -59,7 +59,7 @@ export function create(category?: string, skill?: string, template?: string) {
 
     if (fs.existsSync(skillPath)) {
         logger.blank();
-        logger.error("❌ Skill already exists.");
+        logger.error("Skill already exists.");
         logger.blank();
 
         return;
@@ -73,7 +73,7 @@ export function create(category?: string, skill?: string, template?: string) {
     });
 
     logger.blank();
-    logger.success("✅ Skill created successfully!");
+    logger.success("Skill created successfully!");
     logger.plain(`Template : ${templateName}`);
     logger.plain(`Path     : ${skillPath}`);
     logger.blank();

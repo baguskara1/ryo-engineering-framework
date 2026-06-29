@@ -3,7 +3,7 @@ import { loadRegistry } from "../registry/loadRegistry";
 
 export function registry() {
 
-    logger.info("📦 Official Registry");
+    logger.info("Official Registry");
     logger.blank();
 
     const skills = loadRegistry();
