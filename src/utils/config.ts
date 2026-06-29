@@ -12,13 +12,16 @@ let cachedConfig: RyoConfig | null = null;
 function findConfigPath(): string | null {
     let current = process.cwd();
     const root = path.parse(current).root;
+    let depth = 0;
+    const MAX_DEPTH = 20;
 
-    while (current !== root) {
+    while (current !== root && depth < MAX_DEPTH) {
         const configPath = path.join(current, "ryo.json");
         if (fs.existsSync(configPath)) {
             return configPath;
         }
         current = path.dirname(current);
+        depth++;
     }
 
     return null;

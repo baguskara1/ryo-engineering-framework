@@ -17,12 +17,16 @@ export interface Skill {
     metadata: SkillMetadata;
 }
 
+let cache: Skill[] | null = null;
+
 export function loadSkills(): Skill[] {
+    if (cache) return cache;
 
     const root = "skills";
     const result: Skill[] = [];
 
     if (!fs.existsSync(root)) {
+        cache = result;
         return result;
     }
 
@@ -61,5 +65,10 @@ export function loadSkills(): Skill[] {
         }
     }
 
+    cache = result;
     return result;
+}
+
+export function clearSkillsCache(): void {
+    cache = null;
 }
