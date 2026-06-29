@@ -27,7 +27,7 @@
   "homepage": "https://github.com/baguskara1/ryo-engineering-framework#readme",
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@types/js-yaml": "^4.0.9",
+    "@types/fs-extra": "^11.0.4",
     "@types/node": "^26.0.1",
     "@vitest/coverage-v8": "^4.1.9",
     "eslint": "^10.6.0",
@@ -38,7 +38,10 @@
     "vitest": "^4.1.9"
   },
   "dependencies": {
-    "js-yaml": "^5.2.0",
-    "picocolors": "^1.1.1"
+    "commander": "^15.0.0",
+    "fs-extra": "^11.3.5",
+    "ora": "^9.4.1",
+    "picocolors": "^1.1.1",
+    "yaml": "^2.9.0"
   }
 }

@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import yaml from "js-yaml";
+import { parse } from "yaml";
 
 export function loadMetadata(skillPath: string) {
 
@@ -18,7 +18,7 @@ export function loadMetadata(skillPath: string) {
             return {};
         }
 
-        return yaml.load(content) ?? {};
+        return parse(content) ?? {};
 
     } catch {
 

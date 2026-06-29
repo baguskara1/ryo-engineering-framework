@@ -4,7 +4,7 @@ import { loadRegistry } from "../registry/loadRegistry";
 export function registry() {
 
     logger.info("📦 Official Registry");
-    console.log("");
+    logger.blank();
 
     const skills = loadRegistry();
 
@@ -14,10 +14,10 @@ export function registry() {
     }
 
     for (const skill of skills) {
-        console.log(
+        logger.plain(
             `• ${skill.category}/${skill.name} (${skill.version})`
         );
     }
 
-    console.log("");
+    logger.blank();
 }

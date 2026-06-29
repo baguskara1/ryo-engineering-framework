@@ -14,6 +14,7 @@ import { uninstall } from "./uninstall";
 import { publish } from "./publish";
 import { update } from "./update";
 import { list } from "./list";
+import { init } from "./init";
 
 export const commands = {
     version,
@@ -32,4 +33,5 @@ export const commands = {
     publish,
     update,
     list,
+    init,
 };

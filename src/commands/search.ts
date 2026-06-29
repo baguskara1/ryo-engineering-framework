@@ -1,4 +1,4 @@
-import { loadRegistry } from "../registry/loadRegistry";
+import { searchInRegistry } from "../registry/loadRegistry";
 import { logger } from "../utils/logger";
 
 export function search(keyword?: string) {
@@ -8,25 +8,22 @@ export function search(keyword?: string) {
         return;
     }
 
-    const results = loadRegistry().filter(skill =>
-        skill.name.toLowerCase().includes(keyword.toLowerCase()) ||
-        skill.category.toLowerCase().includes(keyword.toLowerCase())
-    );
+    const results = searchInRegistry(keyword);
 
     if (results.length === 0) {
         logger.warning("No matching skills found.");
         return;
     }
 
-    console.log("");
+    logger.blank();
 
-    console.log(`Found ${results.length} skill(s):`);
+    logger.plain(`Found ${results.length} skill(s):`);
 
     for (const skill of results) {
-        console.log(
+        logger.plain(
             `${skill.category}/${skill.name}`
         );
     }
 
-    console.log("");
+    logger.blank();
 }

@@ -1,9 +1,9 @@
-import fs from "fs";
 import path from "path";
+import fs from "fs-extra";
 
 import { logger } from "../utils/logger";
 import { loadSkills } from "../skills/loadSkills";
-import { copyDirectory } from "../utils/copyDirectory";
+import { copyDirectorySync, safeExistsSync, removeDirectorySync } from "../utils/fs";
 
 export function publish(skill?: string) {
 
@@ -21,29 +21,19 @@ export function publish(skill?: string) {
         return;
     }
 
-    // Buat folder dist jika belum ada
     const distPath = "dist";
+    fs.ensureDirSync(distPath);
 
-    if (!fs.existsSync(distPath)) {
-        fs.mkdirSync(distPath);
-    }
-
-    // Folder tujuan package
     const outputPath = path.join(
         distPath,
         found.name
     );
 
-    // Hapus jika sudah ada
-    if (fs.existsSync(outputPath)) {
-        fs.rmSync(outputPath, {
-            recursive: true,
-            force: true
-        });
+    if (safeExistsSync(outputPath)) {
+        removeDirectorySync(outputPath);
     }
 
-    // Copy seluruh isi skill
-    copyDirectory(
+    copyDirectorySync(
         found.path,
         outputPath
     );

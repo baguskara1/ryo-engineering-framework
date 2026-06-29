@@ -1,22 +1,18 @@
-import fs from "fs";
 import path from "path";
 
 import { logger } from "../utils/logger";
+import { safeExistsSync, safeReadDirSync } from "../utils/fs";
 
 export function list(): void {
 
     const skillsDir = path.join("skills");
 
-    if (!fs.existsSync(skillsDir)) {
+    if (!safeExistsSync(skillsDir)) {
         logger.warning("No skills installed.");
         return;
     }
 
-    const categories = fs
-        .readdirSync(skillsDir)
-        .filter(category =>
-            fs.statSync(path.join(skillsDir, category)).isDirectory()
-        );
+    const categories = safeReadDirSync(skillsDir);
 
     if (categories.length === 0) {
         logger.warning("No skills installed.");
@@ -27,18 +23,12 @@ export function list(): void {
 
     for (const category of categories) {
 
-        console.log(`${category}/`);
+        logger.plain(`${category}/`);
 
-        const skills = fs
-            .readdirSync(path.join(skillsDir, category))
-            .filter(skill =>
-                fs.statSync(
-                    path.join(skillsDir, category, skill)
-                ).isDirectory()
-            );
+        const skills = safeReadDirSync(path.join(skillsDir, category));
 
         for (const skill of skills) {
-            console.log(`  - ${skill}`);
+            logger.plain(`  - ${skill}`);
         }
     }
 

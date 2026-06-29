@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 
 import { logger } from "../utils/logger";
-import { loadRegistry } from "../registry/loadRegistry";
+import { findInRegistry } from "../registry/loadRegistry";
 
 export function uninstall(skill?: string) {
 
@@ -11,9 +11,7 @@ export function uninstall(skill?: string) {
         return;
     }
 
-    const found = loadRegistry().find(
-        s => s.name === skill
-    );
+    const found = findInRegistry(skill);
 
     if (!found) {
         logger.error("Skill not found in registry.");

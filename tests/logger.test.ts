@@ -28,16 +28,6 @@ describe("logger", () => {
 
     });
 
-    it("logs warn message", () => {
-
-        const spy = vi.spyOn(console, "log").mockImplementation(() => {});
-
-        logger.warn("hello");
-
-        expect(spy).toHaveBeenCalledOnce();
-
-    });
-
     it("logs warning message", () => {
 
         const spy = vi.spyOn(console, "log").mockImplementation(() => {});
@@ -50,9 +40,29 @@ describe("logger", () => {
 
     it("logs error message", () => {
 
-        const spy = vi.spyOn(console, "log").mockImplementation(() => {});
+        const spy = vi.spyOn(console, "error").mockImplementation(() => {});
 
         logger.error("hello");
+
+        expect(spy).toHaveBeenCalledOnce();
+
+    });
+
+    it("logs plain message", () => {
+
+        const spy = vi.spyOn(console, "log").mockImplementation(() => {});
+
+        logger.plain("hello");
+
+        expect(spy).toHaveBeenCalledOnce();
+
+    });
+
+    it("logs blank line", () => {
+
+        const spy = vi.spyOn(console, "log").mockImplementation(() => {});
+
+        logger.blank();
 
         expect(spy).toHaveBeenCalledOnce();
 

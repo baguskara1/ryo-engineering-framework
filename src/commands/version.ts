@@ -1,8 +1,8 @@
-import pc from "picocolors";
+import { logger } from "../utils/logger";
 
 export function version() {
-    console.log("");
-    console.log(pc.cyan("🚀 Ryo Engineering Framework"));
-    console.log("Version: 1.0.0");
-    console.log("");
+    logger.blank();
+    logger.info("🚀 Ryo Engineering Framework");
+    logger.plain("Version: 1.0.0");
+    logger.blank();
 }

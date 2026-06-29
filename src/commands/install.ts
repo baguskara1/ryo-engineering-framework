@@ -2,8 +2,8 @@ import fs from "fs";
 import path from "path";
 
 import { logger } from "../utils/logger";
-import { loadRegistry } from "../registry/loadRegistry";
-import { copyDirectory } from "../utils/copyDirectory";
+import { findInRegistry } from "../registry/loadRegistry";
+import { withSpinner } from "../utils/spinner";
 
 export function install(skill?: string) {
 
@@ -12,9 +12,7 @@ export function install(skill?: string) {
         return;
     }
 
-    const found = loadRegistry().find(
-        s => s.name === skill
-    );
+    const found = findInRegistry(skill);
 
     if (!found) {
         logger.error("Skill not found in registry.");
@@ -43,7 +41,9 @@ export function install(skill?: string) {
         return;
     }
 
-    copyDirectory(source, target);
+    withSpinner(`Installing ${found.category}/${found.name}...`, () => {
+        fs.cpSync(source, target, { recursive: true });
+    });
 
     logger.success(
         `Installed ${found.category}/${found.name}`

@@ -1,15 +1,16 @@
-import fs from "fs";
 import path from "path";
 
 import { REQUIRED_FILES } from "../constants/requiredFiles";
+import { logger } from "../utils/logger";
+import { safeExistsSync, safeReadDirSync } from "../utils/fs";
 
 export function validate() {
 
-    console.log("");
-    console.log("🔍 Validating Skills...");
-    console.log("");
+    logger.blank();
+    logger.info("🔍 Validating Skills...");
+    logger.blank();
 
-    const categories = fs.readdirSync("skills");
+    const categories = safeReadDirSync("skills");
 
     let valid = 0;
     let invalid = 0;
@@ -18,15 +19,11 @@ export function validate() {
 
         const categoryPath = path.join("skills", category);
 
-        if (!fs.statSync(categoryPath).isDirectory()) continue;
-
-        const skills = fs.readdirSync(categoryPath);
+        const skills = safeReadDirSync(categoryPath);
 
         for (const skill of skills) {
 
             const skillPath = path.join(categoryPath, skill);
-
-            if (!fs.statSync(skillPath).isDirectory()) continue;
 
             let ok = true;
 
@@ -34,24 +31,24 @@ export function validate() {
 
                 const fullPath = path.join(skillPath, file);
 
-                if (!fs.existsSync(fullPath)) {
+                if (!safeExistsSync(fullPath)) {
                     ok = false;
                 }
             }
 
             if (ok) {
-                console.log(`✅ ${skillPath}`);
+                logger.success(`✅ ${skillPath}`);
                 valid++;
             } else {
 
-                console.log(`❌ ${skillPath}`);
+                logger.error(`❌ ${skillPath}`);
 
                 for (const file of REQUIRED_FILES) {
 
                     const fullPath = path.join(skillPath, file);
 
-                    if (!fs.existsSync(fullPath)) {
-                        console.log(`   └── Missing: ${file}`);
+                    if (!safeExistsSync(fullPath)) {
+                        logger.plain(`   └── Missing: ${file}`);
                     }
                 }
 
@@ -60,10 +57,10 @@ export function validate() {
         }
     }
 
-    console.log("");
-    console.log("----------------------------");
-    console.log(`Valid   : ${valid}`);
-    console.log(`Invalid : ${invalid}`);
-    console.log("----------------------------");
-    console.log("");
+    logger.blank();
+    logger.plain("----------------------------");
+    logger.plain(`Valid   : ${valid}`);
+    logger.plain(`Invalid : ${invalid}`);
+    logger.plain("----------------------------");
+    logger.blank();
 }

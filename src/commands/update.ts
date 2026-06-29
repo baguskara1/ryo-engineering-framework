@@ -1,9 +1,8 @@
-import fs from "fs";
 import path from "path";
 
 import { logger } from "../utils/logger";
-import { loadRegistry } from "../registry/loadRegistry";
-import { copyDirectory } from "../utils/copyDirectory";
+import { findInRegistry } from "../registry/loadRegistry";
+import { copyDirectorySync, safeExistsSync, removeDirectorySync } from "../utils/fs";
 
 export function update(skill?: string) {
 
@@ -12,9 +11,7 @@ export function update(skill?: string) {
         return;
     }
 
-    const found = loadRegistry().find(
-        s => s.name === skill
-    );
+    const found = findInRegistry(skill);
 
     if (!found) {
         logger.error("Skill not found in registry.");
@@ -33,19 +30,16 @@ export function update(skill?: string) {
         found.name
     );
 
-    if (!fs.existsSync(source)) {
+    if (!safeExistsSync(source)) {
         logger.error("Official skill not found.");
         return;
     }
 
-    if (fs.existsSync(target)) {
-        fs.rmSync(target, {
-            recursive: true,
-            force: true
-        });
+    if (safeExistsSync(target)) {
+        removeDirectorySync(target);
     }
 
-    copyDirectory(source, target);
+    copyDirectorySync(source, target);
 
     logger.success(
         `Updated ${found.category}/${found.name}`

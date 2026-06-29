@@ -28,30 +28,52 @@ Rather than relying on prompts alone, REF enables consistent, maintainable, and 
 
 # 🚀 CLI Commands
 
+| Command       | Description                              |
+|---------------|------------------------------------------|
+| `ryo help`    | Show available commands                  |
+| `ryo version` | Show version information                 |
+| `ryo doctor`  | Check project structure                  |
+| `ryo list`    | List installed skills                    |
+| `ryo validate`| Validate skill structure                 |
+| `ryo create`  | Create a new skill                       |
+| `ryo init`    | Initialize a new project                 |
+| `ryo skills`  | Show installed skills                    |
+| `ryo search`  | Search registry for skills               |
+| `ryo info`    | Show skill information                   |
+| `ryo registry`| Browse the official registry             |
+| `ryo install` | Install a skill from registry            |
+| `ryo update`  | Update an installed skill                |
+| `ryo uninstall`| Uninstall a skill                       |
+| `ryo publish` | Package a skill for distribution         |
+| `ryo export`  | Export a skill as markdown               |
+| `ryo run`     | Show skill content in terminal           |
+
+## Usage Examples
+
 ```bash
+# Help & version
 ryo help
+ryo version
 
-ryo skills
-
-ryo search react
-
-ryo info docker
-
-ryo create workflow my-skill
-
+# Inspect
+ryo doctor
+ryo list
 ryo validate
 
-ryo doctor
-
+# Search & discover
+ryo search react
+ryo info docker
 ryo registry
 
+# Create & manage
+ryo create workflow my-skill
 ryo install kubernetes
-
 ryo update kubernetes
-
 ryo uninstall kubernetes
 
+# Package & export
 ryo publish kubernetes
+ryo export kubernetes
 ```
 
 ---
@@ -81,15 +103,19 @@ ryo help
 # 📂 Repository Structure
 
 ```text
-docs/
-official-skills/
-playbooks/
-registry/
-skills/
-specs/
-src/
-templates/
-tests/
+src/              # Source code
+  commands/       # CLI command implementations
+  registry/       # Registry service
+  skills/         # Skill loader
+  utils/          # Shared utilities
+tests/            # Test files
+  integration/    # CLI integration tests
+docs/             # Documentation
+official-skills/  # Official skill packages
+playbooks/        # Engineering playbooks
+registry/         # Skill registry index
+skills/           # Installed skills
+templates/        # Skill templates
 ```
 
 ---

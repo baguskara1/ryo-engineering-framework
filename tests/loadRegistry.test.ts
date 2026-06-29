@@ -1,12 +1,13 @@
 import fs from "fs";
 import { describe, it, expect, vi, afterEach } from "vitest";
 
-import { loadRegistry } from "../src/registry/loadRegistry";
+import { loadRegistry, clearRegistryCache } from "../src/registry/loadRegistry";
 
 describe("loadRegistry", () => {
 
     afterEach(() => {
         vi.restoreAllMocks();
+        clearRegistryCache();
     });
 
     it("returns empty array when registry does not exist", () => {

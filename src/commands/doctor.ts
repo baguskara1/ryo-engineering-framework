@@ -1,18 +1,19 @@
-import fs from "fs";
+import { logger } from "../utils/logger";
+import { safeExistsSync } from "../utils/fs";
 
 function checkDirectory(path: string) {
-    if (fs.existsSync(path)) {
-        console.log(`✅ ${path}`);
+    if (safeExistsSync(path)) {
+        logger.success(`✅ ${path}`);
     } else {
-        console.log(`❌ ${path} (missing)`);
+        logger.error(`❌ ${path} (missing)`);
     }
 }
 
 export function doctor() {
 
-    console.log("");
-    console.log("🔍 Running Ryo Doctor...");
-    console.log("");
+    logger.blank();
+    logger.info("🔍 Running Ryo Doctor...");
+    logger.blank();
 
     checkDirectory("skills");
     checkDirectory("docs");
@@ -20,5 +21,5 @@ export function doctor() {
     checkDirectory("scripts");
     checkDirectory("specs");
 
-    console.log("");
+    logger.blank();
 }

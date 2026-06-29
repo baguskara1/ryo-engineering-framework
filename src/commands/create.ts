@@ -1,28 +1,56 @@
 import fs from "fs";
 import path from "path";
-import { copyDirectory } from "../utils/copyDirectory";
 import { processTemplates } from "../utils/processTemplates";
 import { isValidName } from "../utils/validators";
 import { logger } from "../utils/logger";
+import { safeReadDirSync } from "../utils/fs";
 
-export function create(category?: string, skill?: string) {
+export function getAvailableTemplates(): string[] {
+    return safeReadDirSync("templates").filter((t) =>
+        fs.statSync(path.join("templates", t)).isDirectory()
+    );
+}
+
+export function create(category?: string, skill?: string, template?: string) {
 
     if (!category || !skill) {
-
-        console.log("");
+        logger.blank();
         logger.warning("Usage:");
-        console.log("create <category> <skill>");
-        console.log("");
+        logger.plain("create <category> <skill> [--template <name>]");
+        logger.blank();
+        logger.plain("Available templates:");
+
+        const templates = getAvailableTemplates();
+        if (templates.length === 0) {
+            logger.plain("  (none)");
+        } else {
+            for (const t of templates) {
+                logger.plain(`  - ${t}`);
+            }
+        }
+
+        logger.blank();
 
         return;
     }
 
     if (!isValidName(category) || !isValidName(skill)) {
-
-        console.log("");
+        logger.blank();
         logger.error("❌ Invalid name.");
-        console.log("Use lowercase letters, numbers, and hyphens only.");
-        console.log("");
+        logger.plain("Use lowercase letters, numbers, and hyphens only.");
+        logger.blank();
+
+        return;
+    }
+
+    const templateName = template || "skill";
+    const templatePath = path.join("templates", templateName);
+
+    if (!fs.existsSync(templatePath)) {
+        logger.blank();
+        logger.error(`❌ Template "${templateName}" not found.`);
+        logger.plain(`Available templates: ${getAvailableTemplates().join(", ")}`);
+        logger.blank();
 
         return;
     }
@@ -30,23 +58,23 @@ export function create(category?: string, skill?: string) {
     const skillPath = path.join("skills", category, skill);
 
     if (fs.existsSync(skillPath)) {
-
-        console.log("");
+        logger.blank();
         logger.error("❌ Skill already exists.");
-        console.log("");
+        logger.blank();
 
         return;
     }
 
-    copyDirectory("templates/skill", skillPath);
+    fs.cpSync(templatePath, skillPath, { recursive: true });
 
     processTemplates(skillPath, {
         CATEGORY: category,
         SKILL: skill,
     });
 
-    console.log("");
+    logger.blank();
     logger.success("✅ Skill created successfully!");
-    console.log(skillPath);
-    console.log("");
+    logger.plain(`Template : ${templateName}`);
+    logger.plain(`Path     : ${skillPath}`);
+    logger.blank();
 }

@@ -3,18 +3,18 @@ import { logger } from "../utils/logger";
 
 export function skills() {
 
-    console.log("");
+    logger.blank();
 
     logger.info("📦 Installed Skills");
 
-    console.log("");
+    logger.blank();
 
     for (const skill of loadSkills()) {
 
-        console.log(`• ${skill.category}/${skill.name}`);
+        logger.plain(`• ${skill.category}/${skill.name}`);
 
     }
 
-    console.log("");
+    logger.blank();
 
 }

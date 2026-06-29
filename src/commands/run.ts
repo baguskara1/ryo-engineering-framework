@@ -22,5 +22,5 @@ export function run(skill?: string) {
 
     const content = readSkill(found.path);
 
-    console.log(content);
+    logger.plain(content);
 }

@@ -21,22 +21,22 @@ export function info(skillName?: string) {
 
     }
 
-    console.log("");
+    logger.blank();
 
     logger.info(`📦 ${skill.name}`);
 
-    console.log("");
+    logger.blank();
 
-    console.log(`Category : ${skill.category}`);
-    console.log(`Path     : ${skill.path}`);
+    logger.plain(`Category : ${skill.category}`);
+    logger.plain(`Path     : ${skill.path}`);
 
     if (skill.metadata?.version) {
-        console.log(`Version  : ${skill.metadata.version}`);
+        logger.plain(`Version  : ${skill.metadata.version}`);
     }
 
     if (skill.metadata?.description) {
-        console.log(`Description : ${skill.metadata.description}`);
+        logger.plain(`Description : ${skill.metadata.description}`);
     }
 
-    console.log("");
+    logger.blank();
 }

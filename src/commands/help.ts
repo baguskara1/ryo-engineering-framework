@@ -2,21 +2,21 @@ import { logger } from "../utils/logger";
 
 export function help() {
 
-    console.log("");
+    logger.blank();
 
     logger.info("🚀 Ryo Engineering Framework");
 
-    console.log("");
-    console.log("Commands");
-    console.log("");
+    logger.blank();
+    logger.plain("Commands");
+    logger.blank();
 
-    console.log("  version");
-    console.log("  doctor");
-    console.log("  list");
-    console.log("  validate");
-    console.log("  create");
-    console.log("  init");
-    console.log("  help");
+    logger.plain("  version");
+    logger.plain("  doctor");
+    logger.plain("  list");
+    logger.plain("  validate");
+    logger.plain("  create");
+    logger.plain("  init");
+    logger.plain("  help");
 
-    console.log("");
+    logger.blank();
 }
