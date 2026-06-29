@@ -1,0 +1,9 @@
+name: linux
+category: platform
+version: 1.0.0
+description: Operating system administration and command-line proficiency including shell scripting, process management, and system security.
+tags:
+  - platform
+  - linux
+  - sysadmin
+  - cli

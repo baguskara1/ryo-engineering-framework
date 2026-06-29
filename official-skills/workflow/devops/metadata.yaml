@@ -1,0 +1,9 @@
+name: devops
+category: workflow
+version: 1.0.0
+description: DevOps practices covering infrastructure as code, monitoring, logging, configuration management, and operational excellence.
+tags:
+  - workflow
+  - devops
+  - infrastructure
+  - operations

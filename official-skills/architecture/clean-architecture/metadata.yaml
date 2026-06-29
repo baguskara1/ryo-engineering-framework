@@ -1,0 +1,9 @@
+name: clean-architecture
+category: architecture
+version: 1.0.0
+description: Software architecture principles emphasizing separation of concerns, dependency inversion, and maintainable code structure.
+tags:
+  - architecture
+  - clean-architecture
+  - design
+  - best-practices

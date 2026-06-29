@@ -1,0 +1,10 @@
+name: redis
+category: database
+version: 1.0.0
+description: In-memory data structure store used as cache, message broker, and database with support for strings, hashes, lists, and streams.
+tags:
+  - database
+  - redis
+  - cache
+  - nosql
+  - messaging

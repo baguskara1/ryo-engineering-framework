@@ -1,0 +1,9 @@
+name: postgresql
+category: database
+version: 1.0.0
+description: Advanced open-source relational database with ACID compliance, JSON support, full-text search, and replication features.
+tags:
+  - database
+  - postgresql
+  - sql
+  - relational

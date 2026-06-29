@@ -1,0 +1,9 @@
+name: microservices
+category: workflow
+version: 1.0.0
+description: Architecture and implementation patterns for microservices including service discovery, API gateways, messaging, and distributed systems.
+tags:
+  - workflow
+  - microservices
+  - architecture
+  - distributed-systems

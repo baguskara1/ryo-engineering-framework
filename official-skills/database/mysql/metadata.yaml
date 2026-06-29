@@ -1,0 +1,9 @@
+name: mysql
+category: database
+version: 1.0.0
+description: Popular open-source relational database management system known for reliability, performance, and ease of use.
+tags:
+  - database
+  - mysql
+  - sql
+  - relational

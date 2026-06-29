@@ -1,0 +1,9 @@
+name: graphql
+category: api
+version: 1.0.0
+description: API query language and runtime for executing precisely defined queries against your data, with strong typing and introspection.
+tags:
+  - api
+  - graphql
+  - query-language
+  - api-design

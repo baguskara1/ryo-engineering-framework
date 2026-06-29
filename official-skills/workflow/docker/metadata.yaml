@@ -1,0 +1,9 @@
+name: docker
+category: workflow
+version: 1.0.0
+description: Containerization and Docker management skill for building, deploying, and orchestrating containerized applications.
+tags:
+  - workflow
+  - docker
+  - containers
+  - devops

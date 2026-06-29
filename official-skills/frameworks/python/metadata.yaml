@@ -1,0 +1,9 @@
+name: python
+category: frameworks
+version: 1.0.0
+description: Versatile programming language for web development, data science, automation, and scripting with extensive package ecosystem.
+tags:
+  - frameworks
+  - python
+  - backend
+  - scripting

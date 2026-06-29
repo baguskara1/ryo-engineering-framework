@@ -1,0 +1,9 @@
+name: laravel
+category: frameworks
+version: 1.0.0
+description: PHP web framework with elegant syntax, Eloquent ORM, Artisan CLI, and built-in authentication and caching.
+tags:
+  - frameworks
+  - laravel
+  - php
+  - backend

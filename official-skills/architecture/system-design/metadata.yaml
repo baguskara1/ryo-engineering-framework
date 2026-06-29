@@ -1,0 +1,9 @@
+name: system-design
+category: architecture
+version: 1.0.0
+description: Designing scalable, reliable, and maintainable distributed systems including trade-offs, patterns, and capacity planning.
+tags:
+  - architecture
+  - system-design
+  - scalability
+  - distributed-systems

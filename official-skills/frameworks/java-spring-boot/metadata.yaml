@@ -1,0 +1,10 @@
+name: java-spring-boot
+category: frameworks
+version: 1.0.0
+description: Enterprise Java framework for building production-grade Spring applications with dependency injection, REST APIs, and microservices.
+tags:
+  - frameworks
+  - java
+  - spring-boot
+  - backend
+  - enterprise

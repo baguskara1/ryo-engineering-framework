@@ -1,0 +1,9 @@
+name: ci-cd
+category: workflow
+version: 1.0.0
+description: Continuous Integration and Continuous Deployment pipelines for automated testing, building, and releasing software.
+tags:
+  - workflow
+  - ci-cd
+  - automation
+  - pipelines

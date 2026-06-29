@@ -1,0 +1,9 @@
+name: testing
+category: testing
+version: 1.0.0
+description: Software testing strategies including unit, integration, end-to-end tests, test-driven development, and QA automation.
+tags:
+  - testing
+  - quality
+  - automation
+  - tdd

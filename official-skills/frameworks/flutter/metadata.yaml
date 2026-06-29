@@ -1,0 +1,10 @@
+name: flutter
+category: frameworks
+version: 1.0.0
+description: Google's UI toolkit for building natively compiled cross-platform applications from a single codebase.
+tags:
+  - frameworks
+  - flutter
+  - dart
+  - mobile
+  - cross-platform

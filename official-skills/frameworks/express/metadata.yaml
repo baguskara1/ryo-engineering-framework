@@ -1,0 +1,10 @@
+name: express
+category: frameworks
+version: 1.0.0
+description: Fast, unopinionated Node.js web framework for building REST APIs, middleware patterns, and server-side applications.
+tags:
+  - frameworks
+  - express
+  - nodejs
+  - backend
+  - api

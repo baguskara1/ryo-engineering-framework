@@ -1,0 +1,10 @@
+name: nextjs
+category: frameworks
+version: 1.0.0
+description: Full-stack React framework with server-side rendering, static generation, API routes, and file-based routing.
+tags:
+  - frameworks
+  - nextjs
+  - react
+  - ssr
+  - fullstack

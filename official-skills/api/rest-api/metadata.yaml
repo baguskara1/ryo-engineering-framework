@@ -1,0 +1,9 @@
+name: rest-api
+category: api
+version: 1.0.0
+description: Designing and building RESTful APIs with resource-oriented URLs, HTTP methods, status codes, versioning, and documentation.
+tags:
+  - api
+  - rest
+  - http
+  - web-services

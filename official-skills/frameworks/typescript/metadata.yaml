@@ -1,0 +1,9 @@
+name: typescript
+category: frameworks
+version: 1.0.0
+description: Typed superset of JavaScript providing static type checking, enhanced IDE support, and improved code maintainability.
+tags:
+  - frameworks
+  - typescript
+  - javascript
+  - typing

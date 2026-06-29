@@ -1,0 +1,9 @@
+name: react
+category: frameworks
+version: 1.0.0
+description: Building user interfaces with React, including hooks, state management, component patterns, and performance optimization.
+tags:
+  - frameworks
+  - react
+  - frontend
+  - javascript
