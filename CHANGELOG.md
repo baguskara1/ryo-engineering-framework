@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.0.2] - 2026-06-29
+
+### Fixed
+
+- Version command no longer uses hardcoded string; reads from `package.json` automatically
+- Banner now shows correct package version instead of hardcoded `v1.0.0`
+- Commander version also reads from `package.json` dynamically
+
 ## [2.0.1] - 2026-06-29
 
 ### Fixed

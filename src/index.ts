@@ -9,6 +9,7 @@ import { showBanner } from "./utils/banner";
 import { commands } from "./commands";
 import { loadConfig } from "./utils/config";
 import { optIn, optOut } from "./utils/telemetry";
+import { getPackageVersion } from "./utils/packagePath";
 
 // Check for --verbose flag in raw argv before commander parses
 const config = loadConfig();
@@ -20,7 +21,7 @@ const program = new Command();
 program
     .name("ryo")
     .description("Ryo Engineering Framework - Build production-ready software with AI")
-    .version("1.0.0")
+    .version(getPackageVersion())
     .option("--verbose", "Enable verbose output");
 
 program
