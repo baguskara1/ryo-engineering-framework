@@ -1,5 +1,4 @@
 import fs from "fs";
-import path from "path";
 import { resolveAsset } from "../utils/packagePath";
 
 export interface RegistrySkill {

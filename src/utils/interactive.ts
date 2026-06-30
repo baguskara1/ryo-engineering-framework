@@ -104,8 +104,8 @@ async function executeCommand(input: string) {
                 commands.publish(args[0]);
                 break;
             case "export":
-                // @ts-ignore
-                commands.export(args[0], args[1]);
+        // @ts-expect-error
+        commands.export(args[0], args[1]);
                 break;
             case "run":
                 commands.run(args[0]);
