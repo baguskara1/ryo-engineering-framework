@@ -168,4 +168,10 @@ program
         logger.plain("  ryo telemetry --opt-out  Disable telemetry");
     });
 
+program
+    .action(() => {
+        showBanner();
+        program.help();
+    });
+
 program.parse(process.argv);
