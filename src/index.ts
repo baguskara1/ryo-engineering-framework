@@ -64,9 +64,9 @@ program
     .action(() => commands.registry());
 
 program
-    .command("init")
+    .command("init [projectName]")
     .description("Initialize a new project")
-    .action(() => commands.init());
+    .action((projectName) => commands.init(projectName));
 
 program
     .command("create <category> <skill>")
