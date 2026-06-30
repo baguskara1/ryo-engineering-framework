@@ -1,6 +1,6 @@
 name: cypress
 category: testing
-version: 1.0.0
+version: 1.5.0
 description: Writing end-to-end tests with Cypress, including component testing and API stubbing.
 tags:
   - testing

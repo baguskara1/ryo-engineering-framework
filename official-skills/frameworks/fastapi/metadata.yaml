@@ -1,6 +1,6 @@
 name: fastapi
 category: frameworks
-version: 1.0.0
+version: 1.5.0
 description: Modern, fast Python web framework for building APIs with automatic OpenAPI documentation and Pydantic validation.
 tags:
   - frameworks

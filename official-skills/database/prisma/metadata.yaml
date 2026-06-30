@@ -1,6 +1,6 @@
 name: prisma
 category: database
-version: 1.0.0
+version: 1.5.0
 description: Building type-safe database access with Prisma ORM, including migrations, relations, and queries.
 tags:
   - database

@@ -1,6 +1,6 @@
 name: fastify
 category: backend
-version: 1.0.0
+version: 1.5.0
 description: Building high-performance APIs with Fastify, including plugins, validation, and serialization.
 tags:
   - backend

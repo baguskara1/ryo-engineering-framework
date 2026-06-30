@@ -1,6 +1,6 @@
 name: git
 category: workflow
-version: 1.0.0
+version: 1.5.0
 description: Version control and collaboration using Git, covering branching strategies, rebasing, workflows, and team best practices.
 tags:
   - workflow

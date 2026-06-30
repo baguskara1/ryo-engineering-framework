@@ -1,6 +1,6 @@
 name: devops
 category: workflow
-version: 1.0.0
+version: 1.5.0
 description: DevOps practices covering infrastructure as code, monitoring, logging, configuration management, and operational excellence.
 tags:
   - workflow

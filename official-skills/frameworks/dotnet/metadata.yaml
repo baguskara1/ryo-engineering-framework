@@ -1,6 +1,6 @@
 name: dotnet
 category: frameworks
-version: 1.0.0
+version: 1.5.0
 description: Cross-platform .NET framework for building web, desktop, and cloud applications with C#, ASP.NET Core, and Entity Framework.
 tags:
   - frameworks

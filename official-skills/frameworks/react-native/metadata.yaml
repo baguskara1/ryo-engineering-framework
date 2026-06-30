@@ -1,6 +1,6 @@
 name: react-native
 category: frameworks
-version: 1.0.0
+version: 1.5.0
 description: Build native mobile applications using React and JavaScript with shared code across iOS and Android platforms.
 tags:
   - frameworks

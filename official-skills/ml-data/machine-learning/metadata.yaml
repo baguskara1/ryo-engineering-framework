@@ -1,6 +1,6 @@
 name: machine-learning
 category: ml-data
-version: 1.0.0
+version: 1.5.0
 description: Building and deploying machine learning models including data preprocessing, model training, evaluation, and MLOps practices.
 tags:
   - ml-data

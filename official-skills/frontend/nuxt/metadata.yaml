@@ -1,6 +1,6 @@
 name: nuxt
 category: frontend
-version: 1.0.0
+version: 1.5.0
 description: Building full-stack applications with Nuxt, including SSR, auto-imports, and file-based routing.
 tags:
   - frontend

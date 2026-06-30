@@ -1,6 +1,6 @@
 name: openai-sdk
 category: ai
-version: 1.0.0
+version: 1.5.0
 description: Integrating OpenAI APIs into applications, including GPT, embeddings, and function calling.
 tags:
   - ai

@@ -1,6 +1,6 @@
 name: go
 category: frameworks
-version: 1.0.0
+version: 1.5.0
 description: Statically typed, compiled programming language designed for building scalable, concurrent backend systems and CLI tools.
 tags:
   - frameworks

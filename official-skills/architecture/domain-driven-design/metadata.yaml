@@ -1,6 +1,6 @@
 name: domain-driven-design
 category: architecture
-version: 1.0.0
+version: 1.5.0
 description: Applying DDD principles, including bounded contexts, entities, and aggregates.
 tags:
   - architecture

@@ -1,6 +1,6 @@
 name: data-science
 category: ml-data
-version: 1.0.0
+version: 1.5.0
 description: Data analysis and visualization using Python including pandas, NumPy, matplotlib, and statistical methods for insights.
 tags:
   - ml-data

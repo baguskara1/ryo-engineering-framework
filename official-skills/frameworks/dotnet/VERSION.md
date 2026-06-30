@@ -2,8 +2,8 @@
 
 Current Version
 
-1.0.0
+1.5.0
 
 Status
 
-Draft
+Published

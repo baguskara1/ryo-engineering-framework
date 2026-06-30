@@ -1,6 +1,6 @@
 name: jest
 category: testing
-version: 1.0.0
+version: 1.5.0
 description: Writing and running tests with Jest, including mocking, code coverage, and async testing.
 tags:
   - testing

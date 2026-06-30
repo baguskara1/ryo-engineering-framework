@@ -1,6 +1,6 @@
 name: nodejs
 category: frameworks
-version: 1.0.0
+version: 1.5.0
 description: JavaScript runtime for building scalable server-side applications, CLI tools, and network services.
 tags:
   - frameworks
