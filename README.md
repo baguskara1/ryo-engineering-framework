@@ -1,6 +1,6 @@
 # Ryo Engineering Framework
 
-![Version](https://img.shields.io/badge/version-2.1.1-green)
+![Version](https://img.shields.io/badge/version-2.2.0-green)
 ![License](https://img.shields.io/badge/license-MIT-blue)
 ![Node](https://img.shields.io/badge/node-%3E%3D20-brightgreen)
 
