@@ -6,6 +6,7 @@ import os from "os";
 import { Command } from "commander";
 import { logger, setVerbose } from "./utils/logger";
 import { showBanner } from "./utils/banner";
+import { startInteractiveMode } from "./utils/interactive";
 import { commands } from "./commands";
 import { loadConfig } from "./utils/config";
 import { optIn, optOut } from "./utils/telemetry";
@@ -170,8 +171,7 @@ program
 
 program
     .action(() => {
-        showBanner();
-        program.help();
+        startInteractiveMode();
     });
 
 program.parse(process.argv);
