@@ -14,14 +14,18 @@ describe("registry command", () => {
         vi.restoreAllMocks();
     });
 
-    it("shows registry header", () => {
+    it("shows registry header with count when skills exist", () => {
+
+        vi.mocked(loadRegistry).mockReturnValue([
+            { name: "react", category: "frameworks", version: "2.0.0" },
+        ]);
 
         const spy = vi.spyOn(logger, "info");
 
         registry();
 
         expect(spy).toHaveBeenCalledWith(
-            "Official Registry"
+            "Official Registry (1 skill)"
         );
 
     });
@@ -40,7 +44,7 @@ describe("registry command", () => {
 
     });
 
-    it("lists skills when registry has entries", () => {
+    it("lists skills grouped by category in tree format", () => {
 
         vi.mocked(loadRegistry).mockReturnValue([
             { name: "kubernetes", category: "workflow", version: "1.0.0" },
@@ -51,8 +55,13 @@ describe("registry command", () => {
 
         registry();
 
-        expect(spy).toHaveBeenCalledWith("• workflow/kubernetes (1.0.0)");
-        expect(spy).toHaveBeenCalledWith("• frameworks/react (2.0.0)");
+        const messages = spy.mock.calls.map((c) => String(c[0]));
+
+        expect(messages.some((m) => m.includes("frameworks/"))).toBe(true);
+        expect(messages.some((m) => m.includes("workflow/"))).toBe(true);
+        expect(messages.some((m) => m.includes("react"))).toBe(true);
+        expect(messages.some((m) => m.includes("kubernetes"))).toBe(true);
+        expect(messages.some((m) => m.includes("└──"))).toBe(true);
 
     });
 

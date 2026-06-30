@@ -15,6 +15,7 @@ import { publish } from "./publish";
 import { update } from "./update";
 import { list } from "./list";
 import { init } from "./init";
+import { upgrade } from "./upgrade";
 
 export const commands = {
     version,
@@ -32,6 +33,7 @@ export const commands = {
     uninstall,
     publish,
     update,
+    upgrade,
     list,
     init,
 };

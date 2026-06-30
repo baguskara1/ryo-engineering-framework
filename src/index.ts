@@ -99,6 +99,11 @@ program
     .action((skill) => commands.update(skill));
 
 program
+    .command("upgrade")
+    .description("Upgrade the ryo framework itself")
+    .action(() => commands.upgrade());
+
+program
     .command("publish <skill>")
     .description("Package a skill for distribution")
     .action((skill) => commands.publish(skill));

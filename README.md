@@ -43,6 +43,7 @@ Rather than relying on prompts alone, REF enables consistent, maintainable, and 
 | `ryo registry`| Browse the official registry             |
 | `ryo install` | Install a skill from registry            |
 | `ryo update`  | Update an installed skill                |
+| `ryo upgrade` | Upgrade the ryo framework itself         |
 | `ryo uninstall`| Uninstall a skill                       |
 | `ryo publish` | Package a skill for distribution         |
 | `ryo export`  | Export a skill as markdown               |
@@ -71,6 +72,7 @@ ryo registry
 ryo create workflow my-skill
 ryo install kubernetes
 ryo update kubernetes
+ryo upgrade
 ryo uninstall kubernetes
 
 # Package & export

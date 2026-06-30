@@ -11,6 +11,7 @@ export function help() {
         { name: "install <skill>", desc: "Install a skill from the registry" },
         { name: "uninstall <skill>", desc: "Uninstall a skill" },
         { name: "update <skill>", desc: "Update an installed skill" },
+        { name: "upgrade", desc: "Upgrade ryo framework itself" },
         { name: "list", desc: "List installed skills" },
         { name: "info <skill>", desc: "Show detailed skill information" },
         { name: "search <keyword>", desc: "Search the registry for skills" },
