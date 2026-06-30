@@ -45,13 +45,9 @@ describe("search command", () => {
 
         search("kubernetes");
 
-        expect(consoleSpy).toHaveBeenCalledWith(
-            "Found 1 skill(s):"
-        );
-
-        expect(consoleSpy).toHaveBeenCalledWith(
-            "workflow/kubernetes"
-        );
+        const calls = consoleSpy.mock.calls.map((c) => String(c[0]));
+        expect(calls.some((m) => m.includes('matching "kubernetes"'))).toBe(true);
+        expect(calls.some((m) => m.includes("workflow/kubernetes"))).toBe(true);
 
     });
 
@@ -61,9 +57,8 @@ describe("search command", () => {
 
         search("workflow");
 
-        expect(consoleSpy).toHaveBeenCalledWith(
-            "workflow/kubernetes"
-        );
+        const calls = consoleSpy.mock.calls.map((c) => String(c[0]));
+        expect(calls.some((m) => m.includes("workflow/kubernetes"))).toBe(true);
 
     });
 

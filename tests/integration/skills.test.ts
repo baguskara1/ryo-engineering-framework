@@ -14,19 +14,19 @@ describe("skills command", () => {
         vi.restoreAllMocks();
     });
 
-    it("shows skills header", () => {
+    it("shows warning when no skills installed", () => {
 
-        const spy = vi.spyOn(logger, "info");
+        const spy = vi.spyOn(logger, "warning");
 
         skills();
 
         expect(spy).toHaveBeenCalledWith(
-            "Installed Skills"
+            "No skills installed."
         );
 
     });
 
-    it("lists installed skills", () => {
+    it("lists installed skills in tree format", () => {
 
         vi.mocked(loadSkills).mockReturnValue([
             {
@@ -41,7 +41,9 @@ describe("skills command", () => {
 
         skills();
 
-        expect(spy).toHaveBeenCalledWith("• workflow/kubernetes");
+        const calls = spy.mock.calls.map((c) => String(c[0]));
+        expect(calls.some((m) => m.includes("workflow/"))).toBe(true);
+        expect(calls.some((m) => m.includes("└── kubernetes"))).toBe(true);
 
     });
 

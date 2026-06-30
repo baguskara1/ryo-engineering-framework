@@ -11,13 +11,16 @@ describe("help command", () => {
 
     it("shows help text", () => {
 
-        const spy = vi.spyOn(logger, "info");
+        const spy = vi.spyOn(logger, "plain");
 
         help();
 
-        expect(spy).toHaveBeenCalledWith(
-            "Ryo Engineering Framework"
-        );
+        const calls = spy.mock.calls.map((c) => String(c[0]));
+        expect(calls.some((m) => m.includes("Discover"))).toBe(true);
+        expect(calls.some((m) => m.includes("Manage"))).toBe(true);
+        expect(calls.some((m) => m.includes("System"))).toBe(true);
+        expect(calls.some((m) => m.includes("registry"))).toBe(true);
+        expect(calls.some((m) => m.includes("upgrade"))).toBe(true);
 
     });
 

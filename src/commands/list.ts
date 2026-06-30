@@ -1,4 +1,5 @@
 import path from "path";
+import pc from "picocolors";
 
 import { logger } from "../utils/logger";
 import { safeExistsSync, safeReadDirSync } from "../utils/fs";
@@ -19,17 +20,20 @@ export function list(): void {
         return;
     }
 
-    logger.info("Installed skills:");
+    logger.blank();
+    logger.info(`Installed skills (${categories.length} ${categories.length === 1 ? "category" : "categories"})`);
+    logger.blank();
 
     for (const category of categories) {
-
-        logger.plain(`${category}/`);
+        logger.plain(pc.bold(pc.cyan(`${category}/`)));
 
         const skills = safeReadDirSync(path.join(skillsDir, category));
 
-        for (const skill of skills) {
-            logger.plain(`  - ${skill}`);
+        for (let i = 0; i < skills.length; i++) {
+            const prefix = i === skills.length - 1 ? "  └── " : "  ├── ";
+            logger.plain(`${prefix}${skills[i]}`);
         }
-    }
 
+        logger.blank();
+    }
 }

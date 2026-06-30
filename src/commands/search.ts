@@ -1,3 +1,4 @@
+import pc from "picocolors";
 import { searchInRegistry } from "../registry/loadRegistry";
 import { logger } from "../utils/logger";
 
@@ -16,13 +17,10 @@ export function search(keyword?: string) {
     }
 
     logger.blank();
-
-    logger.plain(`Found ${results.length} skill(s):`);
+    logger.info(`${results.length} skill(s) matching "${keyword}"`);
 
     for (const skill of results) {
-        logger.plain(
-            `${skill.category}/${skill.name}`
-        );
+        logger.plain(`  • ${pc.cyan(skill.category)}/${pc.bold(skill.name)} ${pc.dim(`v${skill.version}`)}`);
     }
 
     logger.blank();

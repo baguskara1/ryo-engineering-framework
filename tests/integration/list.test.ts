@@ -76,16 +76,12 @@ describe("list command", () => {
         list();
 
         expect(infoSpy).toHaveBeenCalledWith(
-            "Installed skills:"
+            "Installed skills (1 category)"
         );
 
-        expect(consoleSpy).toHaveBeenCalledWith(
-            "workflow/"
-        );
-
-        expect(consoleSpy).toHaveBeenCalledWith(
-            "  - kubernetes"
-        );
+        const calls = consoleSpy.mock.calls.map((c) => String(c[0]));
+        expect(calls.some((m) => m.includes("workflow/"))).toBe(true);
+        expect(calls.some((m) => m.includes("└── kubernetes"))).toBe(true);
 
     });
 

@@ -97,13 +97,9 @@ it("shows info when skill is installed", () => {
         "kubernetes"
     );
 
-    expect(consoleSpy).toHaveBeenCalledWith(
-        "Category : workflow"
-    );
-
-    expect(consoleSpy).toHaveBeenCalledWith(
-        `Path     : ${installPath}`
-    );
+    const calls = consoleSpy.mock.calls.map((c) => String(c[0]));
+    expect(calls.some((m) => m.includes("workflow"))).toBe(true);
+    expect(calls.some((m) => m.includes(installPath))).toBe(true);
 
 });
 

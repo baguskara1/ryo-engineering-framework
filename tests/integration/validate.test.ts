@@ -74,14 +74,18 @@ describe("validate command", () => {
 
         validate();
 
-        expect(successSpy).toHaveBeenCalledWith(validSkillPath);
-        expect(errorSpy).toHaveBeenCalledWith(invalidSkillPath);
+        expect(successSpy).toHaveBeenCalledWith(
+            expect.stringContaining(validSkillPath)
+        );
+        expect(errorSpy).toHaveBeenCalledWith(
+            expect.stringContaining(invalidSkillPath)
+        );
 
         expect(plainSpy).toHaveBeenCalledWith(
-            expect.stringContaining("Valid   : 1")
+            expect.stringContaining("1 valid")
         );
         expect(plainSpy).toHaveBeenCalledWith(
-            expect.stringContaining("Invalid : 1")
+            expect.stringContaining("1 invalid")
         );
 
     });

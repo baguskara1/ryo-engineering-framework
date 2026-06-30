@@ -1,4 +1,5 @@
 import path from "path";
+import pc from "picocolors";
 
 import { REQUIRED_FILES } from "../constants/requiredFiles";
 import { logger } from "../utils/logger";
@@ -37,18 +38,18 @@ export function validate() {
             }
 
             if (ok) {
-                logger.success(skillPath);
+                logger.success(`  ✔  ${skillPath}`);
                 valid++;
             } else {
 
-                logger.error(skillPath);
+                logger.error(`  ✖  ${skillPath}`);
 
                 for (const file of REQUIRED_FILES) {
 
                     const fullPath = path.join(skillPath, file);
 
                     if (!safeExistsSync(fullPath)) {
-                        logger.plain(`   └── Missing: ${file}`);
+                        logger.plain(`       └── Missing: ${file}`);
                     }
                 }
 
@@ -58,9 +59,8 @@ export function validate() {
     }
 
     logger.blank();
-    logger.plain("----------------------------");
-    logger.plain(`Valid   : ${valid}`);
-    logger.plain(`Invalid : ${invalid}`);
-    logger.plain("----------------------------");
+    logger.plain(pc.dim("  ───────────────────────────"));
+    logger.plain(`  ${pc.green(`✔ ${valid} valid`)}  ${invalid > 0 ? pc.red(`✖ ${invalid} invalid`) : pc.green(`✖ ${invalid} invalid`)}`);
+    logger.plain(pc.dim("  ───────────────────────────"));
     logger.blank();
 }
