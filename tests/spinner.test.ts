@@ -30,7 +30,7 @@ describe("withSpinner", () => {
     it("calls start and succeed on success", () => {
         withSpinner("test", () => "ok");
 
-        expect(mockOra).toHaveBeenCalledWith("test");
+        expect(mockOra).toHaveBeenCalledWith({ text: "test", color: "cyan" });
         expect(mockSpinner.start).toHaveBeenCalledOnce();
         expect(mockSpinner.succeed).toHaveBeenCalledOnce();
         expect(mockSpinner.fail).not.toHaveBeenCalled();

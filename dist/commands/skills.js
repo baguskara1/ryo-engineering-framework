@@ -13,28 +13,25 @@ function skills() {
         logger_1.logger.warning("No skills installed.");
         return;
     }
-    const grouped = new Map();
-    for (const skill of all) {
-        const list = grouped.get(skill.category) ?? [];
-        list.push(skill);
-        grouped.set(skill.category, list);
-    }
     logger_1.logger.blank();
     logger_1.logger.info(`Installed Skills (${all.length} total)`);
     logger_1.logger.blank();
-    const sortedCategories = [...grouped.keys()].sort();
-    for (let ci = 0; ci < sortedCategories.length; ci++) {
-        const category = sortedCategories[ci];
-        const items = [...grouped.get(category)].sort((a, b) => a.name.localeCompare(b.name));
-        logger_1.logger.plain(picocolors_1.default.bold(picocolors_1.default.cyan(`${category}/`)));
-        for (let i = 0; i < items.length; i++) {
-            const skill = items[i];
-            const prefix = i === items.length - 1 ? "  └── " : "  ├── ";
-            logger_1.logger.plain(`${prefix}${skill.name}`);
-        }
-        if (ci < sortedCategories.length - 1) {
-            logger_1.logger.blank();
-        }
+    const sorted = [...all].sort((a, b) => {
+        if (a.category !== b.category)
+            return a.category.localeCompare(b.category);
+        return a.name.localeCompare(b.name);
+    });
+    const categoryWidth = Math.max(...sorted.map((s) => s.category.length), 8);
+    const nameWidth = Math.max(...sorted.map((s) => s.name.length), 5);
+    const header = `  ${"Category".padEnd(categoryWidth)}  ${"Skill".padEnd(nameWidth)}`;
+    const sep = `  ${"─".repeat(categoryWidth)}  ${"─".repeat(nameWidth)}`;
+    logger_1.logger.plain(picocolors_1.default.bold(picocolors_1.default.dim(header)));
+    logger_1.logger.plain(picocolors_1.default.dim(sep));
+    let lastCategory = "";
+    for (const skill of sorted) {
+        const cat = skill.category === lastCategory ? "" : skill.category;
+        logger_1.logger.plain(`  ${picocolors_1.default.cyan(cat.padEnd(categoryWidth))}  ${skill.name.padEnd(nameWidth)}`);
+        lastCategory = skill.category;
     }
     logger_1.logger.blank();
 }

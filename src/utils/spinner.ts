@@ -1,7 +1,7 @@
-import ora from "ora";
+import ora, { type Color } from "ora";
 
-export function withSpinner<T>(message: string, fn: () => T): T {
-    const spinner = ora(message).start();
+export function withSpinner<T>(message: string, fn: () => T, color?: Color): T {
+    const spinner = ora({ text: message, color: color ?? "cyan" }).start();
     try {
         const result = fn();
         spinner.succeed();

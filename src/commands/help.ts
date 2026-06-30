@@ -1,12 +1,19 @@
 import pc from "picocolors";
 import { logger } from "../utils/logger";
 
+interface CommandGroup {
+    title: string;
+    color: (s: string) => string;
+    commands: { name: string; desc: string }[];
+}
+
 export function help() {
     logger.blank();
 
-    const groups: { title: string; commands: { name: string; desc: string }[] }[] = [
+    const groups: CommandGroup[] = [
         {
             title: "Discover",
+            color: pc.magenta,
             commands: [
                 { name: "registry", desc: "Browse the official registry" },
                 { name: "search <keyword>", desc: "Search the registry for skills" },
@@ -18,6 +25,7 @@ export function help() {
         },
         {
             title: "Manage",
+            color: pc.yellow,
             commands: [
                 { name: "install <skill>", desc: "Install a skill" },
                 { name: "uninstall <skill>", desc: "Uninstall a skill" },
@@ -30,6 +38,7 @@ export function help() {
         },
         {
             title: "System",
+            color: pc.cyan,
             commands: [
                 { name: "init", desc: "Initialize a new project" },
                 { name: "validate", desc: "Validate skill structure" },
@@ -43,7 +52,7 @@ export function help() {
     ];
 
     for (const group of groups) {
-        logger.plain(pc.bold(pc.cyan(`  ${group.title}`)));
+        logger.plain(pc.bold(group.color(`  ${group.title}`)));
         const maxLen = Math.max(...group.commands.map((c) => c.name.length));
         for (const cmd of group.commands) {
             logger.plain(`    ${cmd.name.padEnd(maxLen + 2)}${cmd.desc}`);

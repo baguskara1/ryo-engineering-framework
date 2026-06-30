@@ -23,8 +23,8 @@ function list() {
     logger_1.logger.info(`Installed skills (${categories.length} ${categories.length === 1 ? "category" : "categories"})`);
     logger_1.logger.blank();
     for (const category of categories) {
-        logger_1.logger.plain(picocolors_1.default.bold(picocolors_1.default.cyan(`${category}/`)));
         const skills = (0, fs_1.safeReadDirSync)(path_1.default.join(skillsDir, category));
+        logger_1.logger.plain(picocolors_1.default.bold(picocolors_1.default.cyan(`${category}/`)));
         for (let i = 0; i < skills.length; i++) {
             const prefix = i === skills.length - 1 ? "  └── " : "  ├── ";
             logger_1.logger.plain(`${prefix}${skills[i]}`);

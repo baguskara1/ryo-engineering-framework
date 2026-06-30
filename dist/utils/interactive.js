@@ -9,10 +9,27 @@ const picocolors_1 = __importDefault(require("picocolors"));
 const commands_1 = require("../commands");
 const logger_1 = require("./logger");
 const banner_1 = require("./banner");
-function startInteractiveMode() {
-    // Switch to alternate screen buffer
+function enterAlternateBuffer() {
     process.stdout.write("\x1b[?1049h");
     process.stdout.write("\x1b[2J\x1b[H");
+}
+function exitAlternateBuffer() {
+    process.stdout.write("\x1b[?1049l");
+}
+function waitForAnyKey() {
+    return new Promise((resolve) => {
+        const rl = readline_1.default.createInterface({
+            input: process.stdin,
+            output: process.stdout,
+        });
+        rl.question(picocolors_1.default.dim("  Press Enter to continue..."), () => {
+            rl.close();
+            resolve();
+        });
+    });
+}
+function startInteractiveMode() {
+    enterAlternateBuffer();
     (0, banner_1.showBanner)();
     logger_1.logger.plain("  Type 'help' for commands, or 'exit' to quit.");
     logger_1.logger.blank();
@@ -32,16 +49,17 @@ function startInteractiveMode() {
             rl.close();
             return;
         }
+        exitAlternateBuffer();
         await executeCommand(input);
         logger_1.logger.blank();
+        await waitForAnyKey();
+        enterAlternateBuffer();
         rl.prompt();
     });
     rl.on("close", () => {
-        // Exit alternate screen buffer
-        process.stdout.write("\x1b[?1049l");
+        exitAlternateBuffer();
         process.exit(0);
     });
-    // Handle Ctrl+C (SIGINT)
     rl.on("SIGINT", () => {
         rl.close();
     });

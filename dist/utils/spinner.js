@@ -5,8 +5,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.withSpinner = withSpinner;
 const ora_1 = __importDefault(require("ora"));
-function withSpinner(message, fn) {
-    const spinner = (0, ora_1.default)(message).start();
+function withSpinner(message, fn, color) {
+    const spinner = (0, ora_1.default)({ text: message, color: color ?? "cyan" }).start();
     try {
         const result = fn();
         spinner.succeed();

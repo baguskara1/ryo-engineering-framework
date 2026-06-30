@@ -57,11 +57,12 @@ describe("registry command", () => {
 
         const messages = spy.mock.calls.map((c) => String(c[0]));
 
-        expect(messages.some((m) => m.includes("frameworks/"))).toBe(true);
-        expect(messages.some((m) => m.includes("workflow/"))).toBe(true);
+        expect(messages.some((m) => m.includes("frameworks"))).toBe(true);
+        expect(messages.some((m) => m.includes("workflow"))).toBe(true);
         expect(messages.some((m) => m.includes("react"))).toBe(true);
         expect(messages.some((m) => m.includes("kubernetes"))).toBe(true);
-        expect(messages.some((m) => m.includes("└──"))).toBe(true);
+        expect(messages.some((m) => m.includes("1.0.0"))).toBe(true);
+        expect(messages.some((m) => m.includes("2.0.0"))).toBe(true);
 
     });
 

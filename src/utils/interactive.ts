@@ -4,10 +4,30 @@ import { commands } from "../commands";
 import { logger } from "./logger";
 import { showBanner } from "./banner";
 
-export function startInteractiveMode() {
-    // Switch to alternate screen buffer
+function enterAlternateBuffer() {
     process.stdout.write("\x1b[?1049h");
     process.stdout.write("\x1b[2J\x1b[H");
+}
+
+function exitAlternateBuffer() {
+    process.stdout.write("\x1b[?1049l");
+}
+
+function waitForAnyKey(): Promise<void> {
+    return new Promise<void>((resolve) => {
+        const rl = readline.createInterface({
+            input: process.stdin,
+            output: process.stdout,
+        });
+        rl.question(pc.dim("  Press Enter to continue..."), () => {
+            rl.close();
+            resolve();
+        });
+    });
+}
+
+export function startInteractiveMode() {
+    enterAlternateBuffer();
 
     showBanner();
     logger.plain("  Type 'help' for commands, or 'exit' to quit.");
@@ -33,18 +53,19 @@ export function startInteractiveMode() {
             return;
         }
 
+        exitAlternateBuffer();
         await executeCommand(input);
         logger.blank();
+        await waitForAnyKey();
+        enterAlternateBuffer();
         rl.prompt();
     });
 
     rl.on("close", () => {
-        // Exit alternate screen buffer
-        process.stdout.write("\x1b[?1049l");
+        exitAlternateBuffer();
         process.exit(0);
     });
 
-    // Handle Ctrl+C (SIGINT)
     rl.on("SIGINT", () => {
         rl.close();
     });
@@ -52,7 +73,7 @@ export function startInteractiveMode() {
 
 async function executeCommand(input: string) {
     const [cmd, ...args] = input.split(" ");
-    
+
     try {
         switch (cmd) {
             case "help":

@@ -10,7 +10,7 @@ const RYO_ART = [
     " _______     ______  ",
     "|  __ \\ \\   / / __ \\ ",
     "| |__) \\ \\_/ / |  | |",
-    "|  _  / \\   /| |  | |",
+    "|  _  / \\   / |  | |",
     "| | \\ \\  | | | |__| |",
     "|_|  \\_\\ |_|  \\____/ ",
 ];
@@ -19,8 +19,8 @@ function showBanner() {
     for (const line of RYO_ART) {
         console.log(picocolors_1.default.magenta(line));
     }
-    console.log();
-    console.log(`  ${picocolors_1.default.bold("Ryo Engineering Framework")} ${picocolors_1.default.dim(`v${(0, packagePath_1.getPackageVersion)()}`)}`);
+    console.log(picocolors_1.default.dim("  ─────────────────────────────────────"));
+    console.log(`  ${picocolors_1.default.bold("Ryo Engineering Framework")} ${picocolors_1.default.magenta(`v${(0, packagePath_1.getPackageVersion)()}`)}`);
     console.log(picocolors_1.default.dim("  Build production-ready software with AI"));
     console.log();
 }

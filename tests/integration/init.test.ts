@@ -28,7 +28,7 @@ describe("CLI Init", () => {
             testProjectDir,
         ]);
 
-        expect(stdout).toContain(`Successfully initialized Ryo Engineering Framework in ${testProjectDir}`);
+        expect(stdout).toContain("Successfully initialized Ryo Engineering Framework");
         expect(fs.existsSync(currentTestDir)).toBe(true);
         expect(fs.existsSync(path.join(currentTestDir, "skills"))).toBe(true);
         expect(fs.existsSync(path.join(currentTestDir, "docs"))).toBe(true);
@@ -53,7 +53,7 @@ describe("CLI Init", () => {
             "init",
         ], { cwd: currentDirTestDir });
 
-        expect(stdout).toContain("Successfully initialized Ryo Engineering Framework in current directory");
+        expect(stdout).toContain("Successfully initialized Ryo Engineering Framework");
         expect(fs.existsSync(path.join(currentDirTestDir, "skills"))).toBe(true);
         expect(fs.existsSync(path.join(currentDirTestDir, "docs"))).toBe(true);
         expect(fs.existsSync(path.join(currentDirTestDir, "README.md"))).toBe(true);

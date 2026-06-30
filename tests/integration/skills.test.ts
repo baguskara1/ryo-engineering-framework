@@ -42,8 +42,8 @@ describe("skills command", () => {
         skills();
 
         const calls = spy.mock.calls.map((c) => String(c[0]));
-        expect(calls.some((m) => m.includes("workflow/"))).toBe(true);
-        expect(calls.some((m) => m.includes("└── kubernetes"))).toBe(true);
+        expect(calls.some((m) => m.includes("workflow"))).toBe(true);
+        expect(calls.some((m) => m.includes("kubernetes"))).toBe(true);
 
     });
 

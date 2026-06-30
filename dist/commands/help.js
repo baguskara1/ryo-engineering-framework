@@ -11,6 +11,7 @@ function help() {
     const groups = [
         {
             title: "Discover",
+            color: picocolors_1.default.magenta,
             commands: [
                 { name: "registry", desc: "Browse the official registry" },
                 { name: "search <keyword>", desc: "Search the registry for skills" },
@@ -22,6 +23,7 @@ function help() {
         },
         {
             title: "Manage",
+            color: picocolors_1.default.yellow,
             commands: [
                 { name: "install <skill>", desc: "Install a skill" },
                 { name: "uninstall <skill>", desc: "Uninstall a skill" },
@@ -34,6 +36,7 @@ function help() {
         },
         {
             title: "System",
+            color: picocolors_1.default.cyan,
             commands: [
                 { name: "init", desc: "Initialize a new project" },
                 { name: "validate", desc: "Validate skill structure" },
@@ -46,7 +49,7 @@ function help() {
         },
     ];
     for (const group of groups) {
-        logger_1.logger.plain(picocolors_1.default.bold(picocolors_1.default.cyan(`  ${group.title}`)));
+        logger_1.logger.plain(picocolors_1.default.bold(group.color(`  ${group.title}`)));
         const maxLen = Math.max(...group.commands.map((c) => c.name.length));
         for (const cmd of group.commands) {
             logger_1.logger.plain(`    ${cmd.name.padEnd(maxLen + 2)}${cmd.desc}`);

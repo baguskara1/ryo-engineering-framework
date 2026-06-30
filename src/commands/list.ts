@@ -5,7 +5,6 @@ import { logger } from "../utils/logger";
 import { safeExistsSync, safeReadDirSync } from "../utils/fs";
 
 export function list(): void {
-
     const skillsDir = path.join("skills");
 
     if (!safeExistsSync(skillsDir)) {
@@ -25,9 +24,8 @@ export function list(): void {
     logger.blank();
 
     for (const category of categories) {
-        logger.plain(pc.bold(pc.cyan(`${category}/`)));
-
         const skills = safeReadDirSync(path.join(skillsDir, category));
+        logger.plain(pc.bold(pc.cyan(`${category}/`)));
 
         for (let i = 0; i < skills.length; i++) {
             const prefix = i === skills.length - 1 ? "  └── " : "  ├── ";

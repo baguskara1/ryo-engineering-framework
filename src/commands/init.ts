@@ -1,5 +1,6 @@
 import fs from "fs-extra";
 import path from "path";
+import pc from "picocolors";
 import { logger } from "../utils/logger";
 import { processTemplates } from "../utils/processTemplates";
 import { isValidName } from "../utils/validators";
@@ -41,6 +42,20 @@ export function init(projectName?: string) {
     }
 
     logger.blank();
-    logger.success(`Successfully initialized Ryo Engineering Framework in ${projectNameLabel}`);
+    logger.success(`Successfully initialized Ryo Engineering Framework`);
+    logger.blank();
+
+    // Summary box
+    const line = pc.dim("  ─────────────────────────────────────");
+    logger.plain(line);
+    logger.plain(`  ${pc.bold("Project")}     ${pc.cyan(projectNameLabel)}`);
+    logger.plain(`  ${pc.bold("Directory")}  ${pc.dim(targetDir)}`);
+    logger.plain(`  ${pc.bold("Structure")}  ${pc.dim("skills/  docs/  templates/  scripts/  specs/")}`);
+    logger.plain(line);
+    logger.plain(`  ${pc.bold("Next steps:")}`);
+    logger.plain(`  ${pc.dim("  1.")} ${pc.cyan("ryo install")} ${pc.dim("<skill>")}   ${pc.dim("Install a skill")}`);
+    logger.plain(`  ${pc.dim("  2.")} ${pc.cyan("ryo doctor")}        ${pc.dim("Check project structure")}`);
+    logger.plain(`  ${pc.dim("  3.")} ${pc.cyan("ryo create")} ${pc.dim("<category> <skill>")}   ${pc.dim("Create your first skill")}`);
+    logger.plain(line);
     logger.blank();
 }
