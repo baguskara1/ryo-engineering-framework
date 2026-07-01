@@ -3,7 +3,7 @@ import pc from "picocolors";
 import { commands } from "../commands";
 import { logger } from "./logger";
 import { showBanner } from "./banner";
-import { checkForUpdate } from "./checkUpdate";
+import { scheduleAsyncCheck, getPendingNotification } from "./checkUpdate";
 import { getPackageVersion } from "./packagePath";
 
 export function startInteractiveMode() {
@@ -11,14 +11,7 @@ export function startInteractiveMode() {
     logger.plain("  Type 'help' for commands, or 'exit' to quit.");
     logger.blank();
 
-    const latest = checkForUpdate();
-    if (latest) {
-        logger.warning(
-            `⚠ Update available: ryo-framework v${latest} (current: v${getPackageVersion()})`
-        );
-        logger.warning(`  Run "upgrade" to update.`);
-        logger.blank();
-    }
+    scheduleAsyncCheck();
 
     const rl = readline.createInterface({
         input: process.stdin,
@@ -29,6 +22,7 @@ export function startInteractiveMode() {
     rl.prompt();
 
     rl.on("line", async (line) => {
+        await maybeShowPendingNotif();
         const input = line.trim();
         if (!input) {
             rl.prompt();
@@ -45,6 +39,8 @@ export function startInteractiveMode() {
         rl.prompt();
     });
 
+    setTimeout(maybeShowPendingNotif, 100);
+
     rl.on("close", () => {
         process.exit(0);
     });
@@ -52,6 +48,17 @@ export function startInteractiveMode() {
     rl.on("SIGINT", () => {
         rl.close();
     });
+}
+
+async function maybeShowPendingNotif() {
+    const latest = getPendingNotification();
+    if (latest) {
+        logger.warning(
+            `⚠ Update available: ryo-framework v${latest} (current: v${getPackageVersion()})`
+        );
+        logger.warning(`  Run "upgrade" to update.`);
+        logger.blank();
+    }
 }
 
 async function executeCommand(input: string) {
@@ -105,10 +112,11 @@ async function executeCommand(input: string) {
                 commands.upgrade();
                 break;
             case "config":
-                commands.config(args[0]);
-                break;
-            case "config-set":
-                commands["config-set"](args[0], args[1]);
+                if (args.length >= 2) {
+                    commands["config-set"](args[0], args[1]);
+                } else {
+                    commands.config(args[0]);
+                }
                 break;
             case "config-delete":
                 commands["config-delete"](args[0]);

@@ -1,6 +1,6 @@
 {
   "name": "ryo-framework",
-  "version": "2.3.7",
+  "version": "2.3.9",
   "description": "Build production-ready software with AI using real engineering principles.",
   "type": "commonjs",
   "main": "dist/index.js",
@@ -17,6 +17,7 @@
     "opencode.json",
     "scripts/",
     "README.md",
+    "CHANGELOG.md",
     "LICENSE",
     "package.json"
   ],

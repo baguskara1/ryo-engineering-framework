@@ -15,12 +15,7 @@ function startInteractiveMode() {
     (0, banner_1.showBanner)();
     logger_1.logger.plain("  Type 'help' for commands, or 'exit' to quit.");
     logger_1.logger.blank();
-    const latest = (0, checkUpdate_1.checkForUpdate)();
-    if (latest) {
-        logger_1.logger.warning(`⚠ Update available: ryo-framework v${latest} (current: v${(0, packagePath_1.getPackageVersion)()})`);
-        logger_1.logger.warning(`  Run "upgrade" to update.`);
-        logger_1.logger.blank();
-    }
+    (0, checkUpdate_1.scheduleAsyncCheck)();
     const rl = readline_1.default.createInterface({
         input: process.stdin,
         output: process.stdout,
@@ -28,6 +23,7 @@ function startInteractiveMode() {
     });
     rl.prompt();
     rl.on("line", async (line) => {
+        await maybeShowPendingNotif();
         const input = line.trim();
         if (!input) {
             rl.prompt();
@@ -41,12 +37,21 @@ function startInteractiveMode() {
         logger_1.logger.blank();
         rl.prompt();
     });
+    setTimeout(maybeShowPendingNotif, 100);
     rl.on("close", () => {
         process.exit(0);
     });
     rl.on("SIGINT", () => {
         rl.close();
     });
+}
+async function maybeShowPendingNotif() {
+    const latest = (0, checkUpdate_1.getPendingNotification)();
+    if (latest) {
+        logger_1.logger.warning(`⚠ Update available: ryo-framework v${latest} (current: v${(0, packagePath_1.getPackageVersion)()})`);
+        logger_1.logger.warning(`  Run "upgrade" to update.`);
+        logger_1.logger.blank();
+    }
 }
 async function executeCommand(input) {
     const [cmd, ...args] = input.split(" ");
@@ -98,10 +103,12 @@ async function executeCommand(input) {
                 commands_1.commands.upgrade();
                 break;
             case "config":
-                commands_1.commands.config(args[0]);
-                break;
-            case "config-set":
-                commands_1.commands["config-set"](args[0], args[1]);
+                if (args.length >= 2) {
+                    commands_1.commands["config-set"](args[0], args[1]);
+                }
+                else {
+                    commands_1.commands.config(args[0]);
+                }
                 break;
             case "config-delete":
                 commands_1.commands["config-delete"](args[0]);

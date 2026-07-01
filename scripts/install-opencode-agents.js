@@ -53,27 +53,33 @@ if (fs.existsSync(sourceConfig)) {
 console.log(`[ryo] Installed ${agentFiles.length} OpenCode agent(s) to ${configDir}`);
 
 // --- Auto-register shell completion ---
-const ryoBin = path.resolve(__dirname, "..", "dist", "index.js");
-const completionScript = `# ryo shell completion
+const shell = (process.env.SHELL || "").toLowerCase();
+const completionBlock = `# ryo shell completion
 if command -v ryo &> /dev/null; then
-  eval "$(ryo completion)"
+  eval "\$(ryo completion 2>/dev/null)" 2>/dev/null || true
 fi
 `;
 
-const shells = [
-  { rc: ".zshrc", marker: "# ryo shell completion" },
-  { rc: ".bashrc", marker: "# ryo shell completion" },
-  { rc: ".bash_profile", marker: "# ryo shell completion" },
-];
+const rcFiles = [];
+if (shell.includes("zsh")) {
+  rcFiles.push(".zshrc");
+} else if (shell.includes("bash")) {
+  rcFiles.push(".bashrc");
+} else if (shell.includes("fish")) {
+  rcFiles.push(".config/fish/config.fish");
+} else {
+  // fallback: try common rc files if they exist
+  rcFiles.push(".zshrc", ".bashrc", ".bash_profile");
+}
 
-for (const { rc, marker } of shells) {
+for (const rc of rcFiles) {
   const rcPath = path.join(home, rc);
   if (!fs.existsSync(rcPath)) continue;
 
   let content = fs.readFileSync(rcPath, "utf8");
-  if (content.includes(marker)) continue;
+  if (content.includes("# ryo shell completion")) continue;
 
-  content += "\n" + completionScript + "\n";
+  content += "\n" + completionBlock + "\n";
   fs.writeFileSync(rcPath, content);
   console.log(`[ryo] Added shell completion to ~/${rc}`);
 }

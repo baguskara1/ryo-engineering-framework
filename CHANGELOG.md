@@ -1,61 +1,43 @@
 # Changelog
 
-## [2.0.2] - 2026-06-29
-
-### Fixed
-
-- Version command no longer uses hardcoded string; reads from `package.json` automatically
-- Banner now shows correct package version instead of hardcoded `v1.0.0`
-- Commander version also reads from `package.json` dynamically
-
-## [2.0.1] - 2026-06-29
-
-### Fixed
-
-- Package now includes all runtime assets (`official-skills/`, `registry/`, `templates/`) in npm publish
-- All asset paths now resolve from package install directory instead of CWD
-- Telemetry now uses separate files for config and events
-
-## [2.0.0] - 2026-06-29
-
+## 2.3.9 — 2026-07-02
 ### Added
-
-- 54 official skill packages across backend, frontend, database, devops, testing, architecture, and AI categories
-- CLI with 19 commands: init, create, install, uninstall, update, list, info, search, run, export, publish, validate, doctor, registry, skills, version, completion, telemetry, help
-- Pink RYO startup banner with version display
-- Interactive spinner for long-running operations
-- Skills caching for faster repeated access
-- 104 unit and integration tests with 87% coverage
-- Comprehensive documentation: FAQ, migration guide, skill development guide
-- GitHub CI workflow, issue templates, and PR template
-- Registry with skill search and discovery
-- Production Readiness Report
-
+- `ryo upgrade` sekarang menampilkan changelog perubahan di versi baru
 ### Changed
+- Deteksi offline sebelum cek update (tidak perlu menunggu saat tidak ada internet)
+- Parse angka di config sekarang menerima desimal dan negatif
 
-- CLI output cleaned: emojis removed, consistent colored formatting via logger utility
-- Help command redesigned with all commands and descriptions
-- Config traversal limited to 20 levels for performance
-- All source code uses strict TypeScript without `any` types
-- Telemetry now uses separate files for config (`telemetry.json`) and events (`telemetry-events.json`)
-- `src/utils/` achieved 100% statement coverage
-- Cleaned 7 unused async exports from `fs.ts`
-- Removed duplicate `isVerbose()` from `config.ts`
-- Removed `.swp`, `eslint`, `uninstall` stray files from repo
-- Removed `scripts/create-skill-v1.sh` legacy duplicate
-- Removed empty directories: `checklists/`, `assets/`, `skills/workflow/`, `playbooks/`
-
+## 2.3.8 — 2026-07-02
 ### Fixed
+- Inkonsistensi perintah config di mode interaktif
+- Startup lambat: pengecekan update sekarang non-blokir (async)
+- `versionGt` sekarang menangani versi pre-release dengan benar
+- Shell completion otomatis terdaftar untuk zsh (via bashcompinit) dan fish
+- Skrip postinstall mendeteksi shell saat ini sebelum menulis file rc
 
-- Console.log in completion command replaced with logger utility
-- Empty LICENSE file detected for cleanup
-- Telemetry `track()` type error when called after `optIn()`
-
-## [1.0.0-alpha.2]
-
+## 2.3.7 — 2026-07-02
 ### Added
+- Notifikasi update otomatis di setiap perintah CLI (cache 24 jam)
+- Perintah `ryo config`: lihat/ubah/hapus konfigurasi pengguna
+- `ryo doctor` ditingkatkan: cek Node.js, npm, internet, file proyek
+- Utilitas loading spinner (`createSpinner`, `withSpinner`)
+### Changed
+- Mode interaktif sekarang scroll alami (tanpa alternate buffer)
+- Notifikasi update juga muncul di mode interaktif
+### Fixed
+- Shell completion otomatis terdaftar saat instalasi global
 
-- Engineering writing guidelines
-- Skill template
-- TypeScript v2
-- Professional README
+## 2.3.6 — 2026-07-02
+### Fixed
+- Skrip postinstall tidak error saat direktori konfigurasi OpenCode tidak ada
+- Logika instalasi agent OpenCode ditingkatkan
+### Changed
+- Proyek diganti nama menjadi `ryo-framework` (npm) / "Ryo Framework" (tampilan)
+
+## 2.3.5 — 2026-07-01
+### Added
+- Instalasi otomatis agent OpenCode via skrip `postinstall`
+- Perintah `ryo opencode-setup` untuk instalasi agent manual
+- File agent baru (architect, backend, refactor, release, reviewer, tester)
+### Fixed
+- Mode agent diubah dari `subagent` ke `all` agar muncul di menu utama

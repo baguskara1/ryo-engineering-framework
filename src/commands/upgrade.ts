@@ -1,7 +1,31 @@
 import { execSync } from "child_process";
+import fs from "fs";
 import { logger } from "../utils/logger";
-import { getPackageVersion } from "../utils/packagePath";
+import { getPackageVersion, resolveAsset } from "../utils/packagePath";
 import { opencodeSetup } from "./opencodeSetup";
+
+function getChangelogForVersion(version: string): string {
+  try {
+    const changelog = fs.readFileSync(resolveAsset("CHANGELOG.md"), "utf8");
+    const lines = changelog.split("\n");
+    const result: string[] = [];
+    let inSection = false;
+    for (const line of lines) {
+      if (line.startsWith(`## ${version}`)) {
+        inSection = true;
+        continue;
+      }
+      if (inSection) {
+        if (line.startsWith("## ")) break;
+        const trimmed = line.trim();
+        if (trimmed) result.push(trimmed);
+      }
+    }
+    return result.join("\n");
+  } catch {
+    return "";
+  }
+}
 
 export function upgrade() {
   logger.info("Checking for updates...");
@@ -41,6 +65,15 @@ export function upgrade() {
     });
     logger.success(`Upgraded to v${latest}!`);
     logger.blank();
+    const changelog = getChangelogForVersion(latest);
+    if (changelog) {
+      logger.info(`Apa yang baru di v${latest}:`);
+      logger.blank();
+      for (const line of changelog.split("\n")) {
+        logger.plain(`  ${line}`);
+      }
+      logger.blank();
+    }
     logger.info("Installing OpenCode agents...");
     opencodeSetup();
   } catch {

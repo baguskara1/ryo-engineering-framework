@@ -55,7 +55,7 @@ export function configGet(key?: string) {
 export function configSet(key: string, value: string) {
   const cfg = load();
   const parsed: string | boolean | number =
-    value === "true" ? true : value === "false" ? false : /^\d+$/.test(value) ? Number(value) : value;
+    value === "true" ? true : value === "false" ? false : /^-?\d+(\.\d+)?$/.test(value) ? Number(value) : value;
 
   cfg[key] = parsed;
   save(cfg);

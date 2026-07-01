@@ -3,7 +3,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.readCache = readCache;
 exports.checkForUpdate = checkForUpdate;
+exports.scheduleAsyncCheck = scheduleAsyncCheck;
+exports.getPendingNotification = getPendingNotification;
 const child_process_1 = require("child_process");
 const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
@@ -29,23 +32,32 @@ function writeCache(data) {
     }
     catch { }
 }
+function parseVersion(s) {
+    return s.split(".").map((p) => parseInt(p, 10) || 0);
+}
 function versionGt(a, b) {
-    const pa = a.split(".").map(Number);
-    const pb = b.split(".").map(Number);
-    for (let i = 0; i < 3; i++) {
-        if ((pa[i] || 0) > (pb[i] || 0))
+    const pa = parseVersion(a);
+    const pb = parseVersion(b);
+    const len = Math.max(pa.length, pb.length);
+    for (let i = 0; i < len; i++) {
+        const na = pa[i] || 0;
+        const nb = pb[i] || 0;
+        if (na > nb)
             return true;
-        if ((pa[i] || 0) < (pb[i] || 0))
+        if (na < nb)
             return false;
     }
     return false;
 }
-function checkForUpdate() {
-    const current = (0, packagePath_1.getPackageVersion)();
+function checkFromCache() {
     const cached = readCache();
-    if (cached && Date.now() - cached.checkedAt < CACHE_DURATION) {
-        return versionGt(cached.latest, current) ? cached.latest : null;
-    }
+    if (!cached)
+        return null;
+    if (Date.now() - cached.checkedAt >= CACHE_DURATION)
+        return null;
+    return versionGt(cached.latest, (0, packagePath_1.getPackageVersion)()) ? cached.latest : null;
+}
+function fetchLatest() {
     if ((0, offline_1.isOffline)())
         return null;
     try {
@@ -56,10 +68,27 @@ function checkForUpdate() {
             .toString()
             .trim();
         writeCache({ latest, checkedAt: Date.now() });
-        return versionGt(latest, current) ? latest : null;
+        return versionGt(latest, (0, packagePath_1.getPackageVersion)()) ? latest : null;
     }
     catch {
         return null;
     }
+}
+function checkForUpdate() {
+    return checkFromCache() ?? fetchLatest();
+}
+let _pendingNotif = null;
+function scheduleAsyncCheck() {
+    const fromCache = checkFromCache();
+    if (fromCache) {
+        _pendingNotif = fromCache;
+        return;
+    }
+    setTimeout(() => {
+        _pendingNotif = fetchLatest();
+    }, 500);
+}
+function getPendingNotification() {
+    return _pendingNotif;
 }
 //# sourceMappingURL=checkUpdate.js.map

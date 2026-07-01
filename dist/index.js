@@ -175,12 +175,15 @@ program
 program.hook("postAction", (thisCommand) => {
     if (thisCommand.name() === "upgrade")
         return;
-    const latest = (0, checkUpdate_1.checkForUpdate)();
-    if (latest) {
-        logger_1.logger.blank();
-        logger_1.logger.warning(`⚠ Update available: ryo-framework v${latest} (current: v${(0, packagePath_1.getPackageVersion)()})`);
-        logger_1.logger.warning(`  Run "ryo upgrade" to update.`);
-    }
+    (0, checkUpdate_1.scheduleAsyncCheck)();
+    setTimeout(() => {
+        const latest = (0, checkUpdate_1.getPendingNotification)();
+        if (latest) {
+            logger_1.logger.blank();
+            logger_1.logger.warning(`⚠ Update available: ryo-framework v${latest} (current: v${(0, packagePath_1.getPackageVersion)()})`);
+            logger_1.logger.warning(`  Run "ryo upgrade" to update.`);
+        }
+    }, 700);
 });
 program.parse(process.argv);
 //# sourceMappingURL=index.js.map

@@ -50,7 +50,7 @@ function configGet(key) {
 }
 function configSet(key, value) {
     const cfg = load();
-    const parsed = value === "true" ? true : value === "false" ? false : /^\d+$/.test(value) ? Number(value) : value;
+    const parsed = value === "true" ? true : value === "false" ? false : /^-?\d+(\.\d+)?$/.test(value) ? Number(value) : value;
     cfg[key] = parsed;
     save(cfg);
     logger_1.logger.success(`Set ${key} = ${parsed}`);
