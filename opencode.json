@@ -3,7 +3,7 @@
   "agent": {
     "architect": {
       "description": "System architect for high-level design and architectural planning",
-      "mode": "subagent",
+      "mode": "all",
       "permission": {
         "edit": "deny",
         "bash": "deny"
@@ -12,7 +12,7 @@
     },
     "backend": {
       "description": "Senior backend developer for API, core logic, and database work",
-      "mode": "subagent",
+      "mode": "all",
       "permission": {
         "edit": "allow",
         "bash": "allow"
@@ -21,7 +21,7 @@
     },
     "refactor": {
       "description": "Refactoring specialist to improve code quality and reduce technical debt",
-      "mode": "subagent",
+      "mode": "all",
       "permission": {
         "edit": "allow",
         "bash": "allow"
@@ -30,7 +30,7 @@
     },
     "release": {
       "description": "Release manager to handle versioning, changelogs, builds, and publishing",
-      "mode": "subagent",
+      "mode": "all",
       "permission": {
         "edit": "allow",
         "bash": "allow"
@@ -39,7 +39,7 @@
     },
     "reviewer": {
       "description": "Code reviewer for security, performance, and best practices analysis",
-      "mode": "subagent",
+      "mode": "all",
       "permission": {
         "edit": "deny",
         "bash": {
@@ -52,7 +52,7 @@
     },
     "tester": {
       "description": "QA engineer and tester to write, run, and maintain tests",
-      "mode": "subagent",
+      "mode": "all",
       "permission": {
         "edit": "allow",
         "bash": "allow"

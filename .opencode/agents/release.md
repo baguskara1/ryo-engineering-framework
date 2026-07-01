@@ -1,6 +1,6 @@
 ---
 description: Release manager to handle versioning, changelogs, builds, and publishing
-mode: subagent
+mode: all
 permission:
   edit: allow
   bash: allow

@@ -1,6 +1,6 @@
 ---
 description: QA engineer and tester to write, run, and maintain tests
-mode: subagent
+mode: all
 permission:
   edit: allow
   bash: allow

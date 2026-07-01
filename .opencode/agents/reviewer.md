@@ -1,6 +1,6 @@
 ---
 description: Code reviewer for security, performance, and best practices analysis
-mode: subagent
+mode: all
 permission:
   edit: deny
   bash:

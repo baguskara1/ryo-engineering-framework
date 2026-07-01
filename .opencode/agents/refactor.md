@@ -1,6 +1,6 @@
 ---
 description: Refactoring specialist to improve code quality and reduce technical debt
-mode: subagent
+mode: all
 permission:
   edit: allow
   bash: allow

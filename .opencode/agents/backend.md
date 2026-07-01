@@ -1,6 +1,6 @@
 ---
 description: Senior backend developer for API, core logic, and database work
-mode: subagent
+mode: all
 permission:
   edit: allow
   bash: allow

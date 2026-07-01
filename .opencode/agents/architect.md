@@ -1,6 +1,6 @@
 ---
 description: System architect for high-level design and architectural planning
-mode: subagent
+mode: all
 permission:
   edit: deny
   bash: deny
