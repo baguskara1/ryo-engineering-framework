@@ -22,7 +22,6 @@
   },
   "scripts": {
     "build": "tsc",
-    "build:binary": "bash scripts/build-binary.sh",
     "test": "vitest --run --maxWorkers=1",
     "coverage": "vitest run --coverage",
     "lint": "eslint .",
