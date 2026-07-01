@@ -4,6 +4,7 @@ exports.upgrade = upgrade;
 const child_process_1 = require("child_process");
 const logger_1 = require("../utils/logger");
 const packagePath_1 = require("../utils/packagePath");
+const opencodeSetup_1 = require("./opencodeSetup");
 function upgrade() {
     logger_1.logger.info("Checking for updates...");
     const current = (0, packagePath_1.getPackageVersion)();
@@ -22,6 +23,9 @@ function upgrade() {
     }
     if (current === latest) {
         logger_1.logger.success(`Already up to date (v${current})`);
+        logger_1.logger.blank();
+        logger_1.logger.info("Installing OpenCode agents for current version...");
+        (0, opencodeSetup_1.opencodeSetup)();
         return;
     }
     logger_1.logger.info(`Current: v${current}`);
@@ -34,6 +38,9 @@ function upgrade() {
             timeout: 120000,
         });
         logger_1.logger.success(`Upgraded to v${latest}!`);
+        logger_1.logger.blank();
+        logger_1.logger.info("Installing OpenCode agents...");
+        (0, opencodeSetup_1.opencodeSetup)();
     }
     catch {
         logger_1.logger.error("Upgrade failed. Try manually: npm install -g ryo-engineering-framework@latest");
