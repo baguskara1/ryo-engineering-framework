@@ -3,6 +3,7 @@ import fs from "fs";
 import path from "path";
 import os from "os";
 import { getPackageVersion } from "./packagePath";
+import { isOffline } from "./offline";
 
 const CACHE_FILE = path.join(os.homedir(), ".ryo", "update-check.json");
 const CACHE_DURATION = 1000 * 60 * 60 * 24;
@@ -29,25 +30,37 @@ function writeCache(data: CacheData): void {
   } catch {}
 }
 
+function versionGt(a: string, b: string): boolean {
+  const pa = a.split(".").map(Number);
+  const pb = b.split(".").map(Number);
+  for (let i = 0; i < 3; i++) {
+    if ((pa[i] || 0) > (pb[i] || 0)) return true;
+    if ((pa[i] || 0) < (pb[i] || 0)) return false;
+  }
+  return false;
+}
+
 export function checkForUpdate(): string | null {
   const current = getPackageVersion();
   const cached = readCache();
 
   if (cached && Date.now() - cached.checkedAt < CACHE_DURATION) {
-    return cached.latest !== current ? cached.latest : null;
+    return versionGt(cached.latest, current) ? cached.latest : null;
   }
+
+  if (isOffline()) return null;
 
   try {
     const latest = execSync("npm view ryo-framework version", {
       encoding: "utf-8",
-      timeout: 5000,
+      timeout: 10000,
     })
       .toString()
       .trim();
 
     writeCache({ latest, checkedAt: Date.now() });
 
-    return latest !== current ? latest : null;
+    return versionGt(latest, current) ? latest : null;
   } catch {
     return null;
   }

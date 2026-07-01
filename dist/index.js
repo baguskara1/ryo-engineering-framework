@@ -108,6 +108,23 @@ program
     .description("Show skill content in terminal")
     .action((skill) => commands_1.commands.run(skill));
 program
+    .command("config")
+    .description("Manage user configuration (get/set/delete)")
+    .argument("[key]", "Config key")
+    .argument("[value]", "Config value (omit to get, provide to set, --delete to remove)")
+    .option("--delete", "Delete a config key")
+    .action((key, value, opts) => {
+    if (opts.delete) {
+        commands_1.commands["config-delete"](key);
+    }
+    else if (key && value !== undefined) {
+        commands_1.commands["config-set"](key, value);
+    }
+    else {
+        commands_1.commands.config(key);
+    }
+});
+program
     .command("completion")
     .description("Generate shell completion script")
     .action(() => {

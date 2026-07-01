@@ -17,6 +17,7 @@ import { list } from "./list";
 import { init } from "./init";
 import { upgrade } from "./upgrade";
 import { opencodeSetup } from "./opencodeSetup";
+import { configGet, configSet, configDelete } from "./config";
 export declare const commands: {
     version: typeof version;
     help: typeof help;
@@ -37,5 +38,8 @@ export declare const commands: {
     list: typeof list;
     init: typeof init;
     "opencode-setup": typeof opencodeSetup;
+    config: typeof configGet;
+    "config-set": typeof configSet;
+    "config-delete": typeof configDelete;
 };
 //# sourceMappingURL=index.d.ts.map

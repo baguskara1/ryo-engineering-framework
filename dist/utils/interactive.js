@@ -9,30 +9,18 @@ const picocolors_1 = __importDefault(require("picocolors"));
 const commands_1 = require("../commands");
 const logger_1 = require("./logger");
 const banner_1 = require("./banner");
-function enterAlternateBuffer() {
-    process.stdout.write("\x1b[?1049h");
-    process.stdout.write("\x1b[2J\x1b[H");
-}
-function exitAlternateBuffer() {
-    process.stdout.write("\x1b[?1049l");
-}
-function waitForAnyKey() {
-    return new Promise((resolve) => {
-        const rl = readline_1.default.createInterface({
-            input: process.stdin,
-            output: process.stdout,
-        });
-        rl.question(picocolors_1.default.dim("  Press Enter to continue..."), () => {
-            rl.close();
-            resolve();
-        });
-    });
-}
+const checkUpdate_1 = require("./checkUpdate");
+const packagePath_1 = require("./packagePath");
 function startInteractiveMode() {
-    enterAlternateBuffer();
     (0, banner_1.showBanner)();
     logger_1.logger.plain("  Type 'help' for commands, or 'exit' to quit.");
     logger_1.logger.blank();
+    const latest = (0, checkUpdate_1.checkForUpdate)();
+    if (latest) {
+        logger_1.logger.warning(`⚠ Update available: ryo-framework v${latest} (current: v${(0, packagePath_1.getPackageVersion)()})`);
+        logger_1.logger.warning(`  Run "upgrade" to update.`);
+        logger_1.logger.blank();
+    }
     const rl = readline_1.default.createInterface({
         input: process.stdin,
         output: process.stdout,
@@ -49,15 +37,11 @@ function startInteractiveMode() {
             rl.close();
             return;
         }
-        exitAlternateBuffer();
         await executeCommand(input);
         logger_1.logger.blank();
-        await waitForAnyKey();
-        enterAlternateBuffer();
         rl.prompt();
     });
     rl.on("close", () => {
-        exitAlternateBuffer();
         process.exit(0);
     });
     rl.on("SIGINT", () => {
@@ -112,6 +96,15 @@ async function executeCommand(input) {
                 break;
             case "upgrade":
                 commands_1.commands.upgrade();
+                break;
+            case "config":
+                commands_1.commands.config(args[0]);
+                break;
+            case "config-set":
+                commands_1.commands["config-set"](args[0], args[1]);
+                break;
+            case "config-delete":
+                commands_1.commands["config-delete"](args[0]);
                 break;
             case "publish":
                 commands_1.commands.publish(args[0]);

@@ -51,3 +51,29 @@ if (fs.existsSync(sourceConfig)) {
 }
 
 console.log(`[ryo] Installed ${agentFiles.length} OpenCode agent(s) to ${configDir}`);
+
+// --- Auto-register shell completion ---
+const ryoBin = path.resolve(__dirname, "..", "dist", "index.js");
+const completionScript = `# ryo shell completion
+if command -v ryo &> /dev/null; then
+  eval "$(ryo completion)"
+fi
+`;
+
+const shells = [
+  { rc: ".zshrc", marker: "# ryo shell completion" },
+  { rc: ".bashrc", marker: "# ryo shell completion" },
+  { rc: ".bash_profile", marker: "# ryo shell completion" },
+];
+
+for (const { rc, marker } of shells) {
+  const rcPath = path.join(home, rc);
+  if (!fs.existsSync(rcPath)) continue;
+
+  let content = fs.readFileSync(rcPath, "utf8");
+  if (content.includes(marker)) continue;
+
+  content += "\n" + completionScript + "\n";
+  fs.writeFileSync(rcPath, content);
+  console.log(`[ryo] Added shell completion to ~/${rc}`);
+}

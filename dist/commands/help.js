@@ -43,6 +43,7 @@ function help() {
                 { name: "doctor", desc: "Check project health" },
                 { name: "version", desc: "Show version information" },
                 { name: "completion", desc: "Generate shell completion script" },
+                { name: "config", desc: "Get/set user configuration" },
                 { name: "telemetry", desc: "Manage anonymous usage telemetry" },
                 { name: "help", desc: "Show this help message" },
             ],

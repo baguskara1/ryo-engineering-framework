@@ -3,35 +3,22 @@ import pc from "picocolors";
 import { commands } from "../commands";
 import { logger } from "./logger";
 import { showBanner } from "./banner";
-
-function enterAlternateBuffer() {
-    process.stdout.write("\x1b[?1049h");
-    process.stdout.write("\x1b[2J\x1b[H");
-}
-
-function exitAlternateBuffer() {
-    process.stdout.write("\x1b[?1049l");
-}
-
-function waitForAnyKey(): Promise<void> {
-    return new Promise<void>((resolve) => {
-        const rl = readline.createInterface({
-            input: process.stdin,
-            output: process.stdout,
-        });
-        rl.question(pc.dim("  Press Enter to continue..."), () => {
-            rl.close();
-            resolve();
-        });
-    });
-}
+import { checkForUpdate } from "./checkUpdate";
+import { getPackageVersion } from "./packagePath";
 
 export function startInteractiveMode() {
-    enterAlternateBuffer();
-
     showBanner();
     logger.plain("  Type 'help' for commands, or 'exit' to quit.");
     logger.blank();
+
+    const latest = checkForUpdate();
+    if (latest) {
+        logger.warning(
+            `⚠ Update available: ryo-framework v${latest} (current: v${getPackageVersion()})`
+        );
+        logger.warning(`  Run "upgrade" to update.`);
+        logger.blank();
+    }
 
     const rl = readline.createInterface({
         input: process.stdin,
@@ -53,16 +40,12 @@ export function startInteractiveMode() {
             return;
         }
 
-        exitAlternateBuffer();
         await executeCommand(input);
         logger.blank();
-        await waitForAnyKey();
-        enterAlternateBuffer();
         rl.prompt();
     });
 
     rl.on("close", () => {
-        exitAlternateBuffer();
         process.exit(0);
     });
 
@@ -121,12 +104,21 @@ async function executeCommand(input: string) {
             case "upgrade":
                 commands.upgrade();
                 break;
+            case "config":
+                commands.config(args[0]);
+                break;
+            case "config-set":
+                commands["config-set"](args[0], args[1]);
+                break;
+            case "config-delete":
+                commands["config-delete"](args[0]);
+                break;
             case "publish":
                 commands.publish(args[0]);
                 break;
             case "export":
-        // @ts-expect-error
-        commands.export(args[0], args[1]);
+                // @ts-expect-error
+                commands.export(args[0], args[1]);
                 break;
             case "run":
                 commands.run(args[0]);

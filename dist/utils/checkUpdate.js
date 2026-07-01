@@ -9,6 +9,7 @@ const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
 const os_1 = __importDefault(require("os"));
 const packagePath_1 = require("./packagePath");
+const offline_1 = require("./offline");
 const CACHE_FILE = path_1.default.join(os_1.default.homedir(), ".ryo", "update-check.json");
 const CACHE_DURATION = 1000 * 60 * 60 * 24;
 function readCache() {
@@ -28,21 +29,34 @@ function writeCache(data) {
     }
     catch { }
 }
+function versionGt(a, b) {
+    const pa = a.split(".").map(Number);
+    const pb = b.split(".").map(Number);
+    for (let i = 0; i < 3; i++) {
+        if ((pa[i] || 0) > (pb[i] || 0))
+            return true;
+        if ((pa[i] || 0) < (pb[i] || 0))
+            return false;
+    }
+    return false;
+}
 function checkForUpdate() {
     const current = (0, packagePath_1.getPackageVersion)();
     const cached = readCache();
     if (cached && Date.now() - cached.checkedAt < CACHE_DURATION) {
-        return cached.latest !== current ? cached.latest : null;
+        return versionGt(cached.latest, current) ? cached.latest : null;
     }
+    if ((0, offline_1.isOffline)())
+        return null;
     try {
         const latest = (0, child_process_1.execSync)("npm view ryo-framework version", {
             encoding: "utf-8",
-            timeout: 5000,
+            timeout: 10000,
         })
             .toString()
             .trim();
         writeCache({ latest, checkedAt: Date.now() });
-        return latest !== current ? latest : null;
+        return versionGt(latest, current) ? latest : null;
     }
     catch {
         return null;

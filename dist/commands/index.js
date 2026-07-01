@@ -20,6 +20,7 @@ const list_1 = require("./list");
 const init_1 = require("./init");
 const upgrade_1 = require("./upgrade");
 const opencodeSetup_1 = require("./opencodeSetup");
+const config_1 = require("./config");
 exports.commands = {
     version: version_1.version,
     help: help_1.help,
@@ -40,5 +41,8 @@ exports.commands = {
     list: list_1.list,
     init: init_1.init,
     "opencode-setup": opencodeSetup_1.opencodeSetup,
+    config: config_1.configGet,
+    "config-set": config_1.configSet,
+    "config-delete": config_1.configDelete,
 };
 //# sourceMappingURL=index.js.map
