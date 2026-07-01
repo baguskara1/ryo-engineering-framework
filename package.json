@@ -1,6 +1,6 @@
 {
   "name": "ryo-engineering-framework",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "description": "Build production-ready software with AI using real engineering principles.",
   "type": "commonjs",
   "main": "dist/index.js",
