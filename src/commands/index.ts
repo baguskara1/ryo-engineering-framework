@@ -16,6 +16,7 @@ import { update } from "./update";
 import { list } from "./list";
 import { init } from "./init";
 import { upgrade } from "./upgrade";
+import { opencodeSetup } from "./opencodeSetup";
 
 export const commands = {
     version,
@@ -36,4 +37,5 @@ export const commands = {
     upgrade,
     list,
     init,
+    "opencode-setup": opencodeSetup,
 };

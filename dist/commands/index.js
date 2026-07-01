@@ -19,6 +19,7 @@ const update_1 = require("./update");
 const list_1 = require("./list");
 const init_1 = require("./init");
 const upgrade_1 = require("./upgrade");
+const opencodeSetup_1 = require("./opencodeSetup");
 exports.commands = {
     version: version_1.version,
     help: help_1.help,
@@ -38,5 +39,6 @@ exports.commands = {
     upgrade: upgrade_1.upgrade,
     list: list_1.list,
     init: init_1.init,
+    "opencode-setup": opencodeSetup_1.opencodeSetup,
 };
 //# sourceMappingURL=index.js.map

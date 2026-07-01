@@ -116,6 +116,11 @@ program
     .action((skill, opts) => commands.export(skill, opts.format));
 
 program
+    .command("opencode-setup")
+    .description("Install custom OpenCode agents to global config")
+    .action(() => commands["opencode-setup"]());
+
+program
     .command("run <skill>")
     .description("Show skill content in terminal")
     .action((skill) => commands.run(skill));

@@ -1,6 +1,6 @@
 {
   "name": "ryo-engineering-framework",
-  "version": "2.3.1",
+  "version": "2.3.2",
   "description": "Build production-ready software with AI using real engineering principles.",
   "type": "commonjs",
   "main": "dist/index.js",
@@ -13,6 +13,9 @@
     "official-skills/",
     "registry/",
     "templates/",
+    ".opencode/",
+    "opencode.json",
+    "scripts/",
     "README.md",
     "LICENSE",
     "package.json"
@@ -25,7 +28,8 @@
     "test": "vitest --run --maxWorkers=1",
     "coverage": "vitest run --coverage",
     "lint": "eslint .",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "postinstall": "node scripts/install-opencode-agents.js"
   },
   "repository": {
     "type": "git",

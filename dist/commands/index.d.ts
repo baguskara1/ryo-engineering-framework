@@ -16,6 +16,7 @@ import { update } from "./update";
 import { list } from "./list";
 import { init } from "./init";
 import { upgrade } from "./upgrade";
+import { opencodeSetup } from "./opencodeSetup";
 export declare const commands: {
     version: typeof version;
     help: typeof help;
@@ -35,5 +36,6 @@ export declare const commands: {
     upgrade: typeof upgrade;
     list: typeof list;
     init: typeof init;
+    "opencode-setup": typeof opencodeSetup;
 };
 //# sourceMappingURL=index.d.ts.map

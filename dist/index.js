@@ -99,6 +99,10 @@ program
     .option("-f, --format <type>", "Output format: md, json, yaml (default: md)")
     .action((skill, opts) => commands_1.commands.export(skill, opts.format));
 program
+    .command("opencode-setup")
+    .description("Install custom OpenCode agents to global config")
+    .action(() => commands_1.commands["opencode-setup"]());
+program
     .command("run <skill>")
     .description("Show skill content in terminal")
     .action((skill) => commands_1.commands.run(skill));
