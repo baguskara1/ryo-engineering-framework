@@ -11,6 +11,7 @@ import { commands } from "./commands";
 import { loadConfig } from "./utils/config";
 import { optIn, optOut } from "./utils/telemetry";
 import { getPackageVersion } from "./utils/packagePath";
+import { checkForUpdate } from "./utils/checkUpdate";
 
 // Check for --verbose flag in raw argv before commander parses
 const config = loadConfig();
@@ -178,5 +179,17 @@ program
     .action(() => {
         startInteractiveMode();
     });
+
+program.hook("postAction", (thisCommand) => {
+  if (thisCommand.name() === "upgrade") return;
+  const latest = checkForUpdate();
+  if (latest) {
+    logger.blank();
+    logger.warning(
+      `⚠ Update available: ryo-framework v${latest} (current: v${getPackageVersion()})`
+    );
+    logger.warning(`  Run "ryo upgrade" to update.`);
+  }
+});
 
 program.parse(process.argv);

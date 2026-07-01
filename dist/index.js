@@ -15,6 +15,7 @@ const commands_1 = require("./commands");
 const config_1 = require("./utils/config");
 const telemetry_1 = require("./utils/telemetry");
 const packagePath_1 = require("./utils/packagePath");
+const checkUpdate_1 = require("./utils/checkUpdate");
 // Check for --verbose flag in raw argv before commander parses
 const config = (0, config_1.loadConfig)();
 const hasVerboseFlag = process.argv.includes("--verbose");
@@ -153,6 +154,16 @@ program
 program
     .action(() => {
     (0, interactive_1.startInteractiveMode)();
+});
+program.hook("postAction", (thisCommand) => {
+    if (thisCommand.name() === "upgrade")
+        return;
+    const latest = (0, checkUpdate_1.checkForUpdate)();
+    if (latest) {
+        logger_1.logger.blank();
+        logger_1.logger.warning(`⚠ Update available: ryo-framework v${latest} (current: v${(0, packagePath_1.getPackageVersion)()})`);
+        logger_1.logger.warning(`  Run "ryo upgrade" to update.`);
+    }
 });
 program.parse(process.argv);
 //# sourceMappingURL=index.js.map
