@@ -1,6 +1,6 @@
 # Generate Prompt
 
-Generate cypress code following the Ryo Engineering Framework.
+Generate cypress code following the Ryo Framework.
 
 ## Requirements
 

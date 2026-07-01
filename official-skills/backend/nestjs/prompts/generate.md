@@ -1,6 +1,6 @@
 # Generate Prompt
 
-Generate nestjs code following the Ryo Engineering Framework.
+Generate nestjs code following the Ryo Framework.
 
 ## Requirements
 

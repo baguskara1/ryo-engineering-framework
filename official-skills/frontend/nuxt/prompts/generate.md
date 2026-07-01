@@ -1,6 +1,6 @@
 # Generate Prompt
 
-Generate nuxt code following the Ryo Engineering Framework.
+Generate nuxt code following the Ryo Framework.
 
 ## Requirements
 

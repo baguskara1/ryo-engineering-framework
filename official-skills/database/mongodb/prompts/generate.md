@@ -1,6 +1,6 @@
 # Generate Prompt
 
-Generate mongodb code following the Ryo Engineering Framework.
+Generate mongodb code following the Ryo Framework.
 
 ## Requirements
 

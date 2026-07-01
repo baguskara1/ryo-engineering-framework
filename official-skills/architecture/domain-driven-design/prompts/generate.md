@@ -1,6 +1,6 @@
 # Generate Prompt
 
-Generate domain-driven-design code following the Ryo Engineering Framework.
+Generate domain-driven-design code following the Ryo Framework.
 
 ## Requirements
 

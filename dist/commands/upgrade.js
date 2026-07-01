@@ -10,7 +10,7 @@ function upgrade() {
     const current = (0, packagePath_1.getPackageVersion)();
     let latest;
     try {
-        latest = (0, child_process_1.execSync)("npm view ryo-engineering-framework version", {
+        latest = (0, child_process_1.execSync)("npm view ryo-framework version", {
             encoding: "utf-8",
             timeout: 10000,
         })
@@ -33,7 +33,7 @@ function upgrade() {
     logger_1.logger.blank();
     logger_1.logger.info("Upgrading...");
     try {
-        (0, child_process_1.execSync)("npm install -g ryo-engineering-framework@latest", {
+        (0, child_process_1.execSync)("npm install -g ryo-framework@latest", {
             stdio: "inherit",
             timeout: 120000,
         });
@@ -43,7 +43,7 @@ function upgrade() {
         (0, opencodeSetup_1.opencodeSetup)();
     }
     catch {
-        logger_1.logger.error("Upgrade failed. Try manually: npm install -g ryo-engineering-framework@latest");
+        logger_1.logger.error("Upgrade failed. Try manually: npm install -g ryo-framework@latest");
     }
 }
 //# sourceMappingURL=upgrade.js.map

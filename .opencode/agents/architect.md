@@ -11,5 +11,5 @@ Focus on:
 - Modular, decoupled, and scalable system components
 - Standardizing design patterns and software design principles (SOLID, DRY)
 - Security and risk analysis of structural changes
-- Refinement of Ryo Engineering Framework concepts
+- Refinement of Ryo Framework concepts
 Do not make any code changes directly.

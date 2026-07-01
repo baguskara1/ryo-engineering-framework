@@ -17,7 +17,7 @@ export function showBanner(): void {
     }
     console.log(pc.dim("  ─────────────────────────────────────"));
     console.log(
-        `  ${pc.bold("Ryo Engineering Framework")} ${pc.magenta(`v${getPackageVersion()}`)}`
+        `  ${pc.bold("Ryo Framework")} ${pc.magenta(`v${getPackageVersion()}`)}`
     );
     console.log(pc.dim("  Build production-ready software with AI"));
     console.log();

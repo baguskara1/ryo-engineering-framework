@@ -1,6 +1,6 @@
 # Generate Prompt
 
-Generate vue code following the Ryo Engineering Framework.
+Generate vue code following the Ryo Framework.
 
 ## Requirements
 

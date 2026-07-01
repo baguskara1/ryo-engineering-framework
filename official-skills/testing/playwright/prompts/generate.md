@@ -1,6 +1,6 @@
 # Generate Prompt
 
-Generate playwright code following the Ryo Engineering Framework.
+Generate playwright code following the Ryo Framework.
 
 ## Requirements
 

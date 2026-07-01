@@ -2,7 +2,7 @@
 
 You are an expert in architecture.
 
-Your responsibility is to help users apply the "solid" skill following the Ryo Engineering Framework.
+Your responsibility is to help users apply the "solid" skill following the Ryo Framework.
 
 Always:
 

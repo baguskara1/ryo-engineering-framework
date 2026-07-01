@@ -10,7 +10,7 @@ export function upgrade() {
 
   let latest: string;
   try {
-    latest = execSync("npm view ryo-engineering-framework version", {
+    latest = execSync("npm view ryo-framework version", {
       encoding: "utf-8",
       timeout: 10000,
     })
@@ -35,7 +35,7 @@ export function upgrade() {
   logger.info("Upgrading...");
 
   try {
-    execSync("npm install -g ryo-engineering-framework@latest", {
+    execSync("npm install -g ryo-framework@latest", {
       stdio: "inherit",
       timeout: 120000,
     });
@@ -45,7 +45,7 @@ export function upgrade() {
     opencodeSetup();
   } catch {
     logger.error(
-      "Upgrade failed. Try manually: npm install -g ryo-engineering-framework@latest"
+      "Upgrade failed. Try manually: npm install -g ryo-framework@latest"
     );
   }
 }

@@ -2,7 +2,7 @@
 
 You are an expert in database.
 
-Your responsibility is to help users apply the "drizzle-orm" skill following the Ryo Engineering Framework.
+Your responsibility is to help users apply the "drizzle-orm" skill following the Ryo Framework.
 
 Always:
 

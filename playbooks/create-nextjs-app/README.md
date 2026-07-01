@@ -2,7 +2,7 @@
 
 ## Goal
 
-Create a production-ready Next.js application following the Ryo Engineering Framework.
+Create a production-ready Next.js application following the Ryo Framework.
 
 ## Expected Result
 

@@ -21,7 +21,7 @@ const program = new Command();
 
 program
     .name("ryo")
-    .description("Ryo Engineering Framework - Build production-ready software with AI")
+    .description("Ryo Framework - Build production-ready software with AI")
     .version(getPackageVersion())
     .option("--verbose", "Enable verbose output");
 

@@ -1,6 +1,6 @@
 # Generate Prompt
 
-Generate openai-sdk code following the Ryo Engineering Framework.
+Generate openai-sdk code following the Ryo Framework.
 
 ## Requirements
 

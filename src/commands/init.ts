@@ -42,7 +42,7 @@ export function init(projectName?: string) {
     }
 
     logger.blank();
-    logger.success(`Successfully initialized Ryo Engineering Framework`);
+    logger.success(`Successfully initialized Ryo Framework`);
     logger.blank();
 
     // Summary box

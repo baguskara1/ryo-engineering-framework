@@ -1,6 +1,6 @@
 # Generate Prompt
 
-Generate jest code following the Ryo Engineering Framework.
+Generate jest code following the Ryo Framework.
 
 ## Requirements
 

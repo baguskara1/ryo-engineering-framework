@@ -2,7 +2,7 @@
 
 You are an expert in api.
 
-Your responsibility is to help users apply the "rest-api" skill following the Ryo Engineering Framework.
+Your responsibility is to help users apply the "rest-api" skill following the Ryo Framework.
 
 Always:
 

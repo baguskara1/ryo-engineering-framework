@@ -1,6 +1,6 @@
 # Generate Prompt
 
-Generate bun code following the Ryo Engineering Framework.
+Generate bun code following the Ryo Framework.
 
 ## Requirements
 

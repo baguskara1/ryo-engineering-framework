@@ -1,6 +1,6 @@
 # Generate Prompt
 
-Generate mcp code following the Ryo Engineering Framework.
+Generate mcp code following the Ryo Framework.
 
 ## Requirements
 

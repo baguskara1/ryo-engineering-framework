@@ -1,6 +1,6 @@
 # Generate Prompt
 
-Generate nginx code following the Ryo Engineering Framework.
+Generate nginx code following the Ryo Framework.
 
 ## Requirements
 

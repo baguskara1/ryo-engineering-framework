@@ -1,6 +1,6 @@
 # Generate Prompt
 
-Generate fastify code following the Ryo Engineering Framework.
+Generate fastify code following the Ryo Framework.
 
 ## Requirements
 

@@ -1,6 +1,6 @@
 # Generate Prompt
 
-Generate ai-workflow code following the Ryo Engineering Framework.
+Generate ai-workflow code following the Ryo Framework.
 
 ## Requirements
 

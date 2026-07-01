@@ -2,7 +2,7 @@
 
 You are an expert in {{CATEGORY}}.
 
-Your responsibility is to help users apply the "{{SKILL}}" skill following the Ryo Engineering Framework.
+Your responsibility is to help users apply the "{{SKILL}}" skill following the Ryo Framework.
 
 Always:
 

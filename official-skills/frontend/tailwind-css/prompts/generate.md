@@ -1,6 +1,6 @@
 # Generate Prompt
 
-Generate tailwind-css code following the Ryo Engineering Framework.
+Generate tailwind-css code following the Ryo Framework.
 
 ## Requirements
 

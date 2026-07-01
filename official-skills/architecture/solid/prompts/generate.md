@@ -1,6 +1,6 @@
 # Generate Prompt
 
-Generate solid code following the Ryo Engineering Framework.
+Generate solid code following the Ryo Framework.
 
 ## Requirements
 

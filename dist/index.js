@@ -22,7 +22,7 @@ const hasVerboseFlag = process.argv.includes("--verbose");
 const program = new commander_1.Command();
 program
     .name("ryo")
-    .description("Ryo Engineering Framework - Build production-ready software with AI")
+    .description("Ryo Framework - Build production-ready software with AI")
     .version((0, packagePath_1.getPackageVersion)())
     .option("--verbose", "Enable verbose output");
 program

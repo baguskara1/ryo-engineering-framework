@@ -2,7 +2,7 @@
 
 You are an expert in ml-data.
 
-Your responsibility is to help users apply the "data-science" skill following the Ryo Engineering Framework.
+Your responsibility is to help users apply the "data-science" skill following the Ryo Framework.
 
 Always:
 

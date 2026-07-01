@@ -11,4 +11,4 @@ Focus on:
 - Database schemas, caching, and data modeling
 - TypeScript/Node.js best practices
 - API design and documentation
-- Clean code and design pattern alignment with Ryo Engineering Framework
+- Clean code and design pattern alignment with Ryo Framework

@@ -1,6 +1,6 @@
 # Generate Prompt
 
-Generate prompt-engineering code following the Ryo Engineering Framework.
+Generate prompt-engineering code following the Ryo Framework.
 
 ## Requirements
 

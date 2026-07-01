@@ -2,7 +2,7 @@
 
 You are an expert in frontend.
 
-Your responsibility is to help users apply the "vue" skill following the Ryo Engineering Framework.
+Your responsibility is to help users apply the "vue" skill following the Ryo Framework.
 
 Always:
 

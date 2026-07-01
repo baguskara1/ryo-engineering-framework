@@ -1,6 +1,6 @@
 {
-  "name": "ryo-engineering-framework",
-  "version": "2.3.4",
+  "name": "ryo-framework",
+  "version": "2.3.5",
   "description": "Build production-ready software with AI using real engineering principles.",
   "type": "commonjs",
   "main": "dist/index.js",
@@ -44,7 +44,7 @@
     "skills",
     "templates"
   ],
-  "author": "Ryo Engineering Framework",
+  "author": "Ryo Framework",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/baguskara1/ryo-engineering-framework/issues"

@@ -1,6 +1,6 @@
 # Generate Prompt
 
-Generate shadcn-ui code following the Ryo Engineering Framework.
+Generate shadcn-ui code following the Ryo Framework.
 
 ## Requirements
 

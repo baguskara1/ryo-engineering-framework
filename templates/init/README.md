@@ -1,3 +1,3 @@
 # {{PROJECT_NAME}}
 
-Ryo Engineering Framework project.
+Ryo Framework project.

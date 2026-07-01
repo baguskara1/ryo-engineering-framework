@@ -20,7 +20,7 @@ function showBanner() {
         console.log(picocolors_1.default.magenta(line));
     }
     console.log(picocolors_1.default.dim("  ─────────────────────────────────────"));
-    console.log(`  ${picocolors_1.default.bold("Ryo Engineering Framework")} ${picocolors_1.default.magenta(`v${(0, packagePath_1.getPackageVersion)()}`)}`);
+    console.log(`  ${picocolors_1.default.bold("Ryo Framework")} ${picocolors_1.default.magenta(`v${(0, packagePath_1.getPackageVersion)()}`)}`);
     console.log(picocolors_1.default.dim("  Build production-ready software with AI"));
     console.log();
 }

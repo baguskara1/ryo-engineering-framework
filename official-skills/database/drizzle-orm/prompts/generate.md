@@ -1,6 +1,6 @@
 # Generate Prompt
 
-Generate drizzle-orm code following the Ryo Engineering Framework.
+Generate drizzle-orm code following the Ryo Framework.
 
 ## Requirements
 

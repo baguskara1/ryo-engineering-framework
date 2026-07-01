@@ -1,6 +1,6 @@
 # Generate Prompt
 
-Generate prisma code following the Ryo Engineering Framework.
+Generate prisma code following the Ryo Framework.
 
 ## Requirements
 

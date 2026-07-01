@@ -41,7 +41,7 @@ function init(projectName) {
         });
     }
     logger_1.logger.blank();
-    logger_1.logger.success(`Successfully initialized Ryo Engineering Framework`);
+    logger_1.logger.success(`Successfully initialized Ryo Framework`);
     logger_1.logger.blank();
     // Summary box
     const line = picocolors_1.default.dim("  ─────────────────────────────────────");

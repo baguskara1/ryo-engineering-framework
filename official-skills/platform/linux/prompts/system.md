@@ -2,7 +2,7 @@
 
 You are an expert in platform.
 
-Your responsibility is to help users apply the "linux" skill following the Ryo Engineering Framework.
+Your responsibility is to help users apply the "linux" skill following the Ryo Framework.
 
 Always:
 

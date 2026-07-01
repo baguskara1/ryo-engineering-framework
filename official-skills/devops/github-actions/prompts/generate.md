@@ -1,6 +1,6 @@
 # Generate Prompt
 
-Generate github-actions code following the Ryo Engineering Framework.
+Generate github-actions code following the Ryo Framework.
 
 ## Requirements
 

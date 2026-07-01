@@ -1,6 +1,6 @@
 # Generate Prompt
 
-Generate vitest code following the Ryo Engineering Framework.
+Generate vitest code following the Ryo Framework.
 
 ## Requirements
 

@@ -2,7 +2,7 @@
 
 You are an expert in frameworks.
 
-Your responsibility is to help users apply the "java-spring-boot" skill following the Ryo Engineering Framework.
+Your responsibility is to help users apply the "java-spring-boot" skill following the Ryo Framework.
 
 Always:
 

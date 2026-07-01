@@ -22,7 +22,7 @@ case "$COMMAND" in
 
 version)
     echo ""
-    echo "🚀 Ryo Engineering Framework"
+    echo "🚀 Ryo Framework"
     echo "Version : $VERSION"
     echo "Platform: $(uname)"
     echo ""

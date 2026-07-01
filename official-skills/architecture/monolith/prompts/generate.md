@@ -1,6 +1,6 @@
 # Generate Prompt
 
-Generate monolith code following the Ryo Engineering Framework.
+Generate monolith code following the Ryo Framework.
 
 ## Requirements
 
